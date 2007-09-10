@@ -96,6 +96,20 @@ if(!isset($_SESSION["login"]))
     <title><?=$titulo;?></title>
     <link rel="stylesheet" type="text/css" href="<?=URL?>style.css">
 <script type="text/javascript">
+function showhide_with_image(targetDiv,actionImage){
+	    image = document.getElementById(actionImage)
+		var oVDiv = document.getElementById(targetDiv);
+		prop = oVDiv.style.display;
+		if(prop == "none"){
+			oVDiv.style.display = "block";
+			image.src = "<?=URL?>images/up.jpg";
+		}
+		else{
+			oVDiv.style.display = "none";
+			image.src = "<?=URL?>images/down.jpg";
+		}
+}//showhide_with_image
+	
 function rename(name){
 	prompt("¿Renombrar el archivo: " + name + "?",name);
 }//rename
@@ -170,9 +184,11 @@ function download_file(sFile){
 	  <table border="0" cellpadding="0" cellspacing="0" width="160px">
           <tr bgcolor="#FFFFFF">
             <td width="133" class="textoAzul">&nbsp;Tareas de archivo </td>
-            <td width="27" style="cursor:pointer"><img src="<?=URL;?>images/up.jpg" /></td>
+            <td width="27"><a href="javascript:showhide_with_image('task','img_arrow_task');"><img src="<?=URL;?>images/up.jpg" id="img_arrow_task" style="border:none" /></a></td>
           </tr>
-		  
+	 </table>
+    <div id="task">
+	<table border="0" cellpadding="0" cellspacing="0" width="160px">     		  
 		  <tr bgcolor="#D6DFF7">
 		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/file.gif" />&nbsp;<a href="javascript:new_file();" class="menuLeftBar">Crear Nuevo Archivo</a></td>
 		  </tr>
@@ -189,6 +205,7 @@ function download_file(sFile){
 		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/control_panel.jpg" />&nbsp;<a href="#" class="menuLeftBar">Panel de Control</a></td>
 		  </tr>
 	  </table>
+      </div>
 	  </div>
 	  <!-- Panel Tareas -->
 	  
@@ -197,8 +214,11 @@ function download_file(sFile){
 	    <table border="0" cellpadding="0" cellspacing="0" width="160px">
           <tr bgcolor="#FFFFFF">
             <td width="133" class="textoAzul">&nbsp;Detalles</td>
-            <td width="27" style="cursor:pointer"><img src="<?=URL;?>images/up.jpg" /></td>
+            <td width="27"><a href="javascript:showhide_with_image('details','img_arrow_detail');"><img src="<?=URL;?>images/up.jpg" id="img_arrow_detail" style="border:none" /></a></td>
           </tr>
+        </table>
+        <div id="details">
+        <table border="0" cellpadding="0" cellspacing="0" width="160px">
           <tr bgcolor="#D6DFF7">
             <td colspan="2" style="border-bottom: 1px #FFFFFF; border-right: 1px #FFFFFF;">
 			<?php
@@ -244,8 +264,9 @@ function download_file(sFile){
               &nbsp;Espacio Total:<br />
               &nbsp;<?=$dt;?>
               </td>
-          </tr>
+          </tr>		  
         </table>
+        </div>
 	  </div>
 	  <!-- -->	  </td>
       <td width="778" style="vertical-align:top;">
