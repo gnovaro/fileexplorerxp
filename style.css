@@ -14,3 +14,9 @@ body
 	color:#999999;
 	font-size:16px;
 }
+.menuLeftBar{
+	text-decoration:none;
+}
+.menuLeftBar:hover{
+	text-decoration:underline;
+}
