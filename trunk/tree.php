@@ -154,7 +154,7 @@ function download_file(sFile){
 </head>
 <body>
 <form name="frmMain" id="frmMain" method="post" action="<?=$_SERVER['PHP_SELF'];?>">
-  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <table width="80%" border="0" cellpadding="0" cellspacing="0">
     <tr bgcolor="#EFEFE9">
       <td colspan="2"><div align="right"><a href="javascript:close_admin();"><img src="<?=URL;?>images/close.png" alt="close" style="border:none;" title="Salir" /></a>&nbsp;</div></td>
     </tr>
@@ -276,7 +276,7 @@ function download_file(sFile){
 		  <?php
 		  	if(is_dir($files[$i])){
 		  ?>
-				<img src='<?=URL?>folder.jpg' \>&nbsp;<a href="tree.php?dir=<?=$files[$i];?>"><?=$files[$i];?></a>
+				<img src='<?=URL?>images/folder.jpg' \>&nbsp;<a href="tree.php?dir=<?=$files[$i];?>"><?=$files[$i];?></a>
 		  <?php
 			}				
 			else{
