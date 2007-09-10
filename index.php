@@ -30,7 +30,7 @@
 		<td><input type="text" name="txtUserName" id="txtUserName" autocomplete="false" /></td>
 	</tr>
 	<tr>
-		<td>&nbsp;<strong>Contraseña:</strong></td>
+		<td>&nbsp;<strong>Contrase&ntilde;a:</strong></td>
 		<td><input type="password" name="txtPass" id="txtPass" autocomplete="false" /></td>
 	</tr>
 	<tr>
