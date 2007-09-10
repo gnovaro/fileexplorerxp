@@ -290,14 +290,14 @@ function download_file(sFile){
           $i=0;
           while (false !== ($file_name = readdir($dh))) {
             $i++;
-            $files[$i] = $file_name;
+            	$files[$i] = $file_name;
         ?>
         <tr>
           <td bgcolor="#F7F7F7">&nbsp;
 		  <?php
 		  	if(is_dir($files[$i])){
 		  ?>
-				<img src='<?=URL?>images/folder.jpg' \>&nbsp;<a href="tree.php?dir=<?=$files[$i];?>"><?=$files[$i];?></a>
+				<img src='<?=URL?>images/folder.jpg' \>&nbsp;<a href="tree.php?dir=<?=$files[$i];?>" class="menuLeftBar"><?=$files[$i];?></a>
 		  <?php
 			}				
 			else{
