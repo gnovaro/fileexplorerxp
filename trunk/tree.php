@@ -13,7 +13,7 @@ if(!isset($_SESSION["login"]))
 	header("Location: index.php");
 //security
 
-	define("URL","http://localhost/filemanagerphp/");
+	define("URL","http://localhost/fileexplorerxp/");
 	require("languages/spanish.php");
 	require("error_handler.php");	
 	
@@ -59,6 +59,19 @@ if(!isset($_SESSION["login"]))
 			mkdir($dir, 0700);
 		}//if
 	}//if
+	
+	//delete
+	if( isset($_POST["H_ACTION"]) ){
+		$sAction = $_POST["H_ACTION"];
+		if ($sAction == "DELETE"){
+			$sFile = $_POST["H_FILE_NAME"];
+			if(file_exists($sFile))
+				if ( unlink($sFile) ){
+					echo "Delete Sucess";
+				}
+		}//if delete
+	}//if
+	
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -77,9 +90,12 @@ function rename(name){
 	prompt("¿Renombrar el archivo: " + name + "?",name);
 }//rename
 
-function deleteFile(name){
+function deleteFile(sName){
 	var resp;
-	resp = confirm("¿Desea eliminar el archivo: '" + name + "' ?");
+	resp = confirm("¿Desea eliminar el archivo: '" + sName + "' ?");
+	document.getElementById("H_ACTION").value = "DELETE";
+	document.getElementById("H_FILE_NAME").value = sName;
+	document.getElementById("frmMain").submit();
 }//deleteFile
 
 function newFolder(){
@@ -305,6 +321,8 @@ function download_file(sFile){
       <td align="right"><a href="http://www.novarsystems.com.ar" target="_blank">NovAR Systems - www.novarsystems.com.ar</a>&nbsp; - Version: 1.0 &nbsp;</td>
     </tr>
   </table>
+  <input type="hidden" name="H_FILE_NAME" id="H_FILE_NAME" value="" />
+  <input type="hidden" name="H_ACTION" id="H_ACTION" value="" />
 </form>
 </body>
 </html>
