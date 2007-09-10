@@ -258,6 +258,7 @@ function download_file(sFile){
           <td><span class="barra">|</span>Fecha Modificaci&oacute;n</td>
 		  <td><span class="barra">|</span>Propietario</td>
 		  <td><span class="barra">|</span>Grupo</td>
+		  <td><span class="barra">|</span>Permisos</td>
 		  <td colspan="4">&nbsp;</td>
         </tr>
 		<?php 
@@ -309,12 +310,72 @@ function download_file(sFile){
 	          $uid = fileowner($files[$i]); //return uid owner file 
 			  $sUser = posix_getpwuid($uid); //return array asoc uid with name...  
 			  echo $sUser["name"];
-		  ?>          
-          </td>
+		  ?>          </td>
           <td>&nbsp;<?php
 		  	  $gid = filegroup($files[$i]); //return file group id
 			  $sGroup = posix_getgrgid($gid);	 
  		      echo $sGroup["name"];
+		  ?>          
+          </td>
+          <td>&nbsp;
+          <?php
+		 /* function show_perm_complete($sFile){
+		  //$perms = fileperms($sFile); //get octal value of permison
+		  return fileperms($sFile) & 511; 
+		 /*
+		  	if (($perms & 0xC000) == 0xC000) {
+				// Socket
+				$info = 's';
+			} elseif (($perms & 0xA000) == 0xA000) {
+				// Enlace Simbolico
+				$info = 'l';
+			} elseif (($perms & 0x8000) == 0x8000) {
+				// Regular
+				$info = '-';
+			} elseif (($perms & 0x6000) == 0x6000) {
+				// Bloque especial
+				$info = 'b';
+			} elseif (($perms & 0x4000) == 0x4000) {
+				// Directorio
+				$info = 'd';
+			} elseif (($perms & 0x2000) == 0x2000) {
+				// Caracter especial
+				$info = 'c';
+			} elseif (($perms & 0x1000) == 0x1000) {
+				// Pipe FIFO
+				$info = 'p';
+			} else {
+				// Desconocido
+				$info = 'u';
+			}
+			
+			// Duenyo
+			$info .= (($perms & 0x0100) ? 'r' : '-');
+			$info .= (($perms & 0x0080) ? 'w' : '-');
+			$info .= (($perms & 0x0040) ?
+						(($perms & 0x0800) ? 's' : 'x' ) :
+						(($perms & 0x0800) ? 'S' : '-'));
+			
+			// Group
+			$info .= (($perms & 0x0020) ? 'r' : '-');
+			$info .= (($perms & 0x0010) ? 'w' : '-');
+			$info .= (($perms & 0x0008) ?
+						(($perms & 0x0400) ? 's' : 'x' ) :
+						(($perms & 0x0400) ? 'S' : '-'));
+			
+			// World
+			$info .= (($perms & 0x0004) ? 'r' : '-');
+			$info .= (($perms & 0x0002) ? 'w' : '-');
+			$info .= (($perms & 0x0001) ?
+						(($perms & 0x0200) ? 't' : 'x' ) :
+						(($perms & 0x0200) ? 'T' : '-'));
+			
+				return $info;*/
+		  /*}//show_perm_complete
+          echo show_perm_complete($files[$i]);
+		  clearstatcache();*/
+		  if (fileperms($files[$i]))
+		  echo substr(sprintf('%o', fileperms($files[$i])), -4)
 		  ?>
           </td>
           <?php
