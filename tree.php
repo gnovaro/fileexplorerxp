@@ -80,17 +80,11 @@ if(!isset($_SESSION["login"]))
     <title><?=$titulo;?></title>
     <link rel="stylesheet" type="text/css" href="<?=URL?>style.css">
 <script type="text/javascript">
-function sendForm(){
-	var frmMain = document.getElementById("frmMain");
-	frmMain.action="procesData.php"
-	frmMain.submit();
-}//sendForm
-
 function rename(name){
 	prompt("¿Renombrar el archivo: " + name + "?",name);
 }//rename
 
-function deleteFile(sName){
+function delete_file(sName){
 	var resp;
 	resp = confirm("¿Desea eliminar el archivo: '" + sName + "' ?");
 	document.getElementById("H_ACTION").value = "DELETE";
@@ -98,15 +92,27 @@ function deleteFile(sName){
 	document.getElementById("frmMain").submit();
 }//deleteFile
 
-function newFolder(){
+function new_folder(){
 	folder = prompt("Nombre carpeta:");
 	if (folder !="" && folder != null){
 		//Validar charAt " " != espacio
-		window.location = "index.php?action=newFolder&name=" + folder;
-	}
-}//newFolder
+		document.getElementById("H_ACTION").value = "NEW_FOLDER";
+		document.getElementById("H_FILE_NAME").value = folder;
+		document.getElementById("frmMain").submit();
+	}//if
+}//new_folder
 
-function closeAdmin(){
+function new_file(){
+	sFile = prompt("Nombre archivo:");
+	if (sFile !="" && sFile != null){
+		//Validar charAt " " != espacio
+		document.getElementById("H_ACTION").value = "NEW_FILE";
+		document.getElementById("H_FILE_NAME").value = sFile;
+		document.getElementById("frmMain").submit();
+	}//if
+}//new_file
+
+function close_admin(){
 	sclose = confirm("¿Esta seguro que de sea cerrar el Administrador de Archivos?");
 	if (sclose){
 		window.location = "index.php";
@@ -134,7 +140,7 @@ function download_file(sFile){
 <form name="frmMain" id="frmMain" method="post" action="<?=$_SERVER['PHP_SELF'];?>">
   <table width="100%" border="0" cellpadding="0" cellspacing="0">
     <tr bgcolor="#EFEFE9">
-      <td colspan="2"><div align="right"><a href="javascript:closeAdmin();"><img src="<?=URL;?>close.png" alt="close" style="border:none;" title="Salir" /></a>&nbsp;</div></td>
+      <td colspan="2"><div align="right"><a href="javascript:close_admin();"><img src="<?=URL;?>images/close.png" alt="close" style="border:none;" title="Salir" /></a>&nbsp;</div></td>
     </tr>
     <tr bgcolor="#EFEFE9">
       <td colspan="2">&nbsp;Direcci&oacute;n:&nbsp;<span><input type="text" name="dir" id="txtPath" style="width:650px;" value="<?=realpath($sPath);?>"/></span><input type="button" name="btSend" id="btSend" value="Ir" class="button" onclick="go_path();" /></td>
@@ -152,19 +158,19 @@ function download_file(sFile){
           </tr>
 		  
 		  <tr bgcolor="#D6DFF7">
-		  	<td colspan="2">&nbsp;<img src="<?=URL;?>file.gif" />&nbsp;<a href="#" onclick="newFile();">Crear Nuevo Archivo</a></td>
+		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/file.gif" />&nbsp;<a href="javascript:new_file();">Crear Nuevo Archivo</a></td>
 		  </tr>
           
 		  <tr bgcolor="#D6DFF7">
-		  	<td colspan="2">&nbsp;<img src="<?=URL;?>new_folder.jpg" />&nbsp;<a href="#" onclick="newFolder();">Crear Nueva Carpeta</a></td>
+		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/new_folder.jpg" />&nbsp;<a href="javascript:new_folder();">Crear Nueva Carpeta</a></td>
 		  </tr>
 
 		  <tr bgcolor="#D6DFF7">
-		  	<td colspan="2">&nbsp;<img src="<?=URL;?>upload.jpg" />&nbsp;<a href="<?=URL;?>uploadFiles.php" >Subir archivo</a></td>
+		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/upload.jpg" />&nbsp;<a href="<?=URL;?>uploadFiles.php" >Subir archivo</a></td>
 		  </tr>
 		  
 		  <tr bgcolor="#D6DFF7">
-		  	<td colspan="2">&nbsp;<img src="<?=URL;?>control_panel.jpg" />&nbsp;<a href="#" onclick="newFolder();">Panel de Control</a></td>
+		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/control_panel.jpg" />&nbsp;<a href="">Panel de Control</a></td>
 		  </tr>
 	  </table>
 	  </div>
@@ -286,19 +292,19 @@ function download_file(sFile){
           <?php
           if(is_file($files[$i])){
 		  ?>
-          <td><a href="javascript:edit('<?=$files[$i]?>');"><img src="<?=URL?>b_edit.png" name="ren<?=$i;?>" style="border:none;" alt="Editar" title="Editar" /></a></td>
+          <td><a href="javascript:edit('<?=$files[$i]?>');"><img src="<?=URL?>images/b_edit.png" name="ren<?=$i;?>" style="border:none;" alt="Editar" title="Editar" /></a></td>
           <?php
 		  }//if
 		  else
 		  	echo "<td>&nbsp;</td>";
 		  ?>
-		  <td><a href="javascript:rename('<?=$files[$i]?>');"><img src="<?=URL?>rename.jpg" name="ren<?=$i;?>" style="border:none;" title="Renombrar" /></a></td>
-          <td><a href="javascript:deleteFile('<?=$files[$i]?>');"><img src="<?=URL?>delete.jpg" style="border:none;" title="Eliminar" /></a></td>
-		  <td><img src="<?=URL?>zip.gif" alt="Comprimir" title="Comprimir" /></td>
+		  <td><a href="javascript:rename('<?=$files[$i]?>');"><img src="<?=URL?>images/rename.jpg" name="ren<?=$i;?>" style="border:none;" title="Renombrar" /></a></td>
+          <td><a href="javascript:delete_file('<?=$files[$i]?>');"><img src="<?=URL?>images/delete.jpg" style="border:none;" title="Eliminar" /></a></td>
+		  <td><img src="<?=URL?>images/zip.gif" alt="Comprimir" title="Comprimir" /></td>
           <?php
           if(is_file($files[$i])){
 		  ?>
-          <td><a href="javascript:download_file('<?=$files[$i]?>');"><img src="<?=URL?>download.gif" alt="Descargar" title="Descargar" style="border:none;" /></a></td>
+          <td><a href="javascript:download_file('<?=$files[$i]?>');"><img src="<?=URL?>images/download.gif" alt="Descargar" title="Descargar" style="border:none;" /></a></td>
           <?php
           }//if
 		  ?>
