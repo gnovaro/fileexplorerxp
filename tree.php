@@ -51,27 +51,43 @@ if(!isset($_SESSION["login"]))
 	$order = 0;
 	
 
-	if( isset($_GET["action"]) ){
-		$action = $_GET["action"];
-		//Create a New Folder		
-		if($action =="newFolder"){
-			$dir = $_GET["name"];
-			mkdir($dir, 0700);
-		}//if
-	}//if
-	
-	//delete
-	if( isset($_POST["H_ACTION"]) ){
+	if (isset($_POST["H_ACTION"])){
 		$sAction = $_POST["H_ACTION"];
-		if ($sAction == "DELETE"){
-			$sFile = $_POST["H_FILE_NAME"];
-			if(file_exists($sFile))
-				if ( unlink($sFile) ){
-					echo "Delete Sucess";
+		
+		switch($sAction){
+			case "NEW_FOLDER": 
+				$sDirName = $_POST["H_NAME"];
+				mkdir($sDirName, 0700);			
+				break;
+			case "NEW_FILE":
+				$sName = $_POST["H_NAME"];
+				if (!file_exists($sName)){
+					fopen($sName,'w');
+					echo "Archivo creado en forma satisfactoria";//"File created sucess"
 				}
-		}//if delete
-	}//if
-	
+				else
+					echo "ERROR: Ya existe un archivo con ese nombre";
+				break;
+			case "DELETE":
+				$sName = $_POST["H_NAME"];
+				if(is_dir($sName)){
+					if (rmdir($sName)== true) 
+						echo "Directorio $sName eliminado correctamente";
+					else
+						echo "Error al borrar directorio $sName, compruebe que esta vacio";
+				}
+				else
+					if(file_exists($sName))
+						if ( unlink($sName) ){
+							echo "Delete Sucess";
+						}//if	
+				break;
+			case "RENAME":
+				//rename();
+				break;
+		}//switch
+			
+	}//if action
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -88,7 +104,7 @@ function delete_file(sName){
 	var resp;
 	resp = confirm("¿Desea eliminar el archivo: '" + sName + "' ?");
 	document.getElementById("H_ACTION").value = "DELETE";
-	document.getElementById("H_FILE_NAME").value = sName;
+	document.getElementById("H_NAME").value = sName;
 	document.getElementById("frmMain").submit();
 }//deleteFile
 
@@ -97,7 +113,7 @@ function new_folder(){
 	if (folder !="" && folder != null){
 		//Validar charAt " " != espacio
 		document.getElementById("H_ACTION").value = "NEW_FOLDER";
-		document.getElementById("H_FILE_NAME").value = folder;
+		document.getElementById("H_NAME").value = folder;
 		document.getElementById("frmMain").submit();
 	}//if
 }//new_folder
@@ -107,7 +123,7 @@ function new_file(){
 	if (sFile !="" && sFile != null){
 		//Validar charAt " " != espacio
 		document.getElementById("H_ACTION").value = "NEW_FILE";
-		document.getElementById("H_FILE_NAME").value = sFile;
+		document.getElementById("H_NAME").value = sFile;
 		document.getElementById("frmMain").submit();
 	}//if
 }//new_file
@@ -240,6 +256,8 @@ function download_file(sFile){
           <td width="250px" height="24">&nbsp;Nombre</td>
           <td width="75px"><span class="barra">|</span>Tama&ntilde;o</td>
           <td><span class="barra">|</span>Fecha Modificaci&oacute;n</td>
+		  <td><span class="barra">|</span>Propietario</td>
+		  <td><span class="barra">|</span>Grupo</td>
 		  <td colspan="4">&nbsp;</td>
         </tr>
 		<?php 
@@ -270,8 +288,7 @@ function download_file(sFile){
 				<img src="<?=$sPathIcon;?>" alt="" />&nbsp;<?=$files[$i];?>
 			<?php
 			}//if
-		  ?>
-		  </td>
+		  ?>		  </td>
           <td>&nbsp;
 		  <?php
 		  		$tam = filesize($files[$i]);
@@ -283,12 +300,23 @@ function download_file(sFile){
 				{
 					echo $tam." bytes"; 
 				}//if
-		  ?>
-		  </td>
+		  ?>		  </td>
           <?php
           if($files[$i]!="." && $files[$i] != ".."){
 		  ?>
 		  <td>&nbsp;<?=date ("d F Y H:i:s", filemtime($files[$i]));?></td>
+          <td>&nbsp;<?php
+	          $uid = fileowner($files[$i]); //return uid owner file 
+			  $sUser = posix_getpwuid($uid); //return array asoc uid with name...  
+			  echo $sUser["name"];
+		  ?>          
+          </td>
+          <td>&nbsp;<?php
+		  	  $gid = filegroup($files[$i]); //return file group id
+			  $sGroup = posix_getgrgid($gid);	 
+ 		      echo $sGroup["name"];
+		  ?>
+          </td>
           <?php
           if(is_file($files[$i])){
 		  ?>
@@ -327,7 +355,7 @@ function download_file(sFile){
       <td align="right"><a href="http://www.novarsystems.com.ar" target="_blank">NovAR Systems - www.novarsystems.com.ar</a>&nbsp; - Version: 1.0 &nbsp;</td>
     </tr>
   </table>
-  <input type="hidden" name="H_FILE_NAME" id="H_FILE_NAME" value="" />
+  <input type="hidden" name="H_NAME" id="H_NAME" value="" />
   <input type="hidden" name="H_ACTION" id="H_ACTION" value="" />
 </form>
 </body>
