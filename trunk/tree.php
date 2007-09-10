@@ -170,23 +170,23 @@ function download_file(sFile){
 	  <table border="0" cellpadding="0" cellspacing="0" width="160px">
           <tr bgcolor="#FFFFFF">
             <td width="133" class="textoAzul">&nbsp;Tareas de archivo </td>
-            <td width="27" style="cursor:pointer"><img src="up.jpg" /></td>
+            <td width="27" style="cursor:pointer"><img src="<?=URL;?>images/up.jpg" /></td>
           </tr>
 		  
 		  <tr bgcolor="#D6DFF7">
-		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/file.gif" />&nbsp;<a href="javascript:new_file();">Crear Nuevo Archivo</a></td>
+		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/file.gif" />&nbsp;<a href="javascript:new_file();" class="menuLeftBar">Crear Nuevo Archivo</a></td>
 		  </tr>
           
 		  <tr bgcolor="#D6DFF7">
-		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/new_folder.jpg" />&nbsp;<a href="javascript:new_folder();">Crear Nueva Carpeta</a></td>
+		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/new_folder.jpg" />&nbsp;<a href="javascript:new_folder();" class="menuLeftBar">Crear Nueva Carpeta</a></td>
 		  </tr>
 
 		  <tr bgcolor="#D6DFF7">
-		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/upload.jpg" />&nbsp;<a href="<?=URL;?>uploadFiles.php" >Subir archivo</a></td>
+		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/upload.jpg" />&nbsp;<a href="<?=URL;?>uploadFiles.php" class="menuLeftBar">Subir archivo</a></td>
 		  </tr>
 		  
 		  <tr bgcolor="#D6DFF7">
-		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/control_panel.jpg" />&nbsp;<a href="">Panel de Control</a></td>
+		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/control_panel.jpg" />&nbsp;<a href="#" class="menuLeftBar">Panel de Control</a></td>
 		  </tr>
 	  </table>
 	  </div>
@@ -197,7 +197,7 @@ function download_file(sFile){
 	    <table border="0" cellpadding="0" cellspacing="0" width="160px">
           <tr bgcolor="#FFFFFF">
             <td width="133" class="textoAzul">&nbsp;Detalles</td>
-            <td width="27" style="cursor:pointer"><img src="up.jpg" /></td>
+            <td width="27" style="cursor:pointer"><img src="<?=URL;?>images/up.jpg" /></td>
           </tr>
           <tr bgcolor="#D6DFF7">
             <td colspan="2" style="border-bottom: 1px #FFFFFF; border-right: 1px #FFFFFF;">
