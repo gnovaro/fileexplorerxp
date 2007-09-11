@@ -307,9 +307,10 @@ function download_file(sFile){
 			else{
 				//is file
 				$sExtension = explode(".", $file);
-				$sPathIcon = URL."icons/".$sExtension[1].".gif";
-				/*if (!file_exists($sPathIcon))
-					$sPathIcon = URL."icons/file.gif";*/
+				if (count($sExtension)>1) //verify a extension and load a incon by ext
+					$sPathIcon = URL."icons/".$sExtension[1].".gif";
+				else //load a generic icon
+					$sPathIcon = URL."icons/file.gif";
 			?>
 				<img src="<?=$sPathIcon;?>" alt="" />&nbsp;<?=$file;?>
 			<?php
