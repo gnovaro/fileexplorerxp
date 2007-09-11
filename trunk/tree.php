@@ -274,7 +274,7 @@ function download_file(sFile){
 	  <div style="top: 66px; left: 191px;">
 	  <table border="0" cellpadding="0" cellspacing="0">
         <tr bgcolor="#EFEFE9">
-          <td width="250px" height="24">&nbsp;Nombre</td>
+          <td width="250px" height="24">&nbsp;Nombre </td>
           <td width="75px"><span class="barra">|</span>Tama&ntilde;o</td>
           <td><span class="barra">|</span>Fecha Modificaci&oacute;n</td>
 		  <td><span class="barra">|</span>Propietario</td>
@@ -287,33 +287,37 @@ function download_file(sFile){
           
           //Lista los archivos y directorios ubicados en la ruta especificada en un array
           $dh  = @opendir($sPath)or die("No se puede abrir el  $sPath");
-          $i=0;
+          $i = 0;
           while (false !== ($file_name = readdir($dh))) {
-            $i++;
-            	$files[$i] = $file_name;
+		  		$types[] = filetype($file_name);
+            	$files[] = $file_name;
+				$i++;
+		  }//while
+		  array_multisort($types,SORT_ASC,$files,SORT_ASC); //sort by type, name
+		  foreach($files as $file) {		  	
         ?>
         <tr>
           <td bgcolor="#F7F7F7">&nbsp;
 		  <?php
-		  	if(is_dir($files[$i])){
+		  	if(is_dir($file)){
 		  ?>
-				<img src='<?=URL?>images/folder.jpg' \>&nbsp;<a href="tree.php?dir=<?=$files[$i];?>" class="menuLeftBar"><?=$files[$i];?></a>
+				<img src='<?=URL?>images/folder.jpg' \>&nbsp;<a href="tree.php?dir=<?=$file;?>" class="menuLeftBar"><?=$file;?></a>
 		  <?php
 			}				
 			else{
 				//is file
-				$sExtension = explode(".", $files[$i]);
+				$sExtension = explode(".", $file);
 				$sPathIcon = URL."icons/".$sExtension[1].".gif";
 				/*if (!file_exists($sPathIcon))
 					$sPathIcon = URL."icons/file.gif";*/
 			?>
-				<img src="<?=$sPathIcon;?>" alt="" />&nbsp;<?=$files[$i];?>
+				<img src="<?=$sPathIcon;?>" alt="" />&nbsp;<?=$file;?>
 			<?php
 			}//if
 		  ?>		  </td>
           <td>&nbsp;
 		  <?php
-		  		$tam = filesize($files[$i]);
+		  		$tam = filesize($file);
 		  		if( $tam > 1024 ){
 					$tam = round($tam / 1024);
 					echo $tam." Kb"; 
@@ -324,16 +328,16 @@ function download_file(sFile){
 				}//if
 		  ?>		  </td>
           <?php
-          if($files[$i]!="." && $files[$i] != ".."){
+          if($file!="." && $file != ".."){
 		  ?>
-		  <td>&nbsp;<?=date ("d F Y H:i:s", filemtime($files[$i]));?></td>
+		  <td>&nbsp;<?=date ("d F Y H:i:s", filemtime($file));?></td>
           <td>&nbsp;<?php
-	          $uid = fileowner($files[$i]); //return uid owner file 
+	          $uid = fileowner($file); //return uid owner file 
 			  $sUser = posix_getpwuid($uid); //return array asoc uid with name...  
 			  echo $sUser["name"];
 		  ?>          </td>
           <td>&nbsp;<?php
-		  	  $gid = filegroup($files[$i]); //return file group id
+		  	  $gid = filegroup($file); //return file group id
 			  $sGroup = posix_getgrgid($gid);	 
  		      echo $sGroup["name"];
 		  ?>          
@@ -395,26 +399,26 @@ function download_file(sFile){
 		  /*}//show_perm_complete
           echo show_perm_complete($files[$i]);
 		  clearstatcache();*/
-		  if (fileperms($files[$i]))
-		  echo substr(sprintf('%o', fileperms($files[$i])), -4)
+		  if (fileperms($file))
+		  echo substr(sprintf('%o', fileperms($file)), -4)
 		  ?>
           </td>
           <?php
-          if(is_file($files[$i])){
+          if(is_file($file)){
 		  ?>
-          <td><a href="javascript:edit('<?=$files[$i]?>');"><img src="<?=URL?>images/b_edit.png" name="ren<?=$i;?>" style="border:none;" alt="Editar" title="Editar" /></a></td>
+          <td><a href="javascript:edit('<?=$file?>');"><img src="<?=URL?>images/b_edit.png" style="border:none;" alt="Editar" title="Editar" /></a></td>
           <?php
 		  }//if
 		  else
 		  	echo "<td>&nbsp;</td>";
 		  ?>
-		  <td><a href="javascript:rename('<?=$files[$i]?>');"><img src="<?=URL?>images/rename.jpg" name="ren<?=$i;?>" style="border:none;" title="Renombrar" /></a></td>
-          <td><a href="javascript:delete_file('<?=$files[$i]?>');"><img src="<?=URL?>images/delete.jpg" style="border:none;" title="Eliminar" /></a></td>
+		  <td><a href="javascript:rename('<?=$file;?>');"><img src="<?=URL?>images/rename.jpg" style="border:none;" title="Renombrar" /></a></td>
+          <td><a href="javascript:delete_file('<?=$file;?>');"><img src="<?=URL?>images/delete.jpg" style="border:none;" title="Eliminar" /></a></td>
 		  <td><img src="<?=URL?>images/zip.gif" alt="Comprimir" title="Comprimir" /></td>
           <?php
-          if(is_file($files[$i])){
+          if(is_file($file)){
 		  ?>
-          <td><a href="javascript:download_file('<?=$files[$i]?>');"><img src="<?=URL?>images/download.gif" alt="Descargar" title="Descargar" style="border:none;" /></a></td>
+          <td><a href="javascript:download_file('<?=$file?>');"><img src="<?=URL?>images/download.gif" alt="Descargar" title="Descargar" style="border:none;" /></a></td>
           <?php
           }//if
 		  ?>
