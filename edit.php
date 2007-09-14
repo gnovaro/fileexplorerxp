@@ -12,14 +12,15 @@ session_start();
 if(!isset($_SESSION["login"]))
 	header("Location: index.php");
 //security
-define("URL","http://localhost/filemanagerphp/");
+define("URL","http://localhost/fileexplorerxp/");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-    <title>Documento sin t&iacute;tulo</title>
+    <title>:: File Explorer XP ::</title>
     <link rel="stylesheet" type="text/css" href="<?=URL?>style.css">
+    <script src="<?=URL?>codepress/codepress.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -39,8 +40,8 @@ define("URL","http://localhost/filemanagerphp/");
     <table>
     <tr>
 	    <td>
-        <textarea name="content" id="content" cols="80" rows="40">
         <?php
+			$sContent = "";
             if(isset($_GET["file"]))
                 $sFile = $_GET["file"];
             
@@ -49,12 +50,54 @@ define("URL","http://localhost/filemanagerphp/");
                 
             $sPath = $_SESSION["path"];
             $sPath = $sPath.DIRECTORY_SEPARATOR.$sFile;
+			//
+			$path_parts = pathinfo($sPath);
+			$ext = $path_parts['extension'];
+				/**
+				 * determine language for Codepress
+				 */
+				switch($ext){
+					case 'html':
+					case 'tpl':
+						$language='html';
+						break;
+					case 'php':
+						$language = 'php';
+						break;
+					case 'css':
+						$language = 'css';
+						break;
+					case 'js':
+						$language = 'javascript';
+						break;
+					case 'j':
+						$language = 'java';
+						break;
+					case 'pl':
+						$language = 'perl';
+						break;
+					case 'ruby':
+						$language = 'ruby';
+						break;
+					case 'sql':
+						$language = 'sql';
+						break;
+					case 'tex':
+						$language = 'tex';
+						break;
+					case 'txt':
+						$language = 'text';
+						break;
+					default:
+						$language = 'generic';
+						break;
+				}
+
             if (is_file($sPath)){
                 $sContent = file_get_contents($sPath);
-                echo trim($sContent);
             }//is_file
         ?>
-        </textarea>
+        <textarea name="content" id="myCpWindow" class="codepress <?=$language;?> linenumbers-on" cols="80" rows="40"><?=$sContent;?></textarea>
         </td>
 	</tr>
     <tr>        
