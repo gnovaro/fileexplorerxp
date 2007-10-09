@@ -83,7 +83,13 @@ if(!isset($_SESSION["login"]))
 						}//if	
 				break;
 			case "RENAME":
-				//rename();
+				$sName = $_POST["H_NAME"];
+				$sExtra = $_POST["H_EXTRA"];
+				if(file_exists($sName))
+				{
+					if(rename($sName,$sExtra) == false)
+						echo "Rename fail";
+				}//if
 				break;
 		}//switch
 			
@@ -110,8 +116,13 @@ function showhide_with_image(targetDiv,actionImage){
 		}
 }//showhide_with_image
 	
-function rename(name){
-	prompt("¿Renombrar el archivo: " + name + "?",name);
+function rename(sName){
+	var resp;
+	resp = prompt("¿Renombrar el archivo: " + sName + "?",sName);
+	document.getElementById("H_ACTION").value = "RENAME";
+	document.getElementById("H_NAME").value = sName;
+	document.getElementById("H_EXTRA").value = resp;
+	document.getElementById("frmMain").submit();
 }//rename
 
 function delete_file(sName){
@@ -306,16 +317,18 @@ function download_file(sFile){
 			}				
 			else{
 				//is file
-				$sExtension = explode(".", $file);
-				if (count($sExtension)>1) //verify a extension and load a incon by ext
-					$sPathIcon = URL."icons/".$sExtension[1].".gif";
+				$path_parts = pathinfo($file);
+				$ext = $path_parts['extension'];
+				if ($ext != "")
+					$sPathIcon = URL."icons/".$ext.".gif";
 				else //load a generic icon
 					$sPathIcon = URL."icons/file.gif";
 			?>
 				<img src="<?=$sPathIcon;?>" alt="" />&nbsp;<?=$file;?>
 			<?php
 			}//if
-		  ?>		  </td>
+		  ?>		  
+          </td>
           <td>&nbsp;
 		  <?php
 		  		$tam = filesize($file);
@@ -333,15 +346,16 @@ function download_file(sFile){
 		  ?>
 		  <td>&nbsp;<?=date ("d F Y H:i:s", filemtime($file));?></td>
           <td>&nbsp;<?php
-	          $uid = fileowner($file); //return uid owner file 
-			  $sUser = posix_getpwuid($uid); //return array asoc uid with name...  
-			  echo $sUser["name"];
-		  ?>          </td>
+//	          $uid = fileowner($file); //return uid owner file 
+	//		  $sUser = posix_getpwuid($uid); //return array asoc uid with name...  
+		  ?>  
+          <? //=$sUser["name"];?>        
+          </td>
           <td>&nbsp;<?php
-		  	  $gid = filegroup($file); //return file group id
-			  $sGroup = posix_getgrgid($gid);	 
- 		      echo $sGroup["name"];
-		  ?>          
+		  	  //$gid = filegroup($file); //return file group id
+			  //$sGroup = posix_getgrgid($gid);	  		      
+		  ?> 
+          <? //=$sGroup["name"];?>         
           </td>
           <td>&nbsp;
           <?php
@@ -416,19 +430,19 @@ function download_file(sFile){
 		  <td><a href="javascript:rename('<?=$file;?>');"><img src="<?=URL?>images/rename.jpg" style="border:none;" title="Renombrar" /></a></td>
           <td><a href="javascript:delete_file('<?=$file;?>');"><img src="<?=URL?>images/delete.jpg" style="border:none;" title="Eliminar" /></a></td>
 		  <td><img src="<?=URL?>images/zip.gif" alt="Comprimir" title="Comprimir" /></td>
-          <?php
-          if(is_file($file)){
-		  ?>
-          <td><a href="javascript:download_file('<?=$file?>');"><img src="<?=URL?>images/download.gif" alt="Descargar" title="Descargar" style="border:none;" /></a></td>
-          <?php
-          }//if
-		  ?>
+			  <?php
+              if(is_file($file)){
+              ?>
+              <td><a href="javascript:download_file('<?=$file?>');"><img src="<?=URL?>images/download.gif" alt="Descargar" title="Descargar" style="border:none;" /></a></td>
+              <?php
+              }//if
+              ?>
           <?php
 		  }//if
 		  ?>
         </tr>
-        <?		
-		  }//
+     <?		
+		  }//foreach
 	 ?>
       </table>
 	 </div> 
@@ -444,6 +458,7 @@ function download_file(sFile){
   </table>
   <input type="hidden" name="H_NAME" id="H_NAME" value="" />
   <input type="hidden" name="H_ACTION" id="H_ACTION" value="" />
+  <input type="hidden" name="H_EXTRA" id="H_EXTRA" value="" />
 </form>
 </body>
 </html>
