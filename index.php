@@ -7,6 +7,9 @@
 * Purpose: Download file 
 */
 require("./config.php");
+
+$sLang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2);
+echo $sLang;
 require("./languages/es.php");
 
 	session_start();
@@ -48,6 +51,12 @@ require("./languages/es.php");
         </tr>
         <tr>
             <td colspan="2" align="right"><input type="submit" name="btLogin" id="btLogin" value="Login"/></td>
+        </tr>
+        <tr>
+        	<td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+        	<td colspan="2" align="center"><strong>IP:</strong>&nbsp;<?=$_SERVER['REMOTE_ADDR'];?></td>
         </tr>
     </table>
     </div>
