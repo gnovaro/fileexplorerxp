@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: G. Novaro <gnovaro@gmail.com>
-* @version: 0.73
+* @version: 0.74
 * URL: http://www.novarsystems.com.ar
 * File: index.php
 * Purpose: Download file 
