@@ -1,21 +1,20 @@
 <?php
-/*
-Author: G. Novaro
-E-mail: gnovaro@gmail.com
-URL: http://www.novarsystems.com.ar
-File: tree.php
-Purpose:
+/**
+* @author: G. Novaro <gnovaro@gmail.com>
+* @version: 0.73
+* URL: http://www.novarsystems.com.ar
+* File: tree.php
+* Purpose:
 */
+require("./config.php");
+require("./languages/es.php");
+require("error_handler.php");	
 
 //Security check
 session_start();
 if(!isset($_SESSION["login"]))
 	header("Location: index.php");
 //security
-
-	define("URL","http://localhost/fileexplorerxp/");
-	require("languages/spanish.php");
-	require("error_handler.php");	
 	
 	function phpnum() {
 		$version = explode('.', phpversion());
@@ -99,8 +98,9 @@ if(!isset($_SESSION["login"]))
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-    <title><?=$titulo;?></title>
+    <title><?=$CONTENT["TITLE"];?></title>
     <link rel="stylesheet" type="text/css" href="<?=URL?>style.css">
+    <meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
 <script type="text/javascript">
 function showhide_with_image(targetDiv,actionImage){
 	    image = document.getElementById(actionImage)
@@ -209,7 +209,7 @@ function download_file(sFile){
 		  </tr>
 
 		  <tr bgcolor="#D6DFF7">
-		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/upload.jpg" />&nbsp;<a href="<?=URL;?>uploadFiles.php" class="menuLeftBar">Subir archivo</a></td>
+		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/upload.jpg" />&nbsp;<a href="<?=URL;?>upload.php" class="menuLeftBar">Subir archivo</a></td>
 		  </tr>
 		  
 		  <tr bgcolor="#D6DFF7">
@@ -453,7 +453,9 @@ function download_file(sFile){
     <tr bgcolor="#EFEFE9">
       <!-- -->
       <td>&nbsp;<?=$i-2;?>&nbsp;Objetos&nbsp;</td>
-      <td align="right"><a href="http://www.novarsystems.com.ar" target="_blank">NovAR Systems - www.novarsystems.com.ar</a>&nbsp; - Version: 1.0 &nbsp;</td>
+      <td align="right">
+      <a href="http://www.novarsystems.com.ar" target="_blank">NovAR Systems - www.novarsystems.com.ar</a>&nbsp; - <a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a> | Version: <?=$sConfig["VERSION"];?> &nbsp;
+      </td>
     </tr>
   </table>
   <input type="hidden" name="H_NAME" id="H_NAME" value="" />

@@ -1,10 +1,10 @@
 <?php
-/*
-Author: G. Novaro
-E-mail: gnovaro@gmail.com
-URL: http://www.novarsystems.com.ar
-File: get_file.php
-Purpose: Download file 
+/**
+* @author: G. Novaro <gnovaro@gmail.com>
+* @version: 0.71
+* URL: http://www.novarsystems.com.ar
+* File: get_file.php
+* Purpose: Download file 
 */
 
 //Security check

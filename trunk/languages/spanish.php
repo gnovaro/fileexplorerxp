@@ -1,3 +1,0 @@
-<?
-	$titulo = "::: File Explorer XP :::";
-?>
