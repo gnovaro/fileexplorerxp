@@ -1,4 +1,12 @@
 <?php
+/**
+* @author: G. Novaro <gnovaro@gmail.com>
+* @version: 0.71
+* URL: http://www.novarsystems.com.ar
+* File: error_handler.php
+* Purpose:
+*/
+
 // definir el nivel de reporte de errores para este script
 error_reporting(E_USER_ERROR | E_USER_WARNING | E_USER_NOTICE);
 set_error_handler('logErr');

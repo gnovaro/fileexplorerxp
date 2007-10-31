@@ -1,37 +1,44 @@
 <?php
-/*
-Author: G. Novaro
-E-mail: gnovaro@gmail.com
-URL: http://www.novarsystems.com.ar
-File: edit.php
-Purpose: Edit text files
+/**
+* @author: Gustavo Novaro <gnovaro@gmail.com>
+* @version: 0.71
+* URL: http://www.novarsystems.com.ar
+* File: edit.php
+* Purpose: Edit text files
 */
+
+require("./config.php");
+require("./languages/es.php");
+require("error_handler.php");	
 
 //Security check
 session_start();
 if(!isset($_SESSION["login"]))
 	header("Location: index.php");
 //security
-define("URL","http://localhost/fileexplorerxp/");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-    <title>:: File Explorer XP ::</title>
+    <title>><?=$CONTENT["TITLE"];?>:</title>
     <link rel="stylesheet" type="text/css" href="<?=URL?>style.css">
     <script src="<?=URL?>codepress/codepress.js" type="text/javascript"></script>
 </head>
 
 <body>
 <?php
-	if(isset($_POST["H_FILE_NAME"])){
-			$sFile = $_POST["H_FILE_NAME"];
-			$sPath = $_SESSION["path"];
-			$sPath = $sPath.DIRECTORY_SEPARATOR.$sFile;		
-			$sContent = $_POST["content"];
-			file_put_contents($sPath,$sContent);
-			echo "Datos guardados satifactoriamente";
+//	$sContent = "";
+	if(isset($_POST["H_FILE_NAME"]))
+	{
+		$sFile = $_POST["H_FILE_NAME"];
+		$sPath = $_SESSION["path"];
+		$sPath = $sPath.DIRECTORY_SEPARATOR.$sFile;		
+		$sContent = $_POST["content"];
+		$fp = fopen($sPath,"w+");
+		fwrite($fp,$sContent);
+		fclose($fp);
+		echo "Datos guardados satifactoriamente";
 	}//if
 ?>
 	<h2>Editar Archivo:</h2>
@@ -41,7 +48,6 @@ define("URL","http://localhost/fileexplorerxp/");
     <tr>
 	    <td>
         <?php
-			$sContent = "";
             if(isset($_GET["file"]))
                 $sFile = $_GET["file"];
             
@@ -70,7 +76,7 @@ define("URL","http://localhost/fileexplorerxp/");
 					case 'js':
 						$language = 'javascript';
 						break;
-					case 'j':
+					case 'java':
 						$language = 'java';
 						break;
 					case 'pl':
