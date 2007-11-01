@@ -7,12 +7,21 @@
 * Purpose: Download file 
 */
 require("./config.php");
-
+session_start();
 $sLang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2);
-echo $sLang;
-require("./languages/es.php");
+//echo $sLang;
+$sPath = "./languages/".$sLang.".php";
+if (file_exists($sPath))
+{
+	require($sPath);
+}
+else
+{
+	//defualt lang spanish
+	require("./languages/es.php"); 
+}//if
 
-	session_start();
+
 	//destroy session - Logout
 	if (isset($_SESSION['login'])) 
 	{
@@ -31,7 +40,7 @@ require("./languages/es.php");
 </head>
 
 <body>
-<form id="frmLogin" name="frmLogin" action="validate.php" method="post" style="margin-top:150px">
+<form id="frmLogin" name="frmLogin" action="validate.php" method="post" style="margin-top:100px">
 <div align="center">
     <div style="background:#EEFFEE; border:#CCF7CC 1px solid; padding:5px; -moz-border-radius:10px; width:300px;">
     <table border="0">
@@ -62,7 +71,7 @@ require("./languages/es.php");
     </div>
 </div>
 </form>
-<div style="margin-top:300px;">
+<div style="margin-top:170px;">
 	<div align="right">
     <a href="http://www.novarsystems.com.ar" target="_blank">NovAR Systems - www.novarsystems.com.ar</a>&nbsp; - <a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a> | Version: <?=$sConfig["VERSION"];?> &nbsp;
     </div>
