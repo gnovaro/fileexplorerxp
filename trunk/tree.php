@@ -1,14 +1,25 @@
 <?php
 /**
 * @author: G. Novaro <gnovaro@gmail.com>
-* @version: 0.73
+* @version: 0.77
 * URL: http://www.novarsystems.com.ar
 * File: tree.php
 * Purpose:
 */
 require("./config.php");
-require("./languages/es.php");
 require("error_handler.php");	
+$sLang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2);
+//echo $sLang;
+$sPath = "./languages/".$sLang.".php";
+if (file_exists($sPath))
+{
+	require($sPath);
+}
+else
+{
+	//defualt lang spanish
+	require("./languages/es.php"); 
+}//if
 
 //Security check
 session_start();
