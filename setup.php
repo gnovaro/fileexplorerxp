@@ -23,6 +23,17 @@
         <td><input type="text" name="txtUrl" id="txtUrlR" value="http://" maxlength="255" /></td>
     </tr>
     <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2">Database:</td>
+      </tr>
+    <tr>
+      <td>Host:</td>
+      <td><input type="text" name="txtHost" value="localhost" maxlength="255" /></td>
+    </tr>
+    <tr>
     	<td>User:</td>
         <td><input type="text" name="txtUser" id="" maxlength="12" /></td>
     </tr>
@@ -31,12 +42,16 @@
         <td><input type="text" name="txtPass" id="" maxlength="12" /></td>
     </tr>
     <tr>
+      <td>Port:</td>
+      <td><input type="text" value="3306" maxlength="4" size="7" /></td>
+    </tr>
+    <tr>
       <td colspan="2" align="right">&nbsp;</td>
     </tr>
     <tr>
         <td colspan="2" align="right"><input type="button" name="btSend" id="btSend" value="Submit" /></td>
     </tr>
     </table>
-    </form>
+</form>
 </body>
 </html>
