@@ -129,7 +129,7 @@ function showhide_with_image(targetDiv,actionImage){
 	
 function rename(sName){
 	var resp;
-	resp = prompt("¿Renombrar el archivo: " + sName + "?",sName);
+	resp = prompt("<?=$CONTENT["RENAME_FILE"];?> " + sName + "?",sName);
 	document.getElementById("H_ACTION").value = "RENAME";
 	document.getElementById("H_NAME").value = sName;
 	document.getElementById("H_EXTRA").value = resp;
@@ -138,14 +138,14 @@ function rename(sName){
 
 function delete_file(sName){
 	var resp;
-	resp = confirm("¿Desea eliminar el archivo: '" + sName + "' ?");
+	resp = confirm("<?=$CONTENT["DELETE_FILE"];?> '" + sName + "' ?");
 	document.getElementById("H_ACTION").value = "DELETE";
 	document.getElementById("H_NAME").value = sName;
 	document.getElementById("frmMain").submit();
 }//deleteFile
 
 function new_folder(){
-	folder = prompt("Nombre carpeta:");
+	folder = prompt("<?=$CONTENT["NEW_FOLDER"];?> ");
 	if (folder !="" && folder != null){
 		//Validar charAt " " != espacio
 		document.getElementById("H_ACTION").value = "NEW_FOLDER";
@@ -155,7 +155,7 @@ function new_folder(){
 }//new_folder
 
 function new_file(){
-	sFile = prompt("Nombre archivo:");
+	sFile = prompt("<?=$CONTENT["NEW_FILE"];?> ");
 	if (sFile !="" && sFile != null){
 		//Validar charAt " " != espacio
 		document.getElementById("H_ACTION").value = "NEW_FILE";
@@ -165,7 +165,7 @@ function new_file(){
 }//new_file
 
 function close_admin(){
-	sclose = confirm("¿Esta seguro que de sea cerrar el Administrador de Archivos?");
+	sclose = confirm("<?=$CONTENT["EXIT"];?>");
 	if (sclose){
 		window.location = "index.php";
 	}
@@ -195,7 +195,7 @@ function download_file(sFile){
       <td colspan="2"><div align="right"><a href="javascript:close_admin();"><img src="<?=URL;?>images/close.png" alt="close" style="border:none;" title="Salir" /></a>&nbsp;</div></td>
     </tr>
     <tr bgcolor="#EFEFE9">
-      <td colspan="2">&nbsp;Direcci&oacute;n:&nbsp;<span><input type="text" name="dir" id="txtPath" style="width:650px;" value="<?=realpath($sPath);?>"/></span><input type="button" name="btSend" id="btSend" value="Ir" class="button" onclick="go_path();" /></td>
+      <td colspan="2">&nbsp;<?=$CONTENT["PATH"];?>&nbsp;<span><input type="text" name="dir" id="txtPath" style="width:650px;" value="<?=realpath($sPath);?>"/></span><input type="button" name="btSend" id="btSend" value="<?=$CONTENT["GO"];?>" class="button" onclick="go_path();" /></td>
     </tr>
     <tr>
       <!-- -->
@@ -205,26 +205,26 @@ function download_file(sFile){
 	  <div style="width:160px; margin:10px;">
 	  <table border="0" cellpadding="0" cellspacing="0" width="160px">
           <tr bgcolor="#FFFFFF">
-            <td width="133" class="textoAzul">&nbsp;Tareas de archivo </td>
+            <td width="133" class="textoAzul">&nbsp;<?=$CONTENT["FILE_TASK"];?> </td>
             <td width="27"><a href="javascript:showhide_with_image('task','img_arrow_task');"><img src="<?=URL;?>images/up.jpg" id="img_arrow_task" style="border:none" /></a></td>
           </tr>
 	 </table>
     <div id="task">
 	<table border="0" cellpadding="0" cellspacing="0" width="160px">     		  
 		  <tr bgcolor="#D6DFF7">
-		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/file.gif" />&nbsp;<a href="javascript:new_file();" class="menuLeftBar">Crear Nuevo Archivo</a></td>
+		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/file.gif" alt="" />&nbsp;<a href="javascript:new_file();" class="menuLeftBar"><?=$CONTENT["NEW_FILE"];?></a></td>
 		  </tr>
           
 		  <tr bgcolor="#D6DFF7">
-		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/new_folder.jpg" />&nbsp;<a href="javascript:new_folder();" class="menuLeftBar">Crear Nueva Carpeta</a></td>
+		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/new_folder.jpg" alt="" />&nbsp;<a href="javascript:new_folder();" class="menuLeftBar"><?=$CONTENT["NEW_FOLDER"];?></a></td>
 		  </tr>
 
 		  <tr bgcolor="#D6DFF7">
-		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/upload.jpg" />&nbsp;<a href="<?=URL;?>upload.php" class="menuLeftBar">Subir archivo</a></td>
+		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/upload.jpg" alt="" />&nbsp;<a href="<?=URL;?>upload.php" class="menuLeftBar"><?=$CONTENT["UPLOAD_FILE"];?></a></td>
 		  </tr>
 		  
 		  <tr bgcolor="#D6DFF7">
-		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/control_panel.jpg" />&nbsp;<a href="#" class="menuLeftBar">Panel de Control</a></td>
+		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/control_panel.jpg" alt="" />&nbsp;<a href="#" class="menuLeftBar"><?=$CONTENT["CONTROL_PANEL"];?></a></td>
 		  </tr>
 	  </table>
       </div>
@@ -235,8 +235,8 @@ function download_file(sFile){
 	  <div style="width:160px; margin:10px;">
 	    <table border="0" cellpadding="0" cellspacing="0" width="160px">
           <tr bgcolor="#FFFFFF">
-            <td width="133" class="textoAzul">&nbsp;Detalles</td>
-            <td width="27"><a href="javascript:showhide_with_image('details','img_arrow_detail');"><img src="<?=URL;?>images/up.jpg" id="img_arrow_detail" style="border:none" /></a></td>
+            <td width="133" class="textoAzul">&nbsp;<?=$CONTENT["DETAILS"];?></td>
+            <td width="27"><a href="javascript:showhide_with_image('details','img_arrow_detail');"><img src="<?=URL;?>images/up.jpg" id="img_arrow_detail" style="border:none" alt="" /></a></td>
           </tr>
         </table>
         <div id="details">
@@ -271,7 +271,7 @@ function download_file(sFile){
 			$df = disk_free_space("/");
 			$df = format_size($df);
   		  	?>
-              &nbsp;Espacio libre:<br />
+              &nbsp;<?=$CONTENT["FREE_SPACE"];?><br />
               &nbsp;<?=$df;?>
               <br />
               <br />
@@ -283,7 +283,7 @@ function download_file(sFile){
 			$dt = disk_total_space("/");
 			$dt = format_size($dt);
   		  ?>
-              &nbsp;Espacio Total:<br />
+              &nbsp;<?=$CONTENT["TOTAL_SPACE"];?><br />
               &nbsp;<?=$dt;?>
               </td>
           </tr>		  
@@ -296,12 +296,12 @@ function download_file(sFile){
 	  <div style="top: 66px; left: 191px;">
 	  <table border="0" cellpadding="0" cellspacing="0">
         <tr bgcolor="#EFEFE9">
-          <td width="250px" height="24">&nbsp;Nombre </td>
-          <td width="75px"><span class="barra">|</span>Tama&ntilde;o</td>
-          <td><span class="barra">|</span>Fecha Modificaci&oacute;n</td>
-		  <td><span class="barra">|</span>Propietario</td>
-		  <td><span class="barra">|</span>Grupo</td>
-		  <td><span class="barra">|</span>Permisos</td>
+          <td width="250px" height="24">&nbsp;<?=$CONTENT["NAME"];?> </td>
+          <td width="75px"><span class="barra">|</span><?=$CONTENT["SIZE"];?></td>
+          <td><span class="barra">|</span><?=$CONTENT["LAST_MODIFY"];?></td>
+		  <td><span class="barra">|</span><?=$CONTENT["OWNER"];?></td>
+		  <td><span class="barra">|</span><?=$CONTENT["GROUP"];?></td>
+		  <td><span class="barra">|</span><?=$CONTENT["PERMISSIONS"];?></td>
 		  <td colspan="4">&nbsp;</td>
         </tr>
 		<?php 
@@ -463,7 +463,7 @@ function download_file(sFile){
     <!-- BARRA ESTADO -->
     <tr bgcolor="#EFEFE9">
       <!-- -->
-      <td>&nbsp;<?=$i-2;?>&nbsp;Objetos&nbsp;</td>
+      <td>&nbsp;<?=$i-2;?>&nbsp;<?=$CONTENT["OBJECTS"];?>&nbsp;</td>
       <td align="right">
       <a href="http://www.novarsystems.com.ar" target="_blank">NovAR Systems - www.novarsystems.com.ar</a>&nbsp; - <a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a> | Version: <?=$sConfig["VERSION"];?> &nbsp;
       </td>
