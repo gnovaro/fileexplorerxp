@@ -19,15 +19,35 @@
     <form id="" action="" method="post">
     <table>
     <tr>
+      <td colspan="2">File manager access:</td>
+      </tr>
+    <tr>
+      <td width="86">User:</td>
+      <td width="220"><input type="text" name="txtUserAdmin" id="txtUserAdminR" maxlength="12" value="admin" /></td>
+    </tr>
+    <tr>
+      <td>Pass:</td>
+      <td><input type="text" name="txtPassAdmin" id="txtPassAdminR" maxlength="12" value="admin" /></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
     	<td>URL:</td>
         <td><input type="text" name="txtUrl" id="txtUrlR" value="http://" maxlength="255" /></td>
     </tr>
     <tr>
+      <td>PHP Time Zone:</td>
+      <td><input type="text" name="php_zone" value="America/Argentina/Buenos_Aires" size="35" /></td>
+    </tr>
+    <tr>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
     </tr>
+    <!--
     <tr>
-      <td colspan="2">Database:</td>
+      <td colspan="2"><i>Database:</i></td>
       </tr>
     <tr>
       <td>Host:</td>
@@ -35,16 +55,17 @@
     </tr>
     <tr>
     	<td>User:</td>
-        <td><input type="text" name="txtUser" id="" maxlength="12" /></td>
+        <td><input type="text" name="txtUserDB" id="" maxlength="12" /></td>
     </tr>
     <tr>
     	<td>Pass:</td>
-        <td><input type="text" name="txtPass" id="" maxlength="12" /></td>
+        <td><input type="text" name="txtPassDB" id="" maxlength="12" /></td>
     </tr>
     <tr>
       <td>Port:</td>
       <td><input type="text" value="3306" maxlength="4" size="7" /></td>
     </tr>
+    -->
     <tr>
       <td colspan="2" align="right">&nbsp;</td>
     </tr>
