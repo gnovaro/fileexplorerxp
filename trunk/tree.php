@@ -1,13 +1,14 @@
 <?php
 /**
 * @author: G. Novaro <gnovaro@gmail.com>
-* @version: 0.77
+* @version: 0.80
 * URL: http://www.novarsystems.com.ar
 * File: tree.php
 * Purpose:
 */
 require("./config.php");
-require("error_handler.php");	
+require("./error_handler.php");	
+require("./function.php");	
 $sLang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2);
 //echo $sLang;
 $sPath = "./languages/".$sLang.".php";
@@ -24,18 +25,11 @@ else
 //Security check
 session_start();
 if(!isset($_SESSION["login"]))
-	header("Location: index.php");
+	goto("index.php");
 //security
 	
-	function phpnum() {
-		$version = explode('.', phpversion());
-		return (int) $version[0];
-	}
-	function is_php5() { if (phpnum() == 5) return true; }
-	function is_php4() { if (phpnum() == 4) return true; }
-	
-	if (phpnum()==5)
-		date_default_timezone_set('America/Argentina/Buenos_Aires');		
+if (phpnum()==5)
+	date_default_timezone_set($sConfig["TIME_ZONE"]);		
 		
 	$cantFiles = 0;
 	$sPath = "";
@@ -73,32 +67,37 @@ if(!isset($_SESSION["login"]))
 				$sName = $_POST["H_NAME"];
 				if (!file_exists($sName)){
 					fopen($sName,'w');
-					echo "Archivo creado en forma satisfactoria";//"File created sucess"
+					echo $CONTENT["FILE_SUCESS"];//"File created sucess"
 				}
 				else
-					echo "ERROR: Ya existe un archivo con ese nombre";
+					echo $CONTENT["FILE_FAIL"];
 				break;
 			case "DELETE":
 				$sName = $_POST["H_NAME"];
 				if(is_dir($sName)){
 					if (rmdir($sName)== true) 
-						echo "Directorio $sName eliminado correctamente";
+						echo $CONTENT["DELETE_DIR_SUCESS"];
 					else
-						echo "Error al borrar directorio $sName, compruebe que esta vacio";
+						echo $CONTENT["DELETE_DIR_FAIL"];
 				}
 				else
 					if(file_exists($sName))
 						if ( unlink($sName) ){
-							echo "Delete Sucess";
-						}//if	
+							echo $CONTENT["DELETE_FILE_SUCESS"];
+						}
+						else{
+							echo $CONTENT["DELETE_FILE_FAIL"];
+						}	
 				break;
 			case "RENAME":
 				$sName = $_POST["H_NAME"];
 				$sExtra = $_POST["H_EXTRA"];
 				if(file_exists($sName))
 				{
-					if(rename($sName,$sExtra) == false)
-						echo "Rename fail";
+					if(rename($sName,$sExtra))
+						echo $CONTENT["RENAME_FILE_SUCESS"];
+					else
+						echo $CONTENT["RENAME_FILE_FAIL"];
 				}//if
 				break;
 		}//switch
@@ -142,7 +141,7 @@ function delete_file(sName){
 	document.getElementById("H_ACTION").value = "DELETE";
 	document.getElementById("H_NAME").value = sName;
 	document.getElementById("frmMain").submit();
-}//deleteFile
+}//delete_file
 
 function new_folder(){
 	folder = prompt("<?=$CONTENT["NEW_FOLDER"];?> ");
@@ -169,7 +168,7 @@ function close_admin(){
 	if (sclose){
 		window.location = "index.php";
 	}
-}//closeAdmin
+}//close_admin
 
 function edit(sFile){
 	window.location = "edit.php?file=" + sFile;
@@ -185,14 +184,14 @@ function go_path(){
 
 function download_file(sFile){
 	window.location = "get_file.php?file=" + sFile;
-}
+}//download_file
 </script>
 </head>
 <body>
 <form name="frmMain" id="frmMain" method="post" action="<?=$_SERVER['PHP_SELF'];?>">
   <table width="80%" border="0" cellpadding="0" cellspacing="0">
     <tr bgcolor="#EFEFE9">
-      <td colspan="2"><div align="right"><a href="javascript:close_admin();"><img src="<?=URL;?>images/close.png" alt="close" style="border:none;" title="Salir" /></a>&nbsp;</div></td>
+      <td colspan="2"><div align="right"><a href="javascript:close_admin();"><img src="<?=URL;?>images/close.png" alt="close" style="border:none;" title="<?=$CONTENT["EXIT"];?>" /></a>&nbsp;</div></td>
     </tr>
     <tr bgcolor="#EFEFE9">
       <td colspan="2">&nbsp;<?=$CONTENT["PATH"];?>&nbsp;<span><input type="text" name="dir" id="txtPath" style="width:650px;" value="<?=realpath($sPath);?>"/></span><input type="button" name="btSend" id="btSend" value="<?=$CONTENT["GO"];?>" class="button" onclick="go_path();" /></td>
@@ -213,16 +212,13 @@ function download_file(sFile){
 	<table border="0" cellpadding="0" cellspacing="0" width="160px">     		  
 		  <tr bgcolor="#D6DFF7">
 		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/file.gif" alt="" />&nbsp;<a href="javascript:new_file();" class="menuLeftBar"><?=$CONTENT["NEW_FILE"];?></a></td>
-		  </tr>
-          
+		  </tr>          
 		  <tr bgcolor="#D6DFF7">
 		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/new_folder.jpg" alt="" />&nbsp;<a href="javascript:new_folder();" class="menuLeftBar"><?=$CONTENT["NEW_FOLDER"];?></a></td>
 		  </tr>
-
 		  <tr bgcolor="#D6DFF7">
 		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/upload.jpg" alt="" />&nbsp;<a href="<?=URL;?>upload.php" class="menuLeftBar"><?=$CONTENT["UPLOAD_FILE"];?></a></td>
 		  </tr>
-		  
 		  <tr bgcolor="#D6DFF7">
 		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/control_panel.jpg" alt="" />&nbsp;<a href="#" class="menuLeftBar"><?=$CONTENT["CONTROL_PANEL"];?></a></td>
 		  </tr>
@@ -432,19 +428,19 @@ function download_file(sFile){
           <?php
           if(is_file($file)){
 		  ?>
-          <td><a href="javascript:edit('<?=$file?>');"><img src="<?=URL?>images/b_edit.png" style="border:none;" alt="Editar" title="Editar" /></a></td>
+          <td><a href="javascript:edit('<?=$file?>');"><img src="<?=URL?>images/b_edit.png" style="border:none;" alt="<?=$CONTENT["EDIT"];?>" title="<?=$CONTENT["EDIT"];?>" /></a></td>
           <?php
 		  }//if
 		  else
 		  	echo "<td>&nbsp;</td>";
 		  ?>
-		  <td><a href="javascript:rename('<?=$file;?>');"><img src="<?=URL?>images/rename.jpg" style="border:none;" title="Renombrar" /></a></td>
-          <td><a href="javascript:delete_file('<?=$file;?>');"><img src="<?=URL?>images/delete.jpg" style="border:none;" title="Eliminar" /></a></td>
-		  <td><img src="<?=URL?>images/zip.gif" alt="Comprimir" title="Comprimir" /></td>
+		  <td><a href="javascript:rename('<?=$file;?>');"><img src="<?=URL?>images/rename.jpg" style="border:none;" title="<?=$CONTENT["RENAME"];?>" /></a></td>
+          <td><a href="javascript:delete_file('<?=$file;?>');"><img src="<?=URL?>images/delete.jpg" style="border:none;" title="<?=$CONTENT["DELETE"];?>" /></a></td>
+		  <td><img src="<?=URL?>images/zip.gif" alt="<?=$CONTENT["COMPRESS"];?>" title="<?=$CONTENT["COMPRESS"];?>" /></td>
 			  <?php
               if(is_file($file)){
               ?>
-              <td><a href="javascript:download_file('<?=$file?>');"><img src="<?=URL?>images/download.gif" alt="Descargar" title="Descargar" style="border:none;" /></a></td>
+              <td><a href="javascript:download_file('<?=$file?>');"><img src="<?=URL?>images/download.gif" alt="Descargar" title="<?=$CONTENT["DOWNLOAD"];?>" style="border:none;" /></a></td>
               <?php
               }//if
               ?>
