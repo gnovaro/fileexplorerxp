@@ -38,9 +38,9 @@ if(!isset($_SESSION["login"]))
 	if(is_uploaded_file($_FILES['fileUpload']['tmp_name']))
 	if (move_uploaded_file($_FILES['fileUpload']['tmp_name'], $sPath))
 	{	
-		echo "Sucess";	
+		$sMsg = $CONTENT["UPLOAD_SUCESS"];	
 	}
 	else
-		echo "Fail";	
-	//goto()
+		$sMsg = $CONTENT["UPLOAD_FAIL"];	
+	goto("tree.php?msg=".$sMsg);
 ?>

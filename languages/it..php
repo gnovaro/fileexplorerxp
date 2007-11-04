@@ -46,4 +46,6 @@
 	$CONTENT["RENAME"] = "Renombrar";
 	$CONTENT["COMPRESS"] = "Comprimir";
 	$CONTENT["CHOOSE_FILE"] = "Seleccione un Archivo:";
+	$CONTENT["UPLOAD_SUCESS"] = "Archivo transferido correctamente";
+ 	$CONTENT["UPLOAD_FAIL"] = "ERROR: no se puede tranasferir el archivo, vuelva a intentar";
 ?>

@@ -46,4 +46,6 @@
 	$CONTENT["RENAME"] = "Rename";
 	$CONTENT["COMPRESS"] = "Compress";
 	$CONTENT["CHOOSE_FILE"] = "Choose file:";
+	$CONTENT["UPLOAD_SUCESS"] = "Upload file sucess";
+ 	$CONTENT["UPLOAD_FAIL"] = "ERROR: Can't upload file, try again";
 ?>
