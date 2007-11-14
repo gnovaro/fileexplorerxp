@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: G. Novaro <gnovaro@gmail.com>
-* @version: 0.80
+* @version: 0.82
 */
 	$CONTENT["TITLE"] = "::: File Explorer XP :::";
 	$CONTENT["USER"] = "Usuario";
@@ -27,8 +27,6 @@
 	$CONTENT["RENAME_FILE"] = "¿Renombrar el archivo:"; 
 	$CONTENT["DELETE_FILE"] = "¿Desea eliminar el archivo:"; 
 	$CONTENT["DETAILS"] = "Detalles:";
-	$CONTENT["FREE_SPACE"] = "Espacio libre:";
-	$CONTENT["TOTAL_SPACE"] = "Espacio total:";
 	$CONTENT["EXIT"] = "¿Esta seguro que de sea cerrar el Administrador de Archivos?";
 	$CONTENT["PATH"] = "Direcci&oacute;n:";
 	$CONTENT["FILE_SUCESS"] = "Archivo creado en forma satisfactoria";	

@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: G. Novaro <gnovaro@gmail.com>
-* @version: 0.80
+* @version: 0.82
 */
 	$CONTENT["TITLE"] = "::: File Explorer XP :::";
 	$CONTENT["USER"] = "User";
@@ -27,8 +27,6 @@
 	$CONTENT["RENAME_FILE"] = "Rename file:"; 
 	$CONTENT["DELETE_FILE"] = "Delete file:"; 
 	$CONTENT["DETAILS"] = "Details:";
-	$CONTENT["FREE_SPACE"] = "Free Space:";
-	$CONTENT["TOTAL_SPACE"] = "Total Space:";
 	$CONTENT["EXIT"] = "Are you sure, close File Manager?";
 	$CONTENT["PATH"] = "Path:";
 	$CONTENT["FILE_SUCESS"] = "File created sucess";	

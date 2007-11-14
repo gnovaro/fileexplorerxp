@@ -16,7 +16,7 @@
 
 <body>
 	<h1>Setup</h1>
-    <form id="" action="" method="post">
+    <form id="frmSetup" action="dosetup.php" method="post">
     <table>
     <tr>
       <td colspan="2">File manager access:</td>
@@ -70,7 +70,7 @@
       <td colspan="2" align="right">&nbsp;</td>
     </tr>
     <tr>
-        <td colspan="2" align="right"><input type="button" name="btSend" id="btSend" value="Submit" /></td>
+        <td colspan="2" align="right"><input type="button" name="btSend" id="btSend" value="Submit" onclick="" /></td>
     </tr>
     </table>
 </form>

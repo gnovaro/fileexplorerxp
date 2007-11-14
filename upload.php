@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: G. Novaro <gnovaro@gmail.com>
-* @version: 0.80
+* @version: 0.82
 * URL: http://www.novarsystems.com.ar
 * File: upload.php
 * Purpose:
@@ -38,6 +38,11 @@ if(!isset($_SESSION["login"]))
 </head>
 
 <body>
+<script type="text/javascript">
+function goto(sUrl){
+	window.location = sUrl;
+}
+</script>
 <?=$CONTENT["CHOOSE_FILE"];?>
 <form name="frmSendFiles" id="frmSendFiles" action="doupload.php" method="post" enctype="multipart/form-data">
 	<table>
