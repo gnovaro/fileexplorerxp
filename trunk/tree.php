@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: G. Novaro <gnovaro@gmail.com>
-* @version: 0.80
+* @version: 0.82
 * URL: http://www.novarsystems.com.ar
 * File: tree.php
 * Purpose:
@@ -267,7 +267,7 @@ function download_file(sFile){
 			$df = disk_free_space("/");
 			$df = format_size($df);
   		  	?>
-              &nbsp;<?=$CONTENT["FREE_SPACE"];?><br />
+              &nbsp;<?=$CONTENT["SPACE_FREE"];?><br />
               &nbsp;<?=$df;?>
               <br />
               <br />
@@ -279,7 +279,7 @@ function download_file(sFile){
 			$dt = disk_total_space("/");
 			$dt = format_size($dt);
   		  ?>
-              &nbsp;<?=$CONTENT["TOTAL_SPACE"];?><br />
+              &nbsp;<?=$CONTENT["SPACE_TOTAL"];?><br />
               &nbsp;<?=$dt;?>
               </td>
           </tr>		  
@@ -319,7 +319,7 @@ function download_file(sFile){
 		  <?php
 		  	if(is_dir($file)){
 		  ?>
-				<img src='<?=URL?>images/folder.jpg' \>&nbsp;<a href="tree.php?dir=<?=$file;?>" class="menuLeftBar"><?=$file;?></a>
+				<img src='<?=URL?>images/folder.jpg' alt="" />&nbsp;<a href="tree.php?dir=<?=$file;?>" class="menuLeftBar"><?=$file;?></a>
 		  <?php
 			}				
 			else{
