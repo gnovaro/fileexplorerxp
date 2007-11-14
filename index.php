@@ -29,6 +29,11 @@ else
 		session_destroy();
 		$_SESSION = array();
 	}//if
+	
+	if (isset($_GET["err"]))
+		$sMsg = $_GET["err"];		
+	else
+		$sMsg = "";
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -69,6 +74,8 @@ else
         </tr>
     </table>
     </div>
+    <br />
+    <div id="div_msg">&nbsp;<?=$sMsg;?></div>
 </div>
 </form>
 <div style="margin-top:170px;">
