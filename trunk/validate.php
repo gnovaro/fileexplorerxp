@@ -14,6 +14,6 @@ require("./config.php");
 		$_SESSION["login"] = true;
 		header("Location: tree.php");	
 	}else{
-		header("Location: index.php?err=Invalid user or passwors");
+		header("Location: index.php?err=Invalid user or password");
 	}//if
 ?>
