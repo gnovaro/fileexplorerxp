@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: G. Novaro <gnovaro@gmail.com>
-* @version: 0.82
+* @version: 0.88
 * URL: http://www.novarsystems.com.ar
 * File: tree.php
 * Purpose:

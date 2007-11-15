@@ -1,12 +1,18 @@
 <?php
 /**
 * @author: G. Novaro <gnovaro@gmail.com>
-* @version: 0.74
+* @version: 0.88
 * URL: http://www.novarsystems.com.ar
 * File: index.php
 * Purpose: Download file 
 */
-require("./config.php");
+if (!file_exists("./config.php"))
+	{header("location: setup.php");}
+else	
+	{require("./config.php");}
+	
+require("./error_handler.php");	
+require("./function.php");
 session_start();
 $sLang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2);
 //echo $sLang;
@@ -70,7 +76,14 @@ else
         	<td colspan="2">&nbsp;</td>
         </tr>
         <tr>
-        	<td colspan="2" align="center"><strong>IP:</strong>&nbsp;<?=$_SERVER['REMOTE_ADDR'];?></td>
+        	<td colspan="2" align="center"><strong>IP:</strong>&nbsp;
+			<?php 
+			$sIp = $_SERVER['REMOTE_ADDR'];
+			$sDate = date("Y-m-d h:m:s");
+			write_log($sDate." - ".$sIp);
+			echo $sIp; 
+			?>
+            </td>
         </tr>
     </table>
     </div>

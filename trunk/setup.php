@@ -39,7 +39,7 @@
     </tr>
     <tr>
       <td>PHP Time Zone:</td>
-      <td><input type="text" name="php_zone" value="America/Argentina/Buenos_Aires" size="35" /></td>
+      <td><input type="text" name="php_zone" id="php_zoneR" value="UTC" size="35" /></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
@@ -70,7 +70,7 @@
       <td colspan="2" align="right">&nbsp;</td>
     </tr>
     <tr>
-        <td colspan="2" align="right"><input type="button" name="btSend" id="btSend" value="Submit" onclick="" /></td>
+        <td colspan="2" align="right"><input type="submit" name="btSend" id="btSend" value="Submit" onclick="" /></td>
     </tr>
     </table>
 </form>

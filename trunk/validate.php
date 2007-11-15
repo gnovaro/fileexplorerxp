@@ -7,7 +7,7 @@
 */
 require("./config.php");
 	$user = addslashes($_POST["txtUserName"]);  
-	$pass = addslashes($_POST["txtPass"]);
+	$pass = md5(addslashes($_POST["txtPass"]));
 	if ( $user == $sConfig["USER"] &&  $pass == $sConfig["PASS"])
 	{
 		session_start();
