@@ -1,20 +1,29 @@
 <?php
 /**
 * @author: Gustavo Novaro <gnovaro@gmail.com>
-* @version: 1.0
+* @version: 0.88
 */
+require("./error_handler.php");	
+require("./function.php");
+
 if ($_POST["txtUserAdmin"]){
 	$sUser = $_POST["txtUserAdmin"];
-	$sPass = $_POST["txtPassAdmin"];
-	$sUrl = $_POST["txtUrlR"];
+	$sPass = md5($_POST["txtPassAdmin"]);
+	$sUrl = $_POST["txtUrl"];
+	$sTimeZone = $_POST["php_zone"];
 	$oFile = fopen("config.php","w+");
+	$sLineBreak = " \n";
 	
-	$sContent = '<?php /n':
-	$sContent .='$sConfig["VERSION"] = "0.82"; ';
-	$sContent .='$sConfig["USER"] = "admin";';
-	$sContent .='$sConfig["PASS"] = "admin";';
-	$sContent .='$sConfig["TIME_ZONE"] = "America/Argentina/Buenos_Aires";';
-	$sContent .='define("URL","http://localhost/fileexplorerxp/");';
+	$sContent = '<?php '.$sLineBreak;
+	$sContent .='$sConfig["VERSION"] = "0.88";'.$sLineBreak;
+	$sContent .='$sConfig["USER"] = "'.$sUser.'"; '.$sLineBreak;
+	$sContent .='$sConfig["PASS"] = "'.$sPass.'"; '.$sLineBreak;
+	$sContent .='$sConfig["TIME_ZONE"] = "'.$sTimeZone.'"; '.$sLineBreak;
+	$sContent .='define("URL","'.$sUrl.'"); '.$sLineBreak;
 	$sContent .="?>";
+	
+	fwrite($oFile,$sContent);
+	fclose($oFile);
+	goto('index.php?err=Setup sucess');
 }
 ?>
