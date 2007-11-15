@@ -11,6 +11,8 @@ if ($_POST["txtUserAdmin"]){
 	$sPass = md5($_POST["txtPassAdmin"]);
 	$sUrl = $_POST["txtUrl"];
 	$sTimeZone = $_POST["php_zone"];
+	
+	
 	$oFile = fopen("config.php","w+");
 	$sLineBreak = " \n";
 	
@@ -24,6 +26,7 @@ if ($_POST["txtUserAdmin"]){
 	
 	fwrite($oFile,$sContent);
 	fclose($oFile);
+	chmod("config.php",444); //Change file permisions to read only
 	goto('index.php?err=Setup sucess');
 }
 ?>
