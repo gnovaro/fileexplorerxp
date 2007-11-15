@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: G. Novaro <gnovaro@gmail.com>
-* @version: 0.82
+* @version: 0.95
 */
 	$CONTENT["TITLE"] = "::: File Explorer XP :::";
 	$CONTENT["USER"] = "Usuario";
@@ -46,4 +46,5 @@
 	$CONTENT["CHOOSE_FILE"] = "Seleccione un Archivo:";
 	$CONTENT["UPLOAD_SUCESS"] = "Archivo transferido correctamente";
  	$CONTENT["UPLOAD_FAIL"] = "ERROR: no se puede tranasferir el archivo, vuelva a intentar";
+	$CONTENT["HELP"] = "Ayuda";
 ?>

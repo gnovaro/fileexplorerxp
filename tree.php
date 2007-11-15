@@ -200,6 +200,7 @@ function download_file(sFile){
             	<td>&nbsp;<?=$CONTENT["PATH"];?>&nbsp;<span><input type="text" name="dir" id="txtPath" style="width:650px;" value="<?=realpath($sPath);?>"/></span></td>
                 <td><a href="javascript:go_path();"><img src="<?=URL;?>images/arrow_go.jpg" alt="<?=$CONTENT["GO"];?>" style="border:none;" /></a></td>
 				<td><?=$CONTENT["GO"];?></td>
+                <td>&nbsp;&nbsp;&nbsp;<a href="#"><img src="<?=URL;?>images/help.gif" alt="<?=$CONTENT["HELP"];?>" /></a></td>
 			</tr>
 		</table>
       </td>

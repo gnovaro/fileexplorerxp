@@ -56,7 +56,7 @@ else
     <div style="background:#EEFFEE; border:#CCF7CC 1px solid; padding:5px; -moz-border-radius:10px; width:300px;">
     <table border="0">
         <tr>
-          <td colspan="2"><h1>Login</h1></td>
+          <td colspan="2"><h1>&nbsp;Login</h1></td>
         </tr>
         <tr>
           <td colspan="2">&nbsp;</td>
@@ -76,7 +76,7 @@ else
         	<td colspan="2">&nbsp;</td>
         </tr>
         <tr>
-        	<td colspan="2" align="center"><strong>IP:</strong>&nbsp;
+        	<td colspan="2" align="center"><img src="images/padlock.gif" alt="" />&nbsp;<strong>IP:</strong>&nbsp;
 			<?php 
 			$sIp = $_SERVER['REMOTE_ADDR'];
 			$sDate = date("Y-m-d h:m:s");

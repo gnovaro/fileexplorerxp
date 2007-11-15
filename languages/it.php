@@ -46,4 +46,5 @@
 	$CONTENT["CHOOSE_FILE"] = "Selezionare un Archivio:";
 	$CONTENT["UPLOAD_SUCESS"] = "Archivio trasferito correttamente";
  	$CONTENT["UPLOAD_FAIL"] = "ERRORE: Non si pu&oacute; trasferire l&apos; archivio, repitere nuovamente";
+	$CONTENT["HELP"] = "Aiuto";
 ?>
