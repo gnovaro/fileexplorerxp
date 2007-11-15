@@ -194,7 +194,15 @@ function download_file(sFile){
       <td colspan="2"><div align="right"><a href="javascript:close_admin();"><img src="<?=URL;?>images/close.png" alt="close" style="border:none;" title="<?=$CONTENT["EXIT"];?>" /></a>&nbsp;</div></td>
     </tr>
     <tr bgcolor="#EFEFE9">
-      <td colspan="2">&nbsp;<?=$CONTENT["PATH"];?>&nbsp;<span><input type="text" name="dir" id="txtPath" style="width:650px;" value="<?=realpath($sPath);?>"/></span><input type="button" name="btSend" id="btSend" value="<?=$CONTENT["GO"];?>" class="button" onclick="go_path();" /></td>
+      <td colspan="2">
+      	<table>
+        	<tr>
+            	<td>&nbsp;<?=$CONTENT["PATH"];?>&nbsp;<span><input type="text" name="dir" id="txtPath" style="width:650px;" value="<?=realpath($sPath);?>"/></span></td>
+                <td><a href="javascript:go_path();"><img src="<?=URL;?>images/arrow_go.jpg" alt="<?=$CONTENT["GO"];?>" style="border:none;" /></a></td>
+				<td><?=$CONTENT["GO"];?></td>
+			</tr>
+		</table>
+      </td>
     </tr>
     <tr>
       <!-- -->
@@ -204,6 +212,7 @@ function download_file(sFile){
 	  <div style="width:160px; margin:10px;">
 	  <table border="0" cellpadding="0" cellspacing="0" width="160px">
           <tr bgcolor="#FFFFFF">
+          	<td><img src="<?=URL;?>images/box_left.jpg" alt="" /></td>
             <td width="133" class="textoAzul">&nbsp;<?=$CONTENT["FILE_TASK"];?> </td>
             <td width="27"><a href="javascript:showhide_with_image('task','img_arrow_task');"><img src="<?=URL;?>images/up.jpg" id="img_arrow_task" style="border:none" /></a></td>
           </tr>
@@ -231,6 +240,7 @@ function download_file(sFile){
 	  <div style="width:160px; margin:10px;">
 	    <table border="0" cellpadding="0" cellspacing="0" width="160px">
           <tr bgcolor="#FFFFFF">
+          	<td><img src="<?=URL;?>images/box_left.jpg" alt="" /></td>
             <td width="133" class="textoAzul">&nbsp;<?=$CONTENT["DETAILS"];?></td>
             <td width="27"><a href="javascript:showhide_with_image('details','img_arrow_detail');"><img src="<?=URL;?>images/up.jpg" id="img_arrow_detail" style="border:none" alt="" /></a></td>
           </tr>
