@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: G. Novaro <gnovaro@gmail.com>
-* @version: 0.88
+* @version: 0.98
 * URL: http://www.novarsystems.com.ar
 * File: tree.php
 * Purpose:
@@ -230,7 +230,7 @@ function download_file(sFile){
 		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/upload.jpg" alt="" />&nbsp;<a href="<?=URL;?>upload.php" class="menuLeftBar"><?=$CONTENT["UPLOAD_FILE"];?></a></td>
 		  </tr>
 		  <tr bgcolor="#D6DFF7">
-		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/control_panel.jpg" alt="" />&nbsp;<a href="#" class="menuLeftBar"><?=$CONTENT["CONTROL_PANEL"];?></a></td>
+		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/control_panel.jpg" alt="" />&nbsp;<a href="<?=URL;?>control_panel.php" class="menuLeftBar"><?=$CONTENT["CONTROL_PANEL"];?></a></td>
 		  </tr>
 	  </table>
       </div>
