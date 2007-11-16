@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: Gustavo Novaro <gnovaro@gmail.com>
-* @version: 0.71
+* @version: 0.98
 * URL: http://www.novarsystems.com.ar
 * File: edit.php
 * Purpose: Edit text files
@@ -21,9 +21,10 @@ if(!isset($_SESSION["login"]))
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-    <title>><?=$CONTENT["TITLE"];?>:</title>
+    <title><?=$CONTENT["TITLE"];?></title>
     <link rel="stylesheet" type="text/css" href="<?=URL?>style.css">
     <script src="<?=URL?>codepress/codepress.js" type="text/javascript"></script>
+    <meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
 </head>
 
 <body>

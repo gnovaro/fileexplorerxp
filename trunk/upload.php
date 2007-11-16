@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: G. Novaro <gnovaro@gmail.com>
-* @version: 0.82
+* @version: 0.93
 * URL: http://www.novarsystems.com.ar
 * File: upload.php
 * Purpose:
@@ -35,6 +35,7 @@ if(!isset($_SESSION["login"]))
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
     <title><?=$CONTENT["TITLE"];?></title>
     <link rel="stylesheet" type="text/css" href="./style.css">
+    <meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
 </head>
 
 <body>
@@ -43,11 +44,16 @@ function goto(sUrl){
 	window.location = sUrl;
 }
 </script>
-<?=$CONTENT["CHOOSE_FILE"];?>
+
 <form name="frmSendFiles" id="frmSendFiles" action="doupload.php" method="post" enctype="multipart/form-data">
 	<table>
     <tr>
-		<td><input type="file" name="fileUpload" id="fileUp0R"/></td>
+    	<td width="180px;" height="500" bgcolor="#6B85DC" style="vertical-align:top;" rowspan="2">&nbsp;</td>
+		<td style="vertical-align:top;">
+        <br />
+        <?=$CONTENT["CHOOSE_FILE"];?>
+        <input type="file" name="fileUpload" id="fileUp0R"/>
+        </td>
     </tr>
 <!--
     <tr>

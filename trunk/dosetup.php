@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: Gustavo Novaro <gnovaro@gmail.com>
-* @version: 0.88
+* @version: 0.98
 */
 require("./error_handler.php");	
 require("./function.php");
@@ -17,6 +17,10 @@ if ($_POST["txtUserAdmin"]){
 	$sLineBreak = " \n";
 	
 	$sContent = '<?php '.$sLineBreak;
+	$sContent .='/**'.$sLineBreak;
+	$sContent .='* @auhtor: Gustavo Novaro <gnovaro@gmail.com>'.$sLineBreak;
+	$sContent .='* @version: 0.98'.$sLineBreak;
+	$sContent .='*/'.$sLineBreak;
 	$sContent .='$sConfig["VERSION"] = "0.88";'.$sLineBreak;
 	$sContent .='$sConfig["USER"] = "'.$sUser.'"; '.$sLineBreak;
 	$sContent .='$sConfig["PASS"] = "'.$sPass.'"; '.$sLineBreak;

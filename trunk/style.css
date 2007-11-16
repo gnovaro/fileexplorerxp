@@ -1,10 +1,12 @@
 /* CSS Document */
 body
 {
+	margin: 0px;
 	font-family:Verdana, Arial, Helvetica, sans-serif;
 	font-size:10px;
 }
 img{border:none;}
+.textWhite{color:#FFFFFF;}
 .textoAzul
 {
 	color:#0000FF;
