@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: G. Novaro <gnovaro@gmail.com>
-* @version: 0.98
+* @version: 0.99
 * URL: http://www.novarsystems.com.ar
 * file: control_panel.php
 * Purpose:
@@ -36,9 +36,7 @@ if(!isset($_SESSION["login"]))
     <link rel="stylesheet" type="text/css" href="./style.css">
     <meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
 </head>
-
 <body>
-
 <table>
 <tr>
 	<td width="180" height="500" bgcolor="#7aa1e6" style="vertical-align:top;">
@@ -54,16 +52,24 @@ if(!isset($_SESSION["login"]))
             <td width="24"><a href="javascript:showhide_with_image('task','img_arrow_task');"><img src="<?=URL;?>images/up_blue.jpg" alt="" id="img_arrow_task" style="border:none" /></a></td>
           </tr>
 	 	</table>
+            <div id="task">
+            <table border="0" cellpadding="0" cellspacing="0" width="160px">     		  
+              <tr bgcolor="#D6DFF7">
+                <td colspan="2">&nbsp;<img src="<?=URL;?>images/file.gif" alt="" />&nbsp;<a href="javascript:new_file();" class="menuLeftBar">Ver informaci&oacute;n del sistema<? //=$CONTENT["NEW_FILE"];?></a></td>
+              </tr>          
+            </table>
+            </div>
         </div>
     </td>
     <td width="0">    </td>
 <td width="600" style="vertical-align:top">
-
+	<!-- -->
 	<table>
     	<tr>
         	<td><img src="<?=URL;?>images/cregion.jpg" alt="" /><br />Idioma</td>
         </tr>
     </table>
+    <!-- -->
 </td>    
 </table>
 </body>
