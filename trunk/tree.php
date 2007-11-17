@@ -1,10 +1,10 @@
 <?php
 /**
 * @author: G. Novaro <gnovaro@gmail.com>
-* @version: 0.98
+* @version: 0.99
 * URL: http://www.novarsystems.com.ar
 * File: tree.php
-* Purpose:
+* Purpose: View and listing files and directory
 */
 require("./config.php");
 require("./error_handler.php");	
@@ -470,7 +470,7 @@ function download_file(sFile){
     <!-- BARRA ESTADO -->
     <tr bgcolor="#EFEFE9">
       <!-- -->
-      <td>&nbsp;<?=$i-2;?>&nbsp;<?=$CONTENT["OBJECTS"];?>&nbsp;</td>
+      <td><img src="<?=URL;?>images/spacer.gif" alt="" height="20" width="3" />&nbsp;<?=$i-2;?>&nbsp;<?=$CONTENT["OBJECTS"];?>&nbsp;</td>
       <td align="right">
       <a href="http://www.novarsystems.com.ar" target="_blank">NovAR Systems - www.novarsystems.com.ar</a>&nbsp; - <a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a> | Version: <?=$sConfig["VERSION"];?> &nbsp;
       </td>

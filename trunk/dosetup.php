@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: Gustavo Novaro <gnovaro@gmail.com>
-* @version: 0.98
+* @version: 0.99
 */
 require("./error_handler.php");	
 require("./function.php");
@@ -11,7 +11,7 @@ if ($_POST["txtUserAdmin"]){
 	$sPass = md5($_POST["txtPassAdmin"]);
 	$sUrl = $_POST["txtUrl"];
 	$sTimeZone = $_POST["php_zone"];
-	
+	$sVerion = "0.99";
 	
 	$oFile = fopen("config.php","w+");
 	$sLineBreak = " \n";
@@ -19,9 +19,10 @@ if ($_POST["txtUserAdmin"]){
 	$sContent = '<?php '.$sLineBreak;
 	$sContent .='/**'.$sLineBreak;
 	$sContent .='* @auhtor: Gustavo Novaro <gnovaro@gmail.com>'.$sLineBreak;
-	$sContent .='* @version: 0.98'.$sLineBreak;
+	$sContent .='* @version: '.$sVerion.$sLineBreak;
+	$sContent .='* http://fileexplorerxp.googlecode.com'.$sLineBreak;
 	$sContent .='*/'.$sLineBreak;
-	$sContent .='$sConfig["VERSION"] = "0.88";'.$sLineBreak;
+	$sContent .='$sConfig["VERSION"] = "'.$sVerion.'";'.$sLineBreak;
 	$sContent .='$sConfig["USER"] = "'.$sUser.'"; '.$sLineBreak;
 	$sContent .='$sConfig["PASS"] = "'.$sPass.'"; '.$sLineBreak;
 	$sContent .='$sConfig["TIME_ZONE"] = "'.$sTimeZone.'"; '.$sLineBreak;
