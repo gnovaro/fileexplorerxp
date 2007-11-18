@@ -109,7 +109,7 @@ if (phpnum()==5)
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
     <title><?=$CONTENT["TITLE"];?></title>
-    <link rel="stylesheet" type="text/css" href="<?=URL?>style.css">
+    <link rel="stylesheet" type="text/css" href="<?=URL?>/style.css">
     <meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
 <script type="text/javascript">
 function showhide_with_image(targetDiv,actionImage){
@@ -118,11 +118,11 @@ function showhide_with_image(targetDiv,actionImage){
 		prop = oVDiv.style.display;
 		if(prop == "none"){
 			oVDiv.style.display = "block";
-			image.src = "<?=URL?>images/up.jpg";
+			image.src = "<?=URL?>/images/up.jpg";
 		}
 		else{
 			oVDiv.style.display = "none";
-			image.src = "<?=URL?>images/down.jpg";
+			image.src = "<?=URL?>/images/down.jpg";
 		}
 }//showhide_with_image
 	
@@ -195,16 +195,16 @@ function download_file(sFile){
 <form name="frmMain" id="frmMain" method="post" action="<?=$_SERVER['PHP_SELF'];?>">
   <table width="100%" border="0" cellpadding="0" cellspacing="0">
     <tr bgcolor="#EFEFE9">
-      <td colspan="2"><div align="right"><a href="javascript:close_admin();"><img src="<?=URL;?>images/close.png" alt="close" style="border:none;" title="<?=$CONTENT["EXIT"];?>" /></a>&nbsp;</div></td>
+      <td colspan="2"><div align="right"><a href="javascript:close_admin();"><img src="<?=URL;?>/images/close.png" alt="close" style="border:none;" title="<?=$CONTENT["EXIT"];?>" /></a>&nbsp;</div></td>
     </tr>
     <tr bgcolor="#EFEFE9">
       <td colspan="2">
       	<table>
         	<tr>
             	<td>&nbsp;<?=$CONTENT["PATH"];?>&nbsp;<span><input type="text" name="dir" id="txtPath" style="width:650px;" value="<?=realpath($sPath);?>"/></span></td>
-                <td><a href="javascript:go_path();"><img src="<?=URL;?>images/arrow_go.jpg" alt="<?=$CONTENT["GO"];?>" style="border:none;" /></a></td>
+                <td><a href="javascript:go_path();"><img src="<?=URL;?>/images/arrow_go.jpg" alt="<?=$CONTENT["GO"];?>" style="border:none;" /></a></td>
 				<td><?=$CONTENT["GO"];?></td>
-                <td>&nbsp;&nbsp;&nbsp;<a href="#"><img src="<?=URL;?>images/help.gif" alt="<?=$CONTENT["HELP"];?>" /></a></td>
+                <td>&nbsp;&nbsp;&nbsp;<a href="#"><img src="<?=URL;?>/images/help.gif" alt="<?=$CONTENT["HELP"];?>" /></a></td>
 			</tr>
 		</table>
       </td>
@@ -219,22 +219,22 @@ function download_file(sFile){
           <tr bgcolor="#FFFFFF">
           	<td><img src="<?=URL;?>images/box_left.jpg" alt="" /></td>
             <td width="133" class="textoAzul">&nbsp;<?=$CONTENT["FILE_TASK"];?> </td>
-            <td width="27"><a href="javascript:showhide_with_image('task','img_arrow_task');"><img src="<?=URL;?>images/up.jpg" id="img_arrow_task" style="border:none" /></a></td>
+            <td width="27"><a href="javascript:showhide_with_image('task','img_arrow_task');"><img src="<?=URL;?>/images/up.jpg" id="img_arrow_task" style="border:none" /></a></td>
           </tr>
 	 </table>
     <div id="task">
 	<table border="0" cellpadding="0" cellspacing="0" width="160px">     		  
 		  <tr bgcolor="#D6DFF7">
-		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/file.gif" alt="" />&nbsp;<a href="javascript:new_file();" class="menuLeftBar"><?=$CONTENT["NEW_FILE"];?></a></td>
+		  	<td colspan="2">&nbsp;<img src="<?=URL;?>/images/file.gif" alt="" />&nbsp;<a href="javascript:new_file();" class="menuLeftBar"><?=$CONTENT["NEW_FILE"];?></a></td>
 		  </tr>          
 		  <tr bgcolor="#D6DFF7">
-		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/new_folder.jpg" alt="" />&nbsp;<a href="javascript:new_folder();" class="menuLeftBar"><?=$CONTENT["NEW_FOLDER"];?></a></td>
+		  	<td colspan="2">&nbsp;<img src="<?=URL;?>/images/new_folder.jpg" alt="" />&nbsp;<a href="javascript:new_folder();" class="menuLeftBar"><?=$CONTENT["NEW_FOLDER"];?></a></td>
 		  </tr>
 		  <tr bgcolor="#D6DFF7">
-		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/upload.jpg" alt="" />&nbsp;<a href="<?=URL;?>upload.php" class="menuLeftBar"><?=$CONTENT["UPLOAD_FILE"];?></a></td>
+		  	<td colspan="2">&nbsp;<img src="<?=URL;?>/images/upload.jpg" alt="" />&nbsp;<a href="<?=URL;?>/upload.php" class="menuLeftBar"><?=$CONTENT["UPLOAD_FILE"];?></a></td>
 		  </tr>
 		  <tr bgcolor="#D6DFF7">
-		  	<td colspan="2">&nbsp;<img src="<?=URL;?>images/control_panel.jpg" alt="" />&nbsp;<a href="<?=URL;?>control_panel.php" class="menuLeftBar"><?=$CONTENT["CONTROL_PANEL"];?></a></td>
+		  	<td colspan="2">&nbsp;<img src="<?=URL;?>/images/control_panel.jpg" alt="" />&nbsp;<a href="<?=URL;?>/control_panel.php" class="menuLeftBar"><?=$CONTENT["CONTROL_PANEL"];?></a></td>
 		  </tr>
 	  </table>
       </div>
@@ -245,9 +245,9 @@ function download_file(sFile){
 	  <div style="width:160px; margin:10px;">
 	    <table border="0" cellpadding="0" cellspacing="0" width="160px">
           <tr bgcolor="#FFFFFF">
-          	<td><img src="<?=URL;?>images/box_left.jpg" alt="" /></td>
+          	<td><img src="<?=URL;?>/images/box_left.jpg" alt="" /></td>
             <td width="133" class="textoAzul">&nbsp;<?=$CONTENT["DETAILS"];?></td>
-            <td width="27"><a href="javascript:showhide_with_image('details','img_arrow_detail');"><img src="<?=URL;?>images/up.jpg" id="img_arrow_detail" style="border:none" alt="" /></a></td>
+            <td width="27"><a href="javascript:showhide_with_image('details','img_arrow_detail');"><img src="<?=URL;?>/images/up.jpg" id="img_arrow_detail" style="border:none" alt="" /></a></td>
           </tr>
         </table>
         <div id="details">
@@ -334,7 +334,7 @@ function download_file(sFile){
 		  <?php
 		  	if(is_dir($file)){
 		  ?>
-				<img src='<?=URL?>images/folder.jpg' alt="" />&nbsp;<a href="tree.php?dir=<?=$file;?>" class="menuLeftBar"><?=$file;?></a>
+				<img src='<?=URL?>/images/folder.jpg' alt="" />&nbsp;<a href="tree.php?dir=<?=$file;?>" class="menuLeftBar"><?=$file;?></a>
 		  <?php
 			}				
 			else{
@@ -342,10 +342,10 @@ function download_file(sFile){
 				$path_parts = pathinfo($file);
 				if (isset($path_parts['extension'])){
 					$ext = $path_parts['extension'];
-					$sPathIcon = URL."icons/".$ext.".png";
+					$sPathIcon = URL."/icons/".$ext.".png";
 				}
 				else //load a generic icon
-					$sPathIcon = URL."icons/file.png";
+					$sPathIcon = URL."/icons/file.png";
 			?>
 				<img src="<?=$sPathIcon;?>" alt="" />&nbsp;<?=$file;?>
 			<?php
@@ -444,19 +444,19 @@ function download_file(sFile){
           <?php
           if(is_file($file)){
 		  ?>
-          <td><a href="javascript:edit('<?=$file?>');"><img src="<?=URL?>images/b_edit.png" style="border:none;" alt="<?=$CONTENT["EDIT"];?>" title="<?=$CONTENT["EDIT"];?>" /></a></td>
+          <td><a href="javascript:edit('<?=$file?>');"><img src="<?=URL?>/images/b_edit.png" alt="<?=$CONTENT["EDIT"];?>" title="<?=$CONTENT["EDIT"];?>" /></a></td>
           <?php
 		  }//if
 		  else
 		  	echo "<td>&nbsp;</td>";
 		  ?>
-		  <td><a href="javascript:rename('<?=$file;?>');"><img src="<?=URL?>images/rename.jpg" style="border:none;" title="<?=$CONTENT["RENAME"];?>" /></a></td>
-          <td><a href="javascript:delete_file('<?=$file;?>');"><img src="<?=URL?>images/delete.jpg" style="border:none;" title="<?=$CONTENT["DELETE"];?>" /></a></td>
-		  <td><img src="<?=URL?>images/zip.gif" alt="<?=$CONTENT["COMPRESS"];?>" title="<?=$CONTENT["COMPRESS"];?>" /></td>
+		  <td><a href="javascript:rename('<?=$file;?>');"><img src="<?=URL?>/images/rename.jpg" title="<?=$CONTENT["RENAME"];?>" alt="<?=$CONTENT["RENAME"];?>" /></a></td>
+          <td><a href="javascript:delete_file('<?=$file;?>');"><img src="<?=URL?>/images/delete.jpg" title="<?=$CONTENT["DELETE"];?>" alt="<?=$CONTENT["DELETE"];?>" /></a></td>
+		  <td><a href="#"><img src="<?=URL?>/images/zip.gif" alt="<?=$CONTENT["COMPRESS"];?>" title="<?=$CONTENT["COMPRESS"];?>" /></a></td>
 			  <?php
               if(is_file($file)){
               ?>
-              <td><a href="javascript:download_file('<?=$file?>');"><img src="<?=URL?>images/download.gif" alt="Descargar" title="<?=$CONTENT["DOWNLOAD"];?>" style="border:none;" /></a></td>
+              <td><a href="javascript:download_file('<?=$file?>');"><img src="<?=URL?>/images/download.gif" alt="<?=$CONTENT["DOWNLOAD"];?>" title="<?=$CONTENT["DOWNLOAD"];?>" /></a></td>
               <?php
               }//if
               ?>
@@ -475,7 +475,7 @@ function download_file(sFile){
     <!-- BARRA ESTADO -->
     <tr bgcolor="#EFEFE9">
       <!-- -->
-      <td><img src="<?=URL;?>images/spacer.gif" alt="" height="20" width="3" />&nbsp;<?=$i-2;?>&nbsp;<?=$CONTENT["OBJECTS"];?>&nbsp;</td>
+      <td><img src="<?=URL;?>/images/spacer.gif" alt="" height="20" width="3" />&nbsp;<?=$i-2;?>&nbsp;<?=$CONTENT["OBJECTS"];?>&nbsp;</td>
       <td align="right">
       <a href="http://www.novarsystems.com.ar" target="_blank">NovAR Systems - www.novarsystems.com.ar</a>&nbsp; - <a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a> | Version: <?=$sConfig["VERSION"];?> &nbsp;
       </td>

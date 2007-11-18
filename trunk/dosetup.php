@@ -11,7 +11,7 @@ if ($_POST["txtUserAdmin"]){
 	$sPass = md5($_POST["txtPassAdmin"]);
 	$sUrl = $_POST["txtUrl"];
 	$sTimeZone = $_POST["php_zone"];
-	$sVerion = "0.99";
+	$sVerion = "1.04";
 	
 	$oFile = fopen("config.php","w+");
 	$sLineBreak = " \n";

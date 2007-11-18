@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: G. Novaro <gnovaro@gmail.com>
-* @version: 0.99
+* @version: 1.04
 * URL: http://www.novarsystems.com.ar
 * file: control_panel.php
 * Purpose:
@@ -56,7 +56,7 @@ $iObject = 3;
 <table cellspacing="0" width="100%">
 <!-- Menu BAR -->
 <tr bgcolor="#EFEFE9">
-	<td colspan="2">&nbsp;<a href="<?=URL;?>tree.php" class="no_underline"><img src="images/back.gif" alt="<?=$CONTENT["BACK"];?>" />&nbsp;<span class=""><?=$CONTENT["BACK"];?></span></a></td>
+	<td colspan="2">&nbsp;<a href="<?=URL;?>/tree.php" class="no_underline"><img src="images/back.gif" alt="<?=$CONTENT["BACK"];?>" />&nbsp;<span class=""><?=$CONTENT["BACK"];?></span></a></td>
 </tr>
 <!-- Menu BAR -->
 <tr>
@@ -64,19 +64,19 @@ $iObject = 3;
     	<div style="width:160px; margin:10px;">
         <table border="0" cellpadding="0" cellspacing="0" width="160px">
           <tr>
-          	<td rowspan="2"><img src="<?=URL;?>images/cpanel_header.jpg" alt="" /></td>
-            <td width="133"><img src="<?=URL;?>images/spacer.gif" alt="" height="8" /></td>
+          	<td rowspan="2"><img src="<?=URL;?>/images/cpanel_header.jpg" alt="" /></td>
+            <td width="133"><img src="<?=URL;?>/images/spacer.gif" alt="" height="8" /></td>
             <td></td>
           </tr>
           <tr bgcolor="#034bb7">
             <td><span class="textWhite"><strong><?=$CONTENT["CONTROL_PANEL"];?></strong></span></td>
-            <td width="24"><a href="javascript:showhide_with_image('task','img_arrow_task');"><img src="<?=URL;?>images/up_blue.jpg" alt="" id="img_arrow_task" style="border:none" /></a></td>
+            <td width="24"><a href="javascript:showhide_with_image('task','img_arrow_task');"><img src="<?=URL;?>/images/up_blue.jpg" alt="" id="img_arrow_task" style="border:none" /></a></td>
           </tr>
 	 	</table>
             <div id="task">
             <table border="0" cellpadding="0" cellspacing="0" width="160px">     		  
               <tr bgcolor="#D6DFF7">
-                <td colspan="2">&nbsp;<img src="<?=URL;?>images/file.gif" alt="" />&nbsp;<a href="javascript:new_file();" class="menuLeftBar">Ver informaci&oacute;n del sistema<? //=$CONTENT["NEW_FILE"];?></a></td>
+                <td colspan="2">&nbsp;<img src="<?=URL;?>/images/file.gif" alt="" />&nbsp;<a href="javascript:new_file();" class="menuLeftBar">Ver informaci&oacute;n del sistema<? //=$CONTENT["NEW_FILE"];?></a></td>
               </tr>          
             </table>
             </div>
@@ -86,11 +86,11 @@ $iObject = 3;
 	<!-- -->
 	<table>
     	<tr>
-        	<td class="center"><img src="<?=URL;?>images/cregion.jpg" alt="" /></td>
+        	<td class="center"><img src="<?=URL;?>/images/cregion.jpg" alt="" /></td>
             <td>&nbsp;</td>
-            <td class="center"><img src="<?=URL;?>images/users.jpg" alt="" /></td>
+            <td class="center"><img src="<?=URL;?>/images/users.jpg" alt="" /></td>
             <td>&nbsp;</td>
-            <td class="center"><img src="<?=URL;?>images/bug.jpg" alt="" /></td>
+            <td class="center"><img src="<?=URL;?>/images/bug.jpg" alt="" /></td>
         </tr>
         <tr>
         	<td class="center"><a href="javascript:showhide('panel_lang');" class="menuLeftBar"><?=$CONTENT["LANGUAGE"];?></a></td>
@@ -163,7 +163,7 @@ $iObject = 3;
     <!-- BARRA ESTADO -->
     <tr bgcolor="#EFEFE9">
       <!-- -->
-      <td><img src="<?=URL;?>images/spacer.gif" alt="" height="20" width="3" />&nbsp;<?=$iObject;?>&nbsp;<?=$CONTENT["OBJECTS"];?>&nbsp;</td>
+      <td><img src="<?=URL;?>/images/spacer.gif" alt="" height="20" width="3" />&nbsp;<?=$iObject;?>&nbsp;<?=$CONTENT["OBJECTS"];?>&nbsp;</td>
       <td align="right">
       <a href="http://www.novarsystems.com.ar" target="_blank">NovAR Systems - www.novarsystems.com.ar</a>&nbsp; - <a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a> | Version: <?=$sConfig["VERSION"];?> &nbsp;
       </td>
