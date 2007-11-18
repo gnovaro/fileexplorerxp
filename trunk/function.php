@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: Gustavo Novaro <gnovaro@gmail.com>
-* @version: 0.84
+* @version: 1.00
 */
 function goto($sURL){
 	if ($sURL !="")
@@ -13,6 +13,26 @@ function write_log($sText){
 	fwrite($oFp,$sText." \n");
 	fclose($oFp);
 }//write_log
+
+function get_lang(){
+/**
+*
+* @returns: Array with lenguages files to load 
+*/
+	$sLang = false;
+	$oFp = opendir("languages");
+	 while (false !== ($oFile = readdir($oFp))) {
+		if ($oFile != "." && $oFile != "..") {
+			$oFileParts = pathinfo($oFile);
+			if (isset($oFileParts["extension"])){
+				if ($oFileParts["extension"] == "php"){
+	            	$sLang[$oFileParts["filename"]] = $oFile;
+				}//if
+			}//if
+        }//if
+    }//while
+	return $sLang;
+}//get_lang
 
 function phpnum() {
 	$version = explode('.', phpversion());
