@@ -26,7 +26,7 @@
 	$CONTENT["BT_UPLOAD"] = "Alzare";
 	$CONTENT["RENAME_FILE"] = "¿Rinomare l&apos; archivio?:"; 
 	$CONTENT["DELETE_FILE"] = "¿Desea cancellare l&apos; archivio?:"; 
-	$CONTENT["DETAILS"] = "Detagli:";
+	$CONTENT["DETAILS"] = "Dettagli:";
 	$CONTENT["EXIT"] = "¿Esta seguro que de sea cerrar el Administrador de Archivios?";
 	$CONTENT["PATH"] = "Direzione";
 	$CONTENT["FILE_SUCESS"] = "Archivio creado en forma satisfactoria";	
