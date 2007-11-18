@@ -23,3 +23,9 @@ img{border:none;}
 .menuLeftBar:hover{
 	text-decoration:underline;
 }
+.center{
+	text-align:center;
+}
+.no_underline{
+	text-decoration:none;
+}

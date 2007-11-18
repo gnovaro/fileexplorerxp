@@ -9,6 +9,7 @@
 require("./config.php");
 require("./error_handler.php");	
 require("./function.php");
+$sLanguages = get_lang();
 $sLang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2);
 //echo $sLang;
 $sPath = "./languages/".$sLang.".php";
@@ -27,6 +28,9 @@ session_start();
 if(!isset($_SESSION["login"]))
 	goto("index.php");
 //security
+
+//Quantity Objects Status bar
+$iObject = 3;
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -37,7 +41,10 @@ if(!isset($_SESSION["login"]))
     <meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
 </head>
 <body>
-<table>
+<table cellspacing="0">
+<tr bgcolor="#EFEFE9">
+	<td colspan="2">&nbsp;<a href="<?=URL;?>tree.php" class="no_underline"><img src="images/back.gif" alt="<?=$CONTENT["BACK"];?>" />&nbsp;<span class=""><?=$CONTENT["BACK"];?></span></a></td>
+</tr>
 <tr>
 	<td width="180" height="500" bgcolor="#7aa1e6" style="vertical-align:top;">
     	<div style="width:160px; margin:10px;">
@@ -61,16 +68,86 @@ if(!isset($_SESSION["login"]))
             </div>
         </div>
     </td>
-    <td width="0">    </td>
-<td width="600" style="vertical-align:top">
+<td width="543" style="vertical-align:top">
 	<!-- -->
 	<table>
     	<tr>
-        	<td><img src="<?=URL;?>images/cregion.jpg" alt="" /><br />Idioma</td>
+        	<td class="center"><img src="<?=URL;?>images/cregion.jpg" alt="" /></td>
+            <td>&nbsp;</td>
+            <td class="center"><img src="<?=URL;?>images/users.jpg" alt="" /></td>
+            <td>&nbsp;</td>
+            <td class="center"><img src="<?=URL;?>images/bug.jpg" alt="" /></td>
+        </tr>
+        <tr>
+        	<td class="center"><a href="" class="menuLeftBar">Idioma</a></td>
+            <td>&nbsp;</td>
+            <td class="center"><a href="" class="menuLeftBar">Cuentas de <br />usuarios</a></td>
+            <td>&nbsp;</td>
+            <td class="center"><a href="" class="menuLeftBar">Reportar<br />error</a></td>
         </tr>
     </table>
     <!-- -->
-</td>    
+    <div id="" style="display:none">
+    	<select name="cbLang" id="cbLang">
+		<?php 
+        foreach($sLanguages as $key => $value )
+        {
+        ?>
+            <option value="<?=$key?>"><?=$sLanguages[$key]?></option>
+        <?php
+        }//for
+			?>
+        </select>
+        <input type="button" name="btSend" id="btSendR" onclick="" value="<?=$CONTENT["SUBMIT"];?>" />
+    </div>
+    <div id="" style="display:none">
+    	<table>
+        	<tr>
+            	<td></td>
+            	<td><input type="text" name="txtUser" value="" /></td>
+			</tr>
+            <tr>
+            	<td></td>                
+                <td><input type="password" name="txtPass" value="" /></td>
+            </tr>
+            <tr>
+            	<td></td>                
+                <td><input type="password" name="txtPass2" value="" /></td>
+            </tr>
+            <tr>
+            	<td colspan="2" align="right">
+                	<input type="button" name="btSend2" id="btSend2R" onclick="" value="<?=$CONTENT["SUBMIT"];?>" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="">
+    	<table>
+        	<tr>
+            	<td><?=$CONTENT["SUBJECT"];?>:</td>
+                <td><input type="text" name="txtTitle" value="" /></td>
+            </tr>
+            <tr>
+            	<td colspan="2">
+                <textarea name="" id=""></textarea>
+                </td>
+            </tr>
+            <tr>
+            	<td colspan="2" align="right">
+                	<input type="button" name="btSend3" id="btSend3R" onclick="" value="<?=$CONTENT["SUBMIT"];?>" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</td>   
+    <!-- BARRA ESTADO -->
+    <tr bgcolor="#EFEFE9">
+      <!-- -->
+      <td><img src="<?=URL;?>images/spacer.gif" alt="" height="20" width="3" />&nbsp;<?=$iObject;?>&nbsp;<?=$CONTENT["OBJECTS"];?>&nbsp;</td>
+      <td align="right">
+      <a href="http://www.novarsystems.com.ar" target="_blank">NovAR Systems - www.novarsystems.com.ar</a>&nbsp; - <a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a> | Version: <?=$sConfig["VERSION"];?> &nbsp;
+      </td>
+    </tr>
 </table>
 </body>
 </html>
