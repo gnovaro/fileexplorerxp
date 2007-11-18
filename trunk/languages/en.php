@@ -50,7 +50,9 @@
 	$CONTENT["SUBJECT"] = "Subject";
 	$CONTENT["SUBMIT"] = "Submit";
 	$CONTENT["BACK"] = "Back";
+	$CONTENT["Next"] = "Next";
 	$CONTENT["LANGUAGE"] = "Language";
 	$CONTENT["REPORT_BUG"] = "Report <br />Bug";
 	$CONTENT["USER_ACCOUNTS"] = "User <br /> Accounts";
+	$CONTENT["SETUP"] = "Setup";
 ?>

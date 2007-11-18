@@ -22,7 +22,7 @@
 	$CONTENT["NEW_FOLDER"] = "Nuova cartella";  
 	$CONTENT["UPLOAD_FILE"] = "Alzare archivio"; 
 	$CONTENT["CONTROL_PANEL"] = "Panella di Controllo"; 
-	$CONTENT["BT_CANCEL"] = "Cancellare"; 
+	$CONTENT["BT_CANCEL"] = "Anulla"; 
 	$CONTENT["BT_UPLOAD"] = "Alzare";
 	$CONTENT["RENAME_FILE"] = "¿Rinomare l&apos; archivio?:"; 
 	$CONTENT["DELETE_FILE"] = "¿Desea cancellare l&apos; archivio?:"; 
@@ -37,7 +37,7 @@
 	$CONTENT["DELETE_FILE_FAIL"] = "ERRORE: No se puede eleiminar el archivio, comprube que no esta en uso";
 	$CONTENT["RENAME_FILE_SUCESS"] = "Se renombro el archivo en forma satisfactoria";
 	$CONTENT["RENAME_FILE_FAIL"] = "ERRORE: Non si pu&oacute; renombrar el archivio, comprube que no esta en uso";
-	$CONTENT["EXIT"] = "Uscire";
+	$CONTENT["EXIT"] = "Esci";
 	$CONTENT["EDIT"] = "Pubblicare";
 	$CONTENT["DOWNLOAD"] = "Discarigare";
 	$CONTENT["DELETE"] = "Cancellare";
@@ -50,7 +50,9 @@
 	$CONTENT["SUBJECT"] = "Oggetto"; /*que revise el abuelo estos 5*/
 	$CONTENT["SUBMIT"] = "Invia";  
 	$CONTENT["BACK"] = "Indietro";
+	$CONTENT["NEXT"] = "Avanti";
 	$CONTENT["LANGUAGE"] = "Lingua";
 	$CONTENT["REPORT_BUG"] = "Invia <br />Errore";
 	$CONTENT["USER_ACCOUNTS"] = "Cuentas de <br /> Usufruttuario"; /*corregir*/
+	$CONTENT["SETUP"] = "Installa";
 ?>
