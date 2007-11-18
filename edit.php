@@ -22,8 +22,8 @@ if(!isset($_SESSION["login"]))
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
     <title><?=$CONTENT["TITLE"];?></title>
-    <link rel="stylesheet" type="text/css" href="<?=URL?>style.css">
-    <script src="<?=URL?>codepress/codepress.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="<?=URL?>/style.css">
+    <script src="<?=URL?>/codepress/codepress.js" type="text/javascript"></script>
     <meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
 </head>
 

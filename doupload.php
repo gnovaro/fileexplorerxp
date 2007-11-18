@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: Gustavo Novaro <gnovaro@gmail.com>
-* @version: 0.80
+* @version: 1.04
 */
 require("./config.php");
 require("./error_handler.php");	

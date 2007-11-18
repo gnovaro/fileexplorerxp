@@ -4,6 +4,19 @@
 * @version: 0.75
 * Purpouse: Setup a config file first time execution
 */
+?><?php
+$sLang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2);
+//echo $sLang;
+$sPath = "./languages/".$sLang.".php";
+if (file_exists($sPath))
+{
+	require($sPath);
+}
+else
+{
+	//defualt lang spanish
+	require("./languages/es.php"); 
+}//if
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -15,7 +28,7 @@
 </head>
 
 <body>
-	<h1>Setup</h1>
+	<h1><?=$CONTENT["SETUP"];?></h1>
     <form id="frmSetup" action="dosetup.php" method="post">
     <table>
     <tr>
@@ -70,7 +83,7 @@
       <td colspan="2" align="right">&nbsp;</td>
     </tr>
     <tr>
-        <td colspan="2" align="right"><input type="submit" name="btSend" id="btSend" value="Submit" onclick="" /></td>
+        <td colspan="2" align="right"><input type="submit" name="btSend" id="btSend" value="<?=$CONTENT["SUBMIT"];?>" onclick="" /></td>
     </tr>
     </table>
 </form>
