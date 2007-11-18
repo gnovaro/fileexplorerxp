@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: G. Novaro <gnovaro@gmail.com>
-* @version: 1.01
+* @version: 1.04
 */
 	$CONTENT["TITLE"] = "::: File Explorer XP :::";
 	$CONTENT["USER"] = "User";
@@ -50,4 +50,5 @@
 	$CONTENT["SUBJECT"] = "Subject";
 	$CONTENT["SUBMIT"] = "Submit";
 	$CONTENT["BACK"] = "Back";
+	$CONTENT["LANGUAGE"] = "Language";
 ?>
