@@ -46,27 +46,38 @@ function goto(sUrl){
 </script>
 
 <form name="frmSendFiles" id="frmSendFiles" action="doupload.php" method="post" enctype="multipart/form-data">
-	<table>
+<table cellspacing="0" width="100%">
+<!-- Menu BAR -->
+<tr bgcolor="#EFEFE9">
+    <td colspan="2">&nbsp;<a href="<?=URL;?>tree.php" class="no_underline"><img src="images/back.gif" alt="<?=$CONTENT["BACK"];?>" />&nbsp;<span class=""><?=$CONTENT["BACK"];?></span></a></td>
+</tr>
+<!-- Menu BAR -->   
+<tr>
+    <td width="180px;" height="500" bgcolor="#6B85DC" style="vertical-align:top;" rowspan="2">&nbsp;</td>
+    <td style="vertical-align:top;">
+    <br />
+    <table>
     <tr>
-    	<td width="180px;" height="500" bgcolor="#6B85DC" style="vertical-align:top;" rowspan="2">&nbsp;</td>
-		<td style="vertical-align:top;">
-        <br />
-        <?=$CONTENT["CHOOSE_FILE"];?>
-        <input type="file" name="fileUpload" id="fileUp0R"/>
-        </td>
-    </tr>
-<!--
+    	<td><?=$CONTENT["CHOOSE_FILE"];?></td>
+	</tr>
     <tr>
-		<td><input type="file" name="fileUpload[1]" id="fileUp1R"/></td>
-    </tr>
-    <tr>
-		<td><input type="file" name="fileUpload[2]" id="fileUp2R"/></td>
-    </tr>
--->    
+	    <td><input type="file" name="fileUpload" id="fileUp0R" /></td>
+	</tr>        
     <tr>
 		<td style="text-align:right"><input type="button" name="btCancel" value="<?=$CONTENT["BT_CANCEL"];?>" onclick="goto('tree.php');" />&nbsp;<input type="submit" value="<?=$CONTENT["BT_UPLOAD"];?>"/></td>
     </tr>
     </table>
+    </td>
+</tr>
+<!--
+<tr>
+    <td><input type="file" name="fileUpload[1]" id="fileUp1R"/></td>
+</tr>
+<tr>
+    <td><input type="file" name="fileUpload[2]" id="fileUp2R"/></td>
+</tr>
+-->    
+</table>
 </form>
 </body>
 </html>

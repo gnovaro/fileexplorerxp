@@ -129,18 +129,22 @@ function showhide_with_image(targetDiv,actionImage){
 function rename(sName){
 	var resp;
 	resp = prompt("<?=$CONTENT["RENAME_FILE"];?> " + sName + "?",sName);
-	document.getElementById("H_ACTION").value = "RENAME";
-	document.getElementById("H_NAME").value = sName;
-	document.getElementById("H_EXTRA").value = resp;
-	document.getElementById("frmMain").submit();
+	if (resp != null){
+		document.getElementById("H_ACTION").value = "RENAME";
+		document.getElementById("H_NAME").value = sName;
+		document.getElementById("H_EXTRA").value = resp;
+		document.getElementById("frmMain").submit();
+	}//if
 }//rename
 
 function delete_file(sName){
 	var resp;
 	resp = confirm("<?=$CONTENT["DELETE_FILE"];?> '" + sName + "' ?");
-	document.getElementById("H_ACTION").value = "DELETE";
-	document.getElementById("H_NAME").value = sName;
-	document.getElementById("frmMain").submit();
+	if (resp != null){
+		document.getElementById("H_ACTION").value = "DELETE";
+		document.getElementById("H_NAME").value = sName;
+		document.getElementById("frmMain").submit();
+	}//if
 }//delete_file
 
 function new_folder(){
@@ -189,7 +193,7 @@ function download_file(sFile){
 </head>
 <body>
 <form name="frmMain" id="frmMain" method="post" action="<?=$_SERVER['PHP_SELF'];?>">
-  <table width="80%" border="0" cellpadding="0" cellspacing="0">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
     <tr bgcolor="#EFEFE9">
       <td colspan="2"><div align="right"><a href="javascript:close_admin();"><img src="<?=URL;?>images/close.png" alt="close" style="border:none;" title="<?=$CONTENT["EXIT"];?>" /></a>&nbsp;</div></td>
     </tr>

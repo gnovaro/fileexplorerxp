@@ -39,12 +39,26 @@ $iObject = 3;
 	<title><?=$CONTENT["TITLE"];?></title>
     <link rel="stylesheet" type="text/css" href="./style.css">
     <meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
+	<script type="text/javascript">
+	function showhide(targetDiv){
+		var oVDiv = document.getElementById(targetDiv);
+		prop = oVDiv.style.display;
+		if(prop == "none"){
+			oVDiv.style.display = "block";
+		}
+		else{
+			oVDiv.style.display = "none";
+		}
+	}//showhide_with_image
+    </script>
 </head>
 <body>
-<table cellspacing="0">
+<table cellspacing="0" width="100%">
+<!-- Menu BAR -->
 <tr bgcolor="#EFEFE9">
 	<td colspan="2">&nbsp;<a href="<?=URL;?>tree.php" class="no_underline"><img src="images/back.gif" alt="<?=$CONTENT["BACK"];?>" />&nbsp;<span class=""><?=$CONTENT["BACK"];?></span></a></td>
 </tr>
+<!-- Menu BAR -->
 <tr>
 	<td width="180" height="500" bgcolor="#7aa1e6" style="vertical-align:top;">
     	<div style="width:160px; margin:10px;">
@@ -79,35 +93,36 @@ $iObject = 3;
             <td class="center"><img src="<?=URL;?>images/bug.jpg" alt="" /></td>
         </tr>
         <tr>
-        	<td class="center"><a href="" class="menuLeftBar">Idioma</a></td>
+        	<td class="center"><a href="javascript:showhide('panel_lang');" class="menuLeftBar"><?=$CONTENT["LANGUAGE"];?></a></td>
             <td>&nbsp;</td>
-            <td class="center"><a href="" class="menuLeftBar">Cuentas de <br />usuarios</a></td>
+            <td class="center"><a href="javascript:showhide('panel_user');" class="menuLeftBar">Cuentas de <br />usuarios</a></td>
             <td>&nbsp;</td>
-            <td class="center"><a href="" class="menuLeftBar">Reportar<br />error</a></td>
+            <td class="center"><a href="javascript:showhide('panel_bug');" class="menuLeftBar">Reportar<br />error</a></td>
         </tr>
     </table>
     <!-- -->
-    <div id="" style="display:none">
+    <form action="" method="post">
+    <div id="panel_lang" style="display:none">
     	<select name="cbLang" id="cbLang">
 		<?php 
         foreach($sLanguages as $key => $value )
         {
         ?>
-            <option value="<?=$key?>"><?=$sLanguages[$key]?></option>
+            <option value="<?=$sLanguages[$key]?>"><?=$key?></option>
         <?php
         }//for
 			?>
         </select>
         <input type="button" name="btSend" id="btSendR" onclick="" value="<?=$CONTENT["SUBMIT"];?>" />
     </div>
-    <div id="" style="display:none">
+    <div id="panel_user" style="display:none">
     	<table>
         	<tr>
-            	<td></td>
+            	<td><?=$CONTENT["USER"]?></td>
             	<td><input type="text" name="txtUser" value="" /></td>
 			</tr>
             <tr>
-            	<td></td>                
+            	<td><?=$CONTENT["PASSWORD"]?></td>                
                 <td><input type="password" name="txtPass" value="" /></td>
             </tr>
             <tr>
@@ -121,8 +136,12 @@ $iObject = 3;
             </tr>
         </table>
     </div>
-    <div id="">
+    <div id="panel_bug" style="display:none">
     	<table>
+        	<tr>
+            	<td>Email:</td>
+                <td><input type="text" name="txtEmail" id="emailR" value="" /></td>
+            </tr>
         	<tr>
             	<td><?=$CONTENT["SUBJECT"];?>:</td>
                 <td><input type="text" name="txtTitle" value="" /></td>
@@ -139,6 +158,7 @@ $iObject = 3;
             </tr>
         </table>
     </div>
+    </form>
 </td>   
     <!-- BARRA ESTADO -->
     <tr bgcolor="#EFEFE9">
