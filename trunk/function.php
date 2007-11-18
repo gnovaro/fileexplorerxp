@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: Gustavo Novaro <gnovaro@gmail.com>
-* @version: 1.00
+* @version: 1.04
 */
 function goto($sURL){
 	if ($sURL !="")
@@ -33,6 +33,9 @@ function get_lang(){
     }//while
 	return $sLang;
 }//get_lang
+function get_os(){
+	return PHP_OS;
+}//get_os
 
 function phpnum() {
 	$version = explode('.', phpversion());

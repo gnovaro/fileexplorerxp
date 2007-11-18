@@ -47,8 +47,10 @@
 	$CONTENT["UPLOAD_SUCESS"] = "Archivio trasferito correttamente";
  	$CONTENT["UPLOAD_FAIL"] = "ERRORE: Non si pu&oacute; trasferire l&apos; archivio, repitere nuovamente";
 	$CONTENT["HELP"] = "Aiuto";
-	$CONTENT["SUBJECT"] = "Oggetto"; /*que revise el abuelo estos 4*/
+	$CONTENT["SUBJECT"] = "Oggetto"; /*que revise el abuelo estos 5*/
 	$CONTENT["SUBMIT"] = "Invia";  
 	$CONTENT["BACK"] = "Indietro";
 	$CONTENT["LANGUAGE"] = "Lingua";
+	$CONTENT["REPORT_BUG"] = "Invia <br />Errore";
+	$CONTENT["USER_ACCOUNTS"] = "Cuentas de <br /> Usufruttuario"; /*corregir*/
 ?>
