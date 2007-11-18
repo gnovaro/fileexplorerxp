@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: G. Novaro <gnovaro@gmail.com>
-* @version: 0.87
+* @version: 1.01
 */
 	$CONTENT["TITLE"] = "::: File Explorer XP :::";
 	$CONTENT["USER"] = "Usufruttuario";
@@ -47,4 +47,7 @@
 	$CONTENT["UPLOAD_SUCESS"] = "Archivio trasferito correttamente";
  	$CONTENT["UPLOAD_FAIL"] = "ERRORE: Non si pu&oacute; trasferire l&apos; archivio, repitere nuovamente";
 	$CONTENT["HELP"] = "Aiuto";
+	$CONTENT["SUBJECT"] = "Oggetto"; /*que revise el abuelo estos 3*/
+	$CONTENT["SUBMIT"] = "Invia";  
+	$CONTENT["BACK"] = "Indietro";
 ?>

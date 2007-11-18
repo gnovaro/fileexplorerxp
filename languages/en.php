@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: G. Novaro <gnovaro@gmail.com>
-* @version: 0.95
+* @version: 1.01
 */
 	$CONTENT["TITLE"] = "::: File Explorer XP :::";
 	$CONTENT["USER"] = "User";
@@ -47,4 +47,7 @@
 	$CONTENT["UPLOAD_SUCESS"] = "Upload file sucess";
  	$CONTENT["UPLOAD_FAIL"] = "ERROR: Can't upload file, try again";
 	$CONTENT["HELP"] = "Help";
+	$CONTENT["SUBJECT"] = "Subject";
+	$CONTENT["SUBMIT"] = "Submit";
+	$CONTENT["BACK"] = "Back";
 ?>
