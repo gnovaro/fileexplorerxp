@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: G. Novaro <gnovaro@gmail.com>
-* @version: 0.99
+* @version: 1.04
 * URL: http://www.novarsystems.com.ar
 * File: tree.php
 * Purpose: View and listing files and directory
@@ -340,11 +340,12 @@ function download_file(sFile){
 			else{
 				//is file
 				$path_parts = pathinfo($file);
-				$ext = $path_parts['extension'];
-				if ($ext != "")
-					$sPathIcon = URL."icons/".$ext.".gif";
+				if (isset($path_parts['extension'])){
+					$ext = $path_parts['extension'];
+					$sPathIcon = URL."icons/".$ext.".png";
+				}
 				else //load a generic icon
-					$sPathIcon = URL."icons/file.gif";
+					$sPathIcon = URL."icons/file.png";
 			?>
 				<img src="<?=$sPathIcon;?>" alt="" />&nbsp;<?=$file;?>
 			<?php

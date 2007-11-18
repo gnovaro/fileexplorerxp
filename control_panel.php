@@ -95,9 +95,9 @@ $iObject = 3;
         <tr>
         	<td class="center"><a href="javascript:showhide('panel_lang');" class="menuLeftBar"><?=$CONTENT["LANGUAGE"];?></a></td>
             <td>&nbsp;</td>
-            <td class="center"><a href="javascript:showhide('panel_user');" class="menuLeftBar">Cuentas de <br />usuarios</a></td>
+            <td class="center"><a href="javascript:showhide('panel_user');" class="menuLeftBar"><?=$CONTENT["USER_ACCOUNTS"];?></a></td>
             <td>&nbsp;</td>
-            <td class="center"><a href="javascript:showhide('panel_bug');" class="menuLeftBar">Reportar<br />error</a></td>
+            <td class="center"><a href="javascript:showhide('panel_bug');" class="menuLeftBar"><?=$CONTENT["REPORT_BUG"];?></a></td>
         </tr>
     </table>
     <!-- -->
