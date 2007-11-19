@@ -217,7 +217,7 @@ function download_file(sFile){
 	  <div style="width:160px; margin:10px;">
 	  <table border="0" cellpadding="0" cellspacing="0" width="160px">
           <tr bgcolor="#FFFFFF">
-          	<td><img src="<?=URL;?>images/box_left.jpg" alt="" /></td>
+          	<td><img src="<?=URL;?>/images/box_left.jpg" alt="" /></td>
             <td width="133" class="textoAzul">&nbsp;<?=$CONTENT["FILE_TASK"];?> </td>
             <td width="27"><a href="javascript:showhide_with_image('task','img_arrow_task');"><img src="<?=URL;?>/images/up.jpg" id="img_arrow_task" style="border:none" /></a></td>
           </tr>
@@ -279,7 +279,7 @@ function download_file(sFile){
 				return round($size, 2)." ".$suffix;
 			}
 			// $df contiene el numero total de bytes disponible en "/"
-			$df = disk_free_space("/");
+			$df = disk_free_space(".");
 			$df = format_size($df);
   		  	?>
               &nbsp;<?=$CONTENT["SPACE_FREE"];?><br />
@@ -291,7 +291,7 @@ function download_file(sFile){
           <tr bgcolor="#D6DFF7">
             <td colspan="2" style="border-bottom: 1px #FFFFFF; border-right: 1px #FFFFFF;"><?
 			// $df contiene el numero total de bytes disponible en "/"
-			$dt = disk_total_space("/");
+			$dt = disk_total_space(".");
 			$dt = format_size($dt);
   		  ?>
               &nbsp;<?=$CONTENT["SPACE_TOTAL"];?><br />
@@ -354,8 +354,10 @@ function download_file(sFile){
           </td>
           <td>&nbsp;
 		  <?php
-		  		$tam = filesize($file);
-		  		if( $tam > 1024 ){
+		  	//File Size
+			if ($file!= "." && $file != ".."){
+				$tam = filesize($file);
+				if( $tam > 1024 ){
 					$tam = round($tam / 1024);
 					echo $tam." Kb"; 
 				}
@@ -363,7 +365,9 @@ function download_file(sFile){
 				{
 					echo $tam." bytes"; 
 				}//if
-		  ?>		  </td>
+			}//if
+		  ?>		  
+          </td>
           <?php
           if($file!="." && $file != ".."){
 		  ?>
