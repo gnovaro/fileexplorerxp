@@ -1,7 +1,7 @@
 <?php
 /**
-* @author: G. Novaro <gnovaro@gmail.com>
-* @version: 0.71
+* @author G. Novaro <gnovaro@gmail.com>
+* @version 1.41
 * URL: http://www.novarsystems.com.ar
 * File: error_handler.php
 * Purpose:
@@ -33,6 +33,12 @@ function logErr($num_err, $cadena_err, $archivo_err, $linea_err)
 			break;
   }//switch
 }//function
+
+function write_log($sText){
+	$oFp = fopen("logs".DIRECTORY_SEPARATOR."login.log","a+");
+	fwrite($oFp,$sText." \n");
+	fclose($oFp);
+}//write_log
 
 /*
 
