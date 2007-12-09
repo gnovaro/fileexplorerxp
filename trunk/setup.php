@@ -1,7 +1,7 @@
 <?php
 /**
-* @author: Gustavo Novaro <gnovaro@gmail.com>
-* @version: 0.75
+* @author Gustavo Novaro <gnovaro@gmail.com>
+* @version 0.75
 * Purpouse: Setup a config file first time execution
 */
 ?><?php
@@ -17,6 +17,7 @@ else
 	//defualt lang spanish
 	require("./languages/es.php"); 
 }//if
+echo $_SERVER['DOCUMENT_ROOT'];
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">

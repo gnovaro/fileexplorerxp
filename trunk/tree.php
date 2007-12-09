@@ -213,8 +213,8 @@ function download_file(sFile){
       <!-- -->
       <td width="180" height="500" bgcolor="#6B85DC" style="vertical-align:top;">
 	  <br />
-	  <!-- Panel Tareas -->
-	  <div style="width:160px; margin:10px;">
+	<!-- Panel Tareas -->
+	<div style="width:160px; margin:10px;">
 	  <table border="0" cellpadding="0" cellspacing="0" width="160px">
           <tr bgcolor="#FFFFFF">
           	<td><img src="<?=URL;?>/images/box_left.jpg" alt="" /></td>
@@ -223,7 +223,7 @@ function download_file(sFile){
           </tr>
 	 </table>
     <div id="task">
-	<table border="0" cellpadding="0" cellspacing="0" width="160px">     		  
+	<table border="0" cellpadding="0" cellspacing="0" width="160px" style="filter:alpha(opacity=100,finishopacity=40,style=1);">     		  
 		  <tr bgcolor="#D6DFF7">
 		  	<td colspan="2">&nbsp;<img src="<?=URL;?>/images/file.gif" alt="" />&nbsp;<a href="javascript:new_file();" class="menuLeftBar"><?=$CONTENT["NEW_FILE"];?></a></td>
 		  </tr>          
@@ -251,7 +251,7 @@ function download_file(sFile){
           </tr>
         </table>
         <div id="details">
-        <table border="0" cellpadding="0" cellspacing="0" width="160px">
+        <table border="0" cellpadding="0" cellspacing="0" width="160px" style="filter:alpha(opacity=100,finishopacity=40,style=1);">
           <tr bgcolor="#D6DFF7">
             <td colspan="2" style="border-bottom: 1px #FFFFFF; border-right: 1px #FFFFFF;">
 			<?php
