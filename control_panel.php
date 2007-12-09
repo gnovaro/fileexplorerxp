@@ -60,8 +60,8 @@ $iObject = 3;
 </tr>
 <!-- Menu BAR -->
 <tr>
-	<td width="180" height="500" bgcolor="#7aa1e6" style="vertical-align:top;">
-    	<div style="width:160px; margin:10px;">
+	<td width="199" height="500" bgcolor="#7aa1e6" style="vertical-align:top;">
+   	  <div style="width:160px; margin:10px;">
         <table border="0" cellpadding="0" cellspacing="0" width="160px">
           <tr>
           	<td rowspan="2"><img src="<?=URL;?>/images/cpanel_header.jpg" alt="" /></td>
@@ -82,7 +82,7 @@ $iObject = 3;
             </div>
         </div>
     </td>
-<td width="543" style="vertical-align:top">
+<td width="1029" style="vertical-align:top">
 	<!-- -->
 	<table>
     	<tr>

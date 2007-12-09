@@ -4,10 +4,13 @@
 * @version: 0.73
 * URL: http://www.novarsystems.com.ar
 * Purpouse: Generic validation hardcode
+* Change Log:
+* - Change md5 to sha1 for security
 */
+
 require("./config.php");
 	$user = addslashes($_POST["txtUserName"]);  
-	$pass = md5(addslashes($_POST["txtPass"]));
+	$pass = sha1(addslashes($_POST["txtPass"]));
 	if ( $user == $sConfig["USER"] &&  $pass == $sConfig["PASS"])
 	{
 		session_start();

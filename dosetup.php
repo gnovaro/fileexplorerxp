@@ -1,14 +1,16 @@
 <?php
 /**
 * @author: Gustavo Novaro <gnovaro@gmail.com>
-* @version: 0.99
+* @version: 1.05
+* Change Log
+* - Change md5 to sha1
 */
 require("./error_handler.php");	
 require("./function.php");
 
 if ($_POST["txtUserAdmin"]){
 	$sUser = $_POST["txtUserAdmin"];
-	$sPass = md5($_POST["txtPassAdmin"]);
+	$sPass = sha1($_POST["txtPassAdmin"]);
 	$sUrl = $_POST["txtUrl"];
 	$sTimeZone = $_POST["php_zone"];
 	$sVerion = "1.04";

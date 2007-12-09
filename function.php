@@ -8,12 +8,6 @@ function goto($sURL){
 		header("Location:".$sURL);
 }//goto
 
-function write_log($sText){
-	$oFp = fopen("logs".DIRECTORY_SEPARATOR."login.log","a+");
-	fwrite($oFp,$sText." \n");
-	fclose($oFp);
-}//write_log
-
 function get_lang(){
 /**
 *

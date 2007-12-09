@@ -49,7 +49,6 @@ else
     <meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-
 <body>
 <form id="frmLogin" name="frmLogin" action="validate.php" method="post" style="margin-top:100px">
 <div align="center">
