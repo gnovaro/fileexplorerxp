@@ -223,22 +223,28 @@ function download_file(sFile){
           </tr>
 	 </table>
     <div id="task">
-	<table border="0" cellpadding="0" cellspacing="0" width="160px" style="filter:alpha(opacity=100,finishopacity=40,style=1);">     		  
-		  <tr bgcolor="#D6DFF7">
-		  	<td colspan="2">&nbsp;<img src="<?=URL;?>/images/file.gif" alt="" />&nbsp;<a href="javascript:new_file();" class="menuLeftBar"><?=$CONTENT["NEW_FILE"];?></a></td>
-		  </tr>          
-		  <tr bgcolor="#D6DFF7">
-		  	<td colspan="2">&nbsp;<img src="<?=URL;?>/images/new_folder.jpg" alt="" />&nbsp;<a href="javascript:new_folder();" class="menuLeftBar"><?=$CONTENT["NEW_FOLDER"];?></a></td>
-		  </tr>
-		  <tr bgcolor="#D6DFF7">
-		  	<td colspan="2">&nbsp;<img src="<?=URL;?>/images/upload.jpg" alt="" />&nbsp;<a href="<?=URL;?>/upload.php" class="menuLeftBar"><?=$CONTENT["UPLOAD_FILE"];?></a></td>
-		  </tr>
-		  <tr bgcolor="#D6DFF7">
-		  	<td colspan="2">&nbsp;<img src="<?=URL;?>/images/control_panel.jpg" alt="" />&nbsp;<a href="<?=URL;?>/control_panel.php" class="menuLeftBar"><?=$CONTENT["CONTROL_PANEL"];?></a></td>
-		  </tr>
-	  </table>
-      </div>
-	  </div>
+        <table border="0" cellpadding="0" cellspacing="0" width="160px" bgcolor="#D6DFF7" style="filter:alpha(opacity=100,finishopacity=40,style=1);">     		  
+        <tr>
+	        <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="2">&nbsp;<img src="<?=URL;?>/images/file.gif" alt="" />&nbsp;<a href="javascript:new_file();" class="menuLeftBar"><?=$CONTENT["NEW_FILE"];?></a></td>
+          </tr>          
+          <tr>
+            <td colspan="2">&nbsp;<img src="<?=URL;?>/images/new_folder.jpg" alt="" />&nbsp;<a href="javascript:new_folder();" class="menuLeftBar"><?=$CONTENT["NEW_FOLDER"];?></a></td>
+          </tr>
+          <tr>
+            <td colspan="2">&nbsp;<img src="<?=URL;?>/images/upload.jpg" alt="" />&nbsp;<a href="<?=URL;?>/upload.php" class="menuLeftBar"><?=$CONTENT["UPLOAD_FILE"];?></a></td>
+          </tr>
+          <tr>
+            <td colspan="2">&nbsp;<img src="<?=URL;?>/images/control_panel.jpg" alt="" />&nbsp;<a href="<?=URL;?>/control_panel.php" class="menuLeftBar"><?=$CONTENT["CONTROL_PANEL"];?></a></td>
+          </tr>
+          <tr>
+	        <td colspan="2">&nbsp;</td>
+          </tr>
+        </table>
+    </div>
+    </div>
 	  <!-- Panel Tareas -->
 	  
 	  <!-- Panel Detalle -->
