@@ -257,8 +257,11 @@ function download_file(sFile){
           </tr>
         </table>
         <div id="details">
-        <table border="0" cellpadding="0" cellspacing="0" width="160px" style="filter:alpha(opacity=100,finishopacity=40,style=1);">
-          <tr bgcolor="#D6DFF7">
+        <table border="0" cellpadding="0" cellspacing="0" width="160px" bgcolor="#D6DFF7" style="filter:alpha(opacity=100,finishopacity=40,style=1);">
+          <tr>
+	        <td colspan="2">&nbsp;</td>
+          </tr>
+          <tr>
             <td colspan="2" style="border-bottom: 1px #FFFFFF; border-right: 1px #FFFFFF;">
 			<?php
 			function format_size($size){
@@ -294,7 +297,7 @@ function download_file(sFile){
               <br />
               </td>
           </tr>
-          <tr bgcolor="#D6DFF7">
+          <tr>
             <td colspan="2" style="border-bottom: 1px #FFFFFF; border-right: 1px #FFFFFF;"><?
 			// $df contiene el numero total de bytes disponible en "/"
 			$dt = disk_total_space(".");
@@ -304,6 +307,9 @@ function download_file(sFile){
               &nbsp;<?=$dt;?>
               </td>
           </tr>		  
+          <tr>
+          	<td colspan="2">&nbsp;</td>
+          </tr>
         </table>
         </div>
 	  </div>
