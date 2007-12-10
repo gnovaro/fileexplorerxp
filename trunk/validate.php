@@ -8,15 +8,17 @@
 * - Change md5 to sha1 for security
 */
 
-require("./config.php");
+	require("./config.php");
+	require("./function.php");
+	session_start();
 	$user = addslashes($_POST["txtUserName"]);  
 	$pass = sha1(addslashes($_POST["txtPass"]));
 	if ( $user == $sConfig["USER"] &&  $pass == $sConfig["PASS"])
 	{
-		session_start();
 		$_SESSION["login"] = true;
-		header("Location: tree.php");	
+		goto("tree.php");	
 	}else{
-		header("Location: index.php?err=Invalid user or password");
+		$_SESSION["MSG"] = "Invalid user or password";
+		goto("index.php");
 	}//if
 ?>

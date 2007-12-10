@@ -1,27 +1,27 @@
 <?php
 /**
-* @author: Gustavo Novaro <gnovaro@gmail.com>
-* @version: 1.05
+* @author Gustavo Novaro <gnovaro@gmail.com>
+* @version 1.18
 * Change Log
 * - Change md5 to sha1
 */
 require("./error_handler.php");	
 require("./function.php");
-
+session_start();
 if ($_POST["txtUserAdmin"]){
 	$sUser = $_POST["txtUserAdmin"];
 	$sPass = sha1($_POST["txtPassAdmin"]);
 	$sUrl = $_POST["txtUrl"];
 	$sTimeZone = $_POST["php_zone"];
-	$sVerion = "1.04";
+	$sVerion = "1.18";
 	
 	$oFile = fopen("config.php","w+");
 	$sLineBreak = " \n";
 	
 	$sContent = '<?php '.$sLineBreak;
 	$sContent .='/**'.$sLineBreak;
-	$sContent .='* @auhtor: Gustavo Novaro <gnovaro@gmail.com>'.$sLineBreak;
-	$sContent .='* @version: '.$sVerion.$sLineBreak;
+	$sContent .='* @author Gustavo Novaro <gnovaro@gmail.com>'.$sLineBreak;
+	$sContent .='* @version '.$sVerion.$sLineBreak;
 	$sContent .='* http://fileexplorerxp.googlecode.com'.$sLineBreak;
 	$sContent .='*/'.$sLineBreak;
 	$sContent .='$sConfig["VERSION"] = "'.$sVerion.'";'.$sLineBreak;
@@ -34,6 +34,7 @@ if ($_POST["txtUserAdmin"]){
 	fwrite($oFile,$sContent);
 	fclose($oFile);
 	chmod("config.php",444); //Change file permisions to read only
-	goto('index.php?err=Setup sucess');
+	$_SESSION["MSG"] = "Setup Sucess";
+	goto('index.php');
 }
 ?>
