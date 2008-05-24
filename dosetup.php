@@ -1,7 +1,7 @@
 <?php
 /**
 * @author Gustavo Novaro <gnovaro@gmail.com>
-* @version 1.18
+* @version 1.25
 * Change Log
 * - Change md5 to sha1
 */
@@ -12,8 +12,8 @@ if ($_POST["txtUserAdmin"]){
 	$sUser = $_POST["txtUserAdmin"];
 	$sPass = sha1($_POST["txtPassAdmin"]);
 	$sUrl = $_POST["txtUrl"];
-	$sTimeZone = $_POST["php_zone"];
-	$sVerion = "1.18";
+	$sTimeZone = isset($_POST["php_zone"]) : $_POST["php_zone"] ? "";
+	$sVerion = "1.25";
 	
 	$oFile = fopen("config.php","w+");
 	$sLineBreak = " \n";
@@ -36,5 +36,5 @@ if ($_POST["txtUserAdmin"]){
 	chmod("config.php",444); //Change file permisions to read only
 	$_SESSION["MSG"] = "Setup Sucess";
 	goto('index.php');
-}
+}//if
 ?>
