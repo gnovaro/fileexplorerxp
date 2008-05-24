@@ -12,7 +12,7 @@ if ($_POST["txtUserAdmin"]){
 	$sUser = $_POST["txtUserAdmin"];
 	$sPass = sha1($_POST["txtPassAdmin"]);
 	$sUrl = $_POST["txtUrl"];
-	$sTimeZone = isset($_POST["php_zone"]) : $_POST["php_zone"] ? "";
+	$sTimeZone = (isset($_POST["php_zone"]))? $_POST["php_zone"] : "";
 	$sVerion = "1.25";
 	
 	$oFile = fopen("config.php","w+");
