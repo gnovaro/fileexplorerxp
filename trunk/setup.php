@@ -1,10 +1,9 @@
 <?php
 /**
 * @author Gustavo Novaro <gnovaro@gmail.com>
-* @version 0.75
+* @version 1.25
 * Purpouse: Setup a config file first time execution
 */
-?><?php
 $sLang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2);
 //echo $sLang;
 $sPath = "./languages/".$sLang.".php";
@@ -49,12 +48,30 @@ else
     </tr>
     <tr>
     	<td>URL:</td>
-        <td><input type="text" name="txtUrl" id="txtUrlR" value="http://" maxlength="255" /></td>
+        <td><input type="text" name="txtUrl" id="txtUrlR" value="http://<?=$_SERVER['HTTP_HOST'];?>" maxlength="255" /></td>
     </tr>
+    <?php
+    if (phpversion()>= "5.1.0"){
+	?>
     <tr>
       <td>PHP Time Zone:</td>
-      <td><input type="text" name="php_zone" id="php_zoneR" value="UTC" size="35" /></td>
+      <td>
+ 			<select name="php_zone" id="php_zoneR">
+            <option value="UTC">UTC</option>
+			<?php
+            $timezone_identifiers = DateTimeZone::listIdentifiers();
+			for ($i=0; $i < count($timezone_identifiers); $i++) {
+			?>
+           	<option value="<?=$timezone_identifiers[$i];?>"><?=$timezone_identifiers[$i];?></option>
+			<?php
+			}//for
+			?>                
+            </select>
+      </td>
     </tr>
+    <?php
+	}//if
+	?>
     <tr>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
