@@ -1,8 +1,8 @@
 <?php
 /**
 * @author Gustavo Novaro <gnovaro@gmail.com>
-* @version 1.25
-* URL: http://www.novarsystems.com.ar
+* @version 1.27
+* URL: http://gustavonovaro.blogspot.com
 * File: get_file.php
 * Purpose: Download file 
 */
@@ -34,4 +34,3 @@ if(!isset($_SESSION["login"]))
 			}//if
 		}//exist
 	}//if
-?>
