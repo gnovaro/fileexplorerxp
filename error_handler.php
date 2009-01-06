@@ -2,7 +2,7 @@
 /**
 * @author G. Novaro <gnovaro@gmail.com>
 * @version 1.41
-* URL: http://www.novarsystems.com.ar
+* URL: http://gustavonovaro.blogspot.com
 * File: error_handler.php
 * Purpose:
 */
@@ -63,4 +63,3 @@ catch (Exception $e)
 }
 
 */
-?>
