@@ -1,7 +1,8 @@
 <?php
 /**
+* File Upload process
 * @author: Gustavo Novaro <gnovaro@gmail.com>
-* @version: 1.04
+* @version: 1.28
 */
 require("./config.php");
 require("./error_handler.php");	
@@ -22,25 +23,29 @@ else
 //Security check
 session_start();
 if(!isset($_SESSION["login"]))
-	goto("index.php");
+	redirect("index.php");
 //security
-	$sourceFileName = $_FILES['fileUpload']['name'];
+
+for($q=0; $q <=count($_FILES);$q++){
+	$sourceFileName = $_FILES['file']['name'][$q];
 	/*
 	//security validation dont upload and exe / php or other executable camufled files 
 	if(is_executable($sourceFileName)){
 		unlink($sourceFileName);
 		$sMsg = "No se pueden subir ese archivo es un ejecutable";
 		$sDestination = "my_account.php";
-		goto("thanks.php?msg=".$sMsg."&pg=".$sDestination);		
+		redirect("thanks.php?msg=".$sMsg."&pg=".$sDestination);		
 	}//if
 	*/
 	$sPath = $_SESSION["path"]."/".$sourceFileName;
-	if(is_uploaded_file($_FILES['fileUpload']['tmp_name']))
-	if (move_uploaded_file($_FILES['fileUpload']['tmp_name'], $sPath))
+	if(is_uploaded_file($_FILES['file']['tmp_name'][$q]))
+	if (move_uploaded_file($_FILES['file']['tmp_name'][$q], $sPath))
 	{	
 		$sMsg = $CONTENT["UPLOAD_SUCESS"];	
 	}
 	else
 		$sMsg = $CONTENT["UPLOAD_FAIL"];	
-	goto("tree.php?msg=".$sMsg);
-?>
+}//for		
+	$_SESSION['__MSG__'] = $sMsg;
+	redirect('tree.php');
+
