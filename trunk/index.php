@@ -1,8 +1,8 @@
 <?php
 /**
-* @author: G. Novaro <gnovaro@gmail.com>
-* @version: 0.93
-* URL: http://www.novarsystems.com.ar
+* @author: Gustavo Novaro <gnovaro@gmail.com>
+* @version: 1.36
+* URL: http://gustavonovaro.blogspot.com
 * File: index.php
 * Purpose: Download file 
 */
@@ -27,10 +27,10 @@ else
 	require("./languages/es.php"); 
 }//if
 
-	if (isset($_SESSION["MSG"]))
-		$sMsg = $_SESSION["MSG"];		
+	if (isset($_SESSION['__MSG__']))
+		$sMsg = $_SESSION['__MSG__'];		
 	else
-		$sMsg = "";
+		$sMsg = '';
 
 	//destroy session - Logout
 	if (isset($_SESSION['login'])) 
@@ -91,7 +91,7 @@ else
 </form>
 <div style="margin-top:170px;">
 	<div align="right">
-    <a href="http://www.novarsystems.com.ar" target="_blank">NovAR Systems - www.novarsystems.com.ar</a>&nbsp; - <a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a> | Version: <?=$sConfig["VERSION"];?> &nbsp;
+    <a href="http://gustavonovaro.blogspot.com" target="_blank">Blog de Tavo</a>&nbsp; - <a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a> | Version: <?=$sConfig["VERSION"];?> &nbsp;
     </div>
 </div>
 </body>
