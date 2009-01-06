@@ -3,10 +3,10 @@
 * @author: Gustavo Novaro <gnovaro@gmail.com>
 * @version: 1.30
 */
-function goto($sURL){
+function redirect($sURL){
 	if ($sURL !="")
 		header("Location:".$sURL);
-}//goto
+}//redirect
 
 function get_lang(){
 /**
@@ -44,4 +44,3 @@ if (phpnum()==5){
 		date_default_timezone_set("UTC");
 	}
 }//if
-?>
