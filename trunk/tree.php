@@ -2,7 +2,7 @@
 /**
 * @author: G. Novaro <gnovaro@gmail.com>
 * @version: 1.04
-* URL: http://www.novarsystems.com.ar
+* URL: http://gustavonovaro.blogspot.com
 * File: tree.php
 * Purpose: View and listing files and directory
 */
@@ -25,7 +25,7 @@ else
 //Security check
 session_start();
 if(!isset($_SESSION["login"]))
-	goto("index.php");
+	redirect("index.php");
 //security
 	
 if (phpnum()==5)
@@ -493,7 +493,7 @@ function download_file(sFile){
       <!-- -->
       <td><img src="<?=URL;?>/images/spacer.gif" alt="" height="20" width="3" />&nbsp;<?=$i-2;?>&nbsp;<?=$CONTENT["OBJECTS"];?>&nbsp;</td>
       <td align="right">
-      <a href="http://www.novarsystems.com.ar" target="_blank">NovAR Systems - www.novarsystems.com.ar</a>&nbsp; - <a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a> | Version: <?=$sConfig["VERSION"];?> &nbsp;
+      <a href="http://gustavonovaro.blogspot.com" target="_blank">Blog de Tavo</a>&nbsp; - <a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a> | Version: <?=$sConfig["VERSION"];?> &nbsp;
       </td>
     </tr>
   </table>
