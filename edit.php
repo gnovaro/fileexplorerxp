@@ -2,7 +2,7 @@
 /**
 * @author: Gustavo Novaro <gnovaro@gmail.com>
 * @version: 0.98
-* URL: http://www.novarsystems.com.ar
+* URL: http://gustavonovaro.blogspot.com
 * File: edit.php
 * Purpose: Edit text files
 */
@@ -13,7 +13,7 @@ require("error_handler.php");
 
 //Security check
 session_start();
-if(!isset($_SESSION["login"]))
+if(!isset($_SESSION['login']))
 	header("Location: index.php");
 //security
 ?>
@@ -22,8 +22,9 @@ if(!isset($_SESSION["login"]))
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
     <title><?=$CONTENT["TITLE"];?></title>
-    <link rel="stylesheet" type="text/css" href="<?=URL?>/style.css">
+    <link rel="stylesheet" type="text/css" href="<?=URL?>/style.css" />
     <script src="<?=URL?>/codepress/codepress.js" type="text/javascript"></script>
+    <script src="<?=URL?>/js/function.js" type="text/javascript"></script>
     <meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
 </head>
 
@@ -110,7 +111,7 @@ if(!isset($_SESSION["login"]))
     <tr>        
 		<td>        
 	   	<div style="text-align:right">
-        <input type="button" name="btCancel" value="Cancelar" onclick="window.location='tree.php';" />
+        <input type="button" name="btCancel" value="Cancelar" onclick="redirect('tree.php');" />
         <input type="submit" name="btSend" id="btSend" value="Guardar" onclick="" />
         </div>
         </td>
