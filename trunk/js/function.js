@@ -21,3 +21,16 @@ function go_path(){
 function download_file(sFile){
 	window.location = "get_file.php?file=" + sFile;
 }//download_file
+
+function add_file(){
+/**
+* Add a input file dinamic
+* @version 1.3
+*/
+	var newFile = document.createElement('input');
+	newFile.setAttribute('type','file');
+	newFile.setAttribute('name','file[]');		
+	document.getElementById('div_upload_photos').appendChild(newFile);
+	var newBr = document.createElement('br');
+	document.getElementById('div_upload_photos').appendChild(newBr);				
+}

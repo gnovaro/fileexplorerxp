@@ -1,8 +1,8 @@
 <?php
 /**
-* @author: G. Novaro <gnovaro@gmail.com>
-* @version: 0.93
-* URL: http://www.novarsystems.com.ar
+* @author: Gustavo Novaro <gnovaro@gmail.com>
+* @version: 1.36
+* URL: http://gustavonovaro.blogspot.com
 * File: upload.php
 * Purpose:
 */
@@ -25,7 +25,7 @@ else
 //Security check
 session_start();
 if(!isset($_SESSION["login"]))
-	goto("index.php");
+	redirect("index.php");
 //security
 
 ?>
@@ -34,17 +34,12 @@ if(!isset($_SESSION["login"]))
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
     <title><?=$CONTENT["TITLE"];?></title>
-    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script type="text/javascript" src="<?=URL?>/js/function.js"></script>
     <meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
 </head>
 
 <body>
-<script type="text/javascript">
-function goto(sUrl){
-	window.location = sUrl;
-}
-</script>
-
 <form name="frmSendFiles" id="frmSendFiles" action="doupload.php" method="post" enctype="multipart/form-data">
 <table cellspacing="0" width="100%">
 <!-- Menu BAR -->
@@ -61,10 +56,15 @@ function goto(sUrl){
     	<td><?=$CONTENT["CHOOSE_FILE"];?></td>
 	</tr>
     <tr>
-	    <td><input type="file" name="fileUpload" id="fileUp0R" /></td>
+	    <td>
+        <a href="javascript:add_file();"><?=$CONTENT['FILE_ADD'];?>&nbsp;<img src="<?=URL?>/images/add.gif" alt="<?=$CONTENT['FILE_ADD'];?>" /></a>
+        <div id="div_upload_photos">
+        	<input type="file" name="file[]" id="file" /><br />
+        </div>
+        </td>
 	</tr>        
     <tr>
-		<td style="text-align:right"><input type="button" name="btCancel" value="<?=$CONTENT["BT_CANCEL"];?>" onclick="goto('tree.php');" />&nbsp;<input type="submit" value="<?=$CONTENT["BT_UPLOAD"];?>"/></td>
+		<td style="text-align:right"><input type="button" name="btCancel" value="<?=$CONTENT["BT_CANCEL"];?>" onclick="redirect('tree.php');" />&nbsp;<input type="submit" value="<?=$CONTENT["BT_UPLOAD"];?>"/></td>
     </tr>
     </table>
     </td>
