@@ -1,27 +1,42 @@
 <?php
 /**
-* @author: Gustavo Novaro <gnovaro@gmail.com>
-* @version: 0.98
+* @author Gustavo Novaro <gnovaro@gmail.com>
+* @version 1.39
 * URL: http://gustavonovaro.blogspot.com
 * File: edit.php
 * Purpose: Edit text files
 */
 
-require("./config.php");
-require("./languages/es.php");
-require("error_handler.php");	
+require('./config.php');
+require('./languages/es.php');
+require('error_handler.php');	
 
 //Security check
 session_start();
 if(!isset($_SESSION['login']))
-	header("Location: index.php");
+	header('Location: index.php');
 //security
+
+$sContent = '';
+
+if(isset($_POST['H_FILE_NAME']))
+{
+	$sFile = $_POST['H_FILE_NAME'];
+	$sPath = $_SESSION['path'];
+	$sPath = $sPath.DIRECTORY_SEPARATOR.$sFile;	
+							
+	$sContent = $_POST['content'];
+	$fp = fopen($sPath,"w+");
+	fwrite($fp,$sContent);
+	fclose($fp);
+	
+}//if
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-    <title><?=$CONTENT["TITLE"];?></title>
+    <title><?=$CONTENT['TITLE'];?></title>
     <link rel="stylesheet" type="text/css" href="<?=URL?>/style.css" />
     <script src="<?=URL?>/codepress/codepress.js" type="text/javascript"></script>
     <script src="<?=URL?>/js/function.js" type="text/javascript"></script>
@@ -30,33 +45,23 @@ if(!isset($_SESSION['login']))
 
 <body>
 <?php
-//	$sContent = "";
-	if(isset($_POST["H_FILE_NAME"]))
-	{
-		$sFile = $_POST["H_FILE_NAME"];
-		$sPath = $_SESSION["path"];
-		$sPath = $sPath.DIRECTORY_SEPARATOR.$sFile;		
-		$sContent = $_POST["content"];
-		$fp = fopen($sPath,"w+");
-		fwrite($fp,$sContent);
-		fclose($fp);
-		echo "Datos guardados satifactoriamente";
-	}//if
+/*if(isset($_POST["H_FILE_NAME"]))	
+	echo "Datos guardados satifactoriamente";*/
 ?>
 	<h2>Editar Archivo:</h2>
-	<form id="frmEditor" action="<?=$_SERVER['PHP_SELF'];?>" method="post">
+	<form id="frmEditor" action="" method="post" onsubmit="myCpWindow.toggleEditor();">
 	<div id="editor" align="center">
     <table>
     <tr>
 	    <td>
         <?php
-            if(isset($_GET["file"]))
-                $sFile = $_GET["file"];
+            if(isset($_GET['file']))
+                $sFile = $_GET['file'];
             
-            if(isset($_POST["H_FILE_NAME"]))
-                $sFile = $_POST["H_FILE_NAME"];
+            if(isset($_POST['H_FILE_NAME']))
+                $sFile = $_POST['H_FILE_NAME'];
                 
-            $sPath = $_SESSION["path"];
+            $sPath = $_SESSION['path'];
             $sPath = $sPath.DIRECTORY_SEPARATOR.$sFile;
 			//
 			$path_parts = pathinfo($sPath);
@@ -112,7 +117,7 @@ if(!isset($_SESSION['login']))
 		<td>        
 	   	<div style="text-align:right">
         <input type="button" name="btCancel" value="Cancelar" onclick="redirect('tree.php');" />
-        <input type="submit" name="btSend" id="btSend" value="Guardar" onclick="" />
+        <input type="submit" name="btSend" id="btSend" value="Guardar" />
         </div>
         </td>
 	</tr>        
