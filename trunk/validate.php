@@ -1,7 +1,7 @@
 <?php
 /**
-* @uthor: Gustavo Novaro <gnovaro@gmail.com>
-* @version: 1.27
+* @author Gustavo Novaro <gnovaro@gmail.com>
+* @version 1.45
 * URL: http://gustavonovaro.blogspot.com
 * Purpouse: Generic validation hardcode process
 */
