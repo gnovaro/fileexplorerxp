@@ -6,7 +6,7 @@
 */
 $sLang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2);
 //echo $sLang;
-$sPath = "./languages/".$sLang.".php";
+$sPath = './languages/'.$sLang.'.php';
 if (file_exists($sPath))
 {
 	require($sPath);
@@ -14,7 +14,7 @@ if (file_exists($sPath))
 else
 {
 	//defualt lang spanish
-	require("./languages/es.php"); 
+	require('./languages/es.php'); 
 }//if
 //echo $_SERVER['DOCUMENT_ROOT'];
 ?>
@@ -24,13 +24,13 @@ else
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
     <title>:: File Explorer XP - SETUP ::</title>
     <meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
-<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="fileexplorer.css" />
 </head>
 
 <body>
 	<h1><?=$CONTENT["SETUP"];?></h1>
     <form id="frmSetup" action="dosetup.php" method="post">
-    <table>
+    <table style="margin-left:20px;">
     <tr>
       <td colspan="2">File manager access:</td>
       </tr>
