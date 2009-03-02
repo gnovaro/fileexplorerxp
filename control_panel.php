@@ -37,20 +37,9 @@ $iObject = 3;
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title><?=$CONTENT["TITLE"];?></title>
-    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="stylesheet" type="text/css" href="<?=URL;?>/fileexplorer.css" />
     <meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
-	<script type="text/javascript">
-	function showhide(targetDiv){
-		var oVDiv = document.getElementById(targetDiv);
-		prop = oVDiv.style.display;
-		if(prop == "none"){
-			oVDiv.style.display = "block";
-		}
-		else{
-			oVDiv.style.display = "none";
-		}
-	}//showhide_with_image
-    </script>
+	<script type="text/javascript" src="<?=URL;?>/js/function.js"></script>
 </head>
 <body>
 <table cellspacing="0" width="100%">
