@@ -1,6 +1,6 @@
 /**
 * @author Gustavo Novaro <gnovaro@gmail.com>
-* @version 1.0
+* @version 1.1
 */
 function redirect(sUrl){
 	window.location = sUrl;
@@ -34,3 +34,14 @@ function add_file(){
 	var newBr = document.createElement('br');
 	document.getElementById('div_upload_photos').appendChild(newBr);				
 }
+
+function showhide(targetDiv){
+	var oVDiv = document.getElementById(targetDiv);
+	prop = oVDiv.style.display;
+	if(prop == "none"){
+		oVDiv.style.display = "block";
+	}
+	else{
+		oVDiv.style.display = "none";
+	}
+}//showhide_with_image
