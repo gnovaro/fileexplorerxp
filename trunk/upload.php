@@ -1,7 +1,7 @@
 <?php
 /**
 * @author: Gustavo Novaro <gnovaro@gmail.com>
-* @version: 1.36
+* @version: 1.37
 * URL: http://gustavonovaro.blogspot.com
 * File: upload.php
 * Purpose:
@@ -34,7 +34,7 @@ if(!isset($_SESSION["login"]))
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
     <title><?=$CONTENT["TITLE"];?></title>
-    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <link rel="stylesheet" type="text/css" href="<?=URL?>/fileexplorer.css" />
     <script type="text/javascript" src="<?=URL?>/js/function.js"></script>
     <meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
 </head>
