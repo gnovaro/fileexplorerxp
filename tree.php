@@ -109,7 +109,7 @@ if (phpnum()==5)
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
     <title><?=$CONTENT["TITLE"];?></title>
-    <link rel="stylesheet" type="text/css" href="<?=URL?>/style.css">
+    <link rel="stylesheet" type="text/css" href="<?=URL?>/fileexplorer.css">
     <meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
 <script type="text/javascript">
 function showhide_with_image(targetDiv,actionImage){
