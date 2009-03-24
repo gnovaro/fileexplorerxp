@@ -1,25 +1,23 @@
 <?php
 /**
-* @author: G. Novaro <gnovaro@gmail.com>
-* @version: 1.04
+* @author Gustavo Novaro <gnovaro@gmail.com>
+* @version 1.51
 * URL: http://gustavonovaro.blogspot.com
 * File: tree.php
 * Purpose: View and listing files and directory
 */
-require("./config.php");
-require("./error_handler.php");	
-require("./function.php");	
+require('./config.php');
+require('./error_handler.php');	
+require('./function.php');	
+
 $sLang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2);
 //echo $sLang;
-$sPath = "./languages/".$sLang.".php";
-if (file_exists($sPath))
-{
+$sPath = './languages/'.$sLang.".php";
+if (file_exists($sPath)){
 	require($sPath);
-}
-else
-{
-	//defualt lang spanish
-	require("./languages/es.php"); 
+}else{
+	//defualt lang english
+	require('./languages/en.php'); 
 }//if
 
 //Security check
@@ -109,7 +107,7 @@ if (phpnum()==5)
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
     <title><?=$CONTENT["TITLE"];?></title>
-    <link rel="stylesheet" type="text/css" href="<?=URL?>/fileexplorer.css">
+    <link rel="stylesheet" type="text/css" href="<?=URL?>/fileexplorer.css" />
     <meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
 <script type="text/javascript">
 function showhide_with_image(targetDiv,actionImage){
@@ -210,10 +208,9 @@ function download_file(sFile){
       </td>
     </tr>
     <tr>
-      <!-- -->
-      <td width="180" height="500" bgcolor="#6B85DC" style="vertical-align:top;">
-	  <br />
+    <td width="180" bgcolor="#6B85DC" style="vertical-align:top;">
 	<!-- Panel Tareas -->
+    <br />
 	<div style="width:160px; margin:10px;">
 	  <table border="0" cellpadding="0" cellspacing="0" width="160px">
           <tr bgcolor="#FFFFFF">
@@ -319,7 +316,7 @@ function download_file(sFile){
 	  <div style="top: 66px; left: 191px;">
 	  <table border="0" cellpadding="0" cellspacing="0">
         <tr bgcolor="#EFEFE9">
-          <td width="250px" height="24">&nbsp;<?=$CONTENT["NAME"];?> </td>
+          <td width="250px">&nbsp;<?=$CONTENT["NAME"];?> </td>
           <td width="75px"><span class="barra">|</span><?=$CONTENT["SIZE"];?></td>
           <td><span class="barra">|</span><?=$CONTENT["LAST_MODIFY"];?></td>
 		  <td><span class="barra">|</span><?=$CONTENT["OWNER"];?></td>
@@ -468,7 +465,7 @@ function download_file(sFile){
 		  ?>
 		  <td><a href="javascript:rename('<?=$file;?>');"><img src="<?=URL?>/images/rename.jpg" title="<?=$CONTENT["RENAME"];?>" alt="<?=$CONTENT["RENAME"];?>" /></a></td>
           <td><a href="javascript:delete_file('<?=$file;?>');"><img src="<?=URL?>/images/delete.jpg" title="<?=$CONTENT["DELETE"];?>" alt="<?=$CONTENT["DELETE"];?>" /></a></td>
-		  <td><a href="#"><img src="<?=URL?>/images/zip.gif" alt="<?=$CONTENT["COMPRESS"];?>" title="<?=$CONTENT["COMPRESS"];?>" /></a></td>
+		  <td><a href="zip.php?file=<?=$file;?>"><img src="<?=URL?>/images/zip.gif" alt="<?=$CONTENT["COMPRESS"];?>" title="<?=$CONTENT["COMPRESS"];?>" /></a></td>
 			  <?php
               if(is_file($file)){
               ?>
@@ -480,7 +477,7 @@ function download_file(sFile){
 		  }//if
 		  ?>
         </tr>
-     <?		
+     <?php		
 		  }//foreach
 	 ?>
       </table>
@@ -491,7 +488,7 @@ function download_file(sFile){
     <!-- BARRA ESTADO -->
     <tr bgcolor="#EFEFE9">
       <!-- -->
-      <td><img src="<?=URL;?>/images/spacer.gif" alt="" height="20" width="3" />&nbsp;<?=$i-2;?>&nbsp;<?=$CONTENT["OBJECTS"];?>&nbsp;</td>
+      <td style="height:24px;"><img src="<?=URL;?>/images/spacer.gif" alt="" width="3" />&nbsp;<?=$i-2;?>&nbsp;<?=$CONTENT["OBJECTS"];?>&nbsp;</td>
       <td align="right">
       <a href="http://gustavonovaro.blogspot.com" target="_blank">Blog de Tavo</a>&nbsp; - <a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a> | Version: <?=$sConfig["VERSION"];?> &nbsp;
       </td>
