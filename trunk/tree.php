@@ -1,7 +1,7 @@
 <?php
 /**
 * @author Gustavo Novaro <gnovaro@gmail.com>
-* @version 1.51
+* @version 1.52
 * URL: http://gustavonovaro.blogspot.com
 * File: tree.php
 * Purpose: View and listing files and directory
@@ -22,15 +22,15 @@ if (file_exists($sPath)){
 
 //Security check
 session_start();
-if(!isset($_SESSION["login"]))
-	redirect("index.php");
+if(!isset($_SESSION['login']))
+	redirect('index.php');
 //security
 	
 if (phpnum()==5)
-	date_default_timezone_set($sConfig["TIME_ZONE"]);		
+	date_default_timezone_set($sConfig['TIME_ZONE']);		
 		
 	$cantFiles = 0;
-	$sPath = "";
+	$sPath = '';
 	if (!isset($_SESSION["path"]) ){
 		$sRootPath = getcwd(); 	//Obtiene el directorio actual de trabajo.
 		$_SESSION["path"] = $sRootPath;		
@@ -341,12 +341,11 @@ function download_file(sFile){
         <tr>
           <td bgcolor="#F7F7F7">&nbsp;
 		  <?php
-		  	if(is_dir($file)){
+		  	if(is_dir($file)&& $file!='.'){
 		  ?>
 				<img src='<?=URL?>/images/folder.jpg' alt="" />&nbsp;<a href="tree.php?dir=<?=$file;?>" class="menuLeftBar"><?=$file;?></a>
 		  <?php
-			}				
-			else{
+			}else{
 				//is file
 				$path_parts = pathinfo($file);
 				if (isset($path_parts['extension'])){
@@ -355,9 +354,12 @@ function download_file(sFile){
 				}
 				else //load a generic icon
 					$sPathIcon = URL."/icons/file.png";
+			
+				if($file!='.'){
 			?>
 				<img src="<?=$sPathIcon;?>" alt="" />&nbsp;<?=$file;?>
 			<?php
+				}//if
 			}//if
 		  ?>		  
           </td>
