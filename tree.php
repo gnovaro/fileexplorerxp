@@ -1,7 +1,7 @@
 <?php
 /**
 * @author Gustavo Novaro <gnovaro@gmail.com>
-* @version 1.52
+* @version 1.53
 * URL: http://gustavonovaro.blogspot.com
 * File: tree.php
 * Purpose: View and listing files and directory
@@ -28,7 +28,8 @@ if(!isset($_SESSION['login']))
 	
 if (phpnum()==5)
 	date_default_timezone_set($sConfig['TIME_ZONE']);		
-		
+
+	$sMessage = '';		 
 	$cantFiles = 0;
 	$sPath = '';
 	if (!isset($_SESSION["path"]) ){
@@ -52,51 +53,69 @@ if (phpnum()==5)
 	}//if
 	$order = 0;
 	
+	function compress_gz($sFile)
+	{
+		// abrir el archivo para escritura con maxima compresion
+		$zp = gzopen($sFile.'.gz', "w9");
+		$fp = fopen($sFile,"rb"); //windows rb
+		while(!feof($fp)){
+			// escribir la cadena en el archivo
+			$s = fread($fp,2000);
+			gzwrite($zp, $s);
+		}
+		fclose($fp);
+		// cerrar el archivo
+		gzclose($zp);
+	}//compress_gz
 
 	if (isset($_POST["H_ACTION"])){
 		$sAction = $_POST["H_ACTION"];
 		
 		switch($sAction){
-			case "NEW_FOLDER": 
+			case 'NEW_FOLDER': 
 				$sDirName = $_POST["H_NAME"];
 				mkdir($sDirName, 0700);			
 				break;
-			case "NEW_FILE":
+			case 'NEW_FILE':
 				$sName = $_POST["H_NAME"];
 				if (!file_exists($sName)){
 					fopen($sName,'w');
-					echo $CONTENT["FILE_SUCESS"];//"File created sucess"
-				}
-				else
-					echo $CONTENT["FILE_FAIL"];
+					$sMessage = $CONTENT["FILE_SUCESS"];//"File created sucess"
+				}else{
+					$sMessage = $CONTENT["FILE_FAIL"];
+				}//if
 				break;
-			case "DELETE":
+			case 'DELETE':
 				$sName = $_POST["H_NAME"];
 				if(is_dir($sName)){
 					if (rmdir($sName)== true) 
-						echo $CONTENT["DELETE_DIR_SUCESS"];
+						$sMessage = $CONTENT["DELETE_DIR_SUCESS"];
 					else
-						echo $CONTENT["DELETE_DIR_FAIL"];
+						$sMessage = $CONTENT["DELETE_DIR_FAIL"];
 				}
 				else
 					if(file_exists($sName))
 						if ( unlink($sName) ){
-							echo $CONTENT["DELETE_FILE_SUCESS"];
-						}
-						else{
-							echo $CONTENT["DELETE_FILE_FAIL"];
-						}	
+							$sMessage = $CONTENT["DELETE_FILE_SUCESS"];
+						} else{
+							$sMessage = $CONTENT["DELETE_FILE_FAIL"];
+						}//if	
 				break;
-			case "RENAME":
+			case 'RENAME':
 				$sName = $_POST["H_NAME"];
 				$sExtra = $_POST["H_EXTRA"];
 				if(file_exists($sName))
 				{
 					if(rename($sName,$sExtra))
-						echo $CONTENT["RENAME_FILE_SUCESS"];
+						$sMessage = $CONTENT["RENAME_FILE_SUCESS"];
 					else
-						echo $CONTENT["RENAME_FILE_FAIL"];
+						$sMessage = $CONTENT["RENAME_FILE_FAIL"];
 				}//if
+				break;
+			case 'COMPRESS':
+				$sName = $_POST["H_NAME"];
+				if(file_exists($sName))
+					compress_gz($sName);
 				break;
 		}//switch
 			
@@ -187,13 +206,58 @@ function go_path(){
 function download_file(sFile){
 	window.location = "get_file.php?file=" + sFile;
 }//download_file
+
+function compress(sFile)
+{
+	document.getElementById("H_NAME").value = sFile;
+	document.getElementById("H_ACTION").value = "COMPRESS";
+	document.getElementById("frmMain").submit();
+}
+function show_pop(id)
+{
+	document.getElementById(id).style.display='block';
+}
+function close_pop(id)
+{
+	document.getElementById(id).style.display='none';
+}
 </script>
+<style type="text/css">
+.box{
+	margin-left:40%; 
+	margin-top:25%;  
+	z-index:1000; 
+	position:absolute; 
+	width:250px; 
+	background:#D6DFF7; 
+	padding:10px; 
+	height:100px;
+	-moz-border-radius:5px;	
+}
+</style>
 </head>
 <body>
+		<?php
+		if($sMessage!=''){
+		?>
+        <div id="divMessage" class="box">
+        	<div style="float:right"><a href="javascript:close_pop('divMessage');"><img src="<?=URL;?>/images/close.png" alt="close" /></a></div>
+	        <img src="<?=URL;?>/images/info.png" alt="Info" />&nbsp;<strong><?=$sMessage;?></strong>
+        </div>
+        <?php
+		}//if
+		?>
+        <div id="divHelp" class="box" style="display:none;">
+	        	<div style="float:right"><a href="javascript:close_pop('divHelp');"><img src="<?=URL;?>/images/close.png" alt="close" /></a></div>                
+				<a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a><br />
+                PHP Web File Manager<br />
+                Author: &nbsp;<a href="mailto:gnovaro@gmail.com">Gustavo Novaro</a><br />                         	
+                Version:&nbsp;<?=$sConfig["VERSION"];?><br />
+        </div>
 <form name="frmMain" id="frmMain" method="post" action="<?=$_SERVER['PHP_SELF'];?>">
   <table width="100%" border="0" cellpadding="0" cellspacing="0">
     <tr bgcolor="#EFEFE9">
-      <td colspan="2"><div align="right"><a href="javascript:close_admin();"><img src="<?=URL;?>/images/close.png" alt="close" style="border:none;" title="<?=$CONTENT["EXIT"];?>" /></a>&nbsp;</div></td>
+      <td colspan="2"><div align="right"><a href="javascript:close_admin();"><img src="<?=URL;?>/images/close.png" alt="close" title="<?=$CONTENT["EXIT"];?>" /></a>&nbsp;</div></td>
     </tr>
     <tr bgcolor="#EFEFE9">
       <td colspan="2">
@@ -202,7 +266,7 @@ function download_file(sFile){
             	<td>&nbsp;<?=$CONTENT["PATH"];?>&nbsp;<span><input type="text" name="dir" id="txtPath" style="width:650px;" value="<?=realpath($sPath);?>"/></span></td>
                 <td><a href="javascript:go_path();"><img src="<?=URL;?>/images/arrow_go.jpg" alt="<?=$CONTENT["GO"];?>" style="border:none;" /></a></td>
 				<td><?=$CONTENT["GO"];?></td>
-                <td>&nbsp;&nbsp;&nbsp;<a href="#"><img src="<?=URL;?>/images/help.gif" alt="<?=$CONTENT["HELP"];?>" /></a></td>
+                <td>&nbsp;&nbsp;&nbsp;<a href="javascript:show_pop('divHelp');"><img src="<?=URL;?>/images/help.gif" alt="<?=$CONTENT["HELP"];?>" /></a></td>
 			</tr>
 		</table>
       </td>
@@ -220,7 +284,7 @@ function download_file(sFile){
           </tr>
 	 </table>
     <div id="task">
-        <table border="0" cellpadding="0" cellspacing="0" width="160px" bgcolor="#D6DFF7" style="filter:alpha(opacity=100,finishopacity=40,style=1);">     		  
+        <table border="0" cellpadding="0" cellspacing="0" width="160px" bgcolor="#D6DFF7">     		  
         <tr>
 	        <td colspan="2">&nbsp;</td>
         </tr>
@@ -254,7 +318,7 @@ function download_file(sFile){
           </tr>
         </table>
         <div id="details">
-        <table border="0" cellpadding="0" cellspacing="0" width="160px" bgcolor="#D6DFF7" style="filter:alpha(opacity=100,finishopacity=40,style=1);">
+        <table border="0" cellpadding="0" cellspacing="0" width="160px" bgcolor="#D6DFF7">
           <tr>
 	        <td colspan="2">&nbsp;</td>
           </tr>
@@ -288,7 +352,7 @@ function download_file(sFile){
 			$df = disk_free_space(".");
 			$df = format_size($df);
   		  	?>
-              &nbsp;<?=$CONTENT["SPACE_FREE"];?><br />
+              &nbsp;<?=$CONTENT["SPACE_FREE"];?>:<br />
               &nbsp;<?=$df;?>
               <br />
               <br />
@@ -300,7 +364,7 @@ function download_file(sFile){
 			$dt = disk_total_space(".");
 			$dt = format_size($dt);
   		  ?>
-              &nbsp;<?=$CONTENT["SPACE_TOTAL"];?><br />
+              &nbsp;<?=$CONTENT["SPACE_TOTAL"];?>:<br />
               &nbsp;<?=$dt;?>
               </td>
           </tr>		  
@@ -314,15 +378,15 @@ function download_file(sFile){
       <td width="778" style="vertical-align:top;">
 	  <!-- Listado Archivos -->
 	  <div style="top: 66px; left: 191px;">
-	  <table border="0" cellpadding="0" cellspacing="0">
+	  <table border="0" cellpadding="0" cellspacing="0" width="100%">
         <tr bgcolor="#EFEFE9">
-          <td width="250px">&nbsp;<?=$CONTENT["NAME"];?> </td>
-          <td width="75px"><span class="barra">|</span><?=$CONTENT["SIZE"];?></td>
+          <td width="270px">&nbsp;<?=$CONTENT["NAME"];?> </td>
+          <td width="80px"><span class="barra">|</span><?=$CONTENT["SIZE"];?></td>
           <td><span class="barra">|</span><?=$CONTENT["LAST_MODIFY"];?></td>
 		  <td><span class="barra">|</span><?=$CONTENT["OWNER"];?></td>
 		  <td><span class="barra">|</span><?=$CONTENT["GROUP"];?></td>
 		  <td><span class="barra">|</span><?=$CONTENT["PERMISSIONS"];?></td>
-		  <td colspan="4">&nbsp;</td>
+		  <td colspan="5">&nbsp;</td>
         </tr>
 		<?php 
           //Poner en un include
@@ -466,15 +530,15 @@ function download_file(sFile){
 		  	echo "<td>&nbsp;</td>";
 		  ?>
 		  <td><a href="javascript:rename('<?=$file;?>');"><img src="<?=URL?>/images/rename.jpg" title="<?=$CONTENT["RENAME"];?>" alt="<?=$CONTENT["RENAME"];?>" /></a></td>
-          <td><a href="javascript:delete_file('<?=$file;?>');"><img src="<?=URL?>/images/delete.jpg" title="<?=$CONTENT["DELETE"];?>" alt="<?=$CONTENT["DELETE"];?>" /></a></td>
-		  <td><a href="zip.php?file=<?=$file;?>"><img src="<?=URL?>/images/zip.gif" alt="<?=$CONTENT["COMPRESS"];?>" title="<?=$CONTENT["COMPRESS"];?>" /></a></td>
-			  <?php
+          <td><a href="javascript:delete_file('<?=$file;?>');"><img src="<?=URL?>/images/delete.gif" title="<?=$CONTENT["DELETE"];?>" alt="<?=$CONTENT["DELETE"];?>" /></a></td>		  
+		  <?php
               if(is_file($file)){
-              ?>
-              <td><a href="javascript:download_file('<?=$file?>');"><img src="<?=URL?>/images/download.gif" alt="<?=$CONTENT["DOWNLOAD"];?>" title="<?=$CONTENT["DOWNLOAD"];?>" /></a></td>
-              <?php
-              }//if
-              ?>
+          ?>
+          <td><a href="javascript:compress('<?=$file;?>');"><img src="<?=URL?>/images/zip.gif" alt="<?=$CONTENT["COMPRESS"];?>" title="<?=$CONTENT["COMPRESS"];?>" /></a></td>
+          <td><a href="javascript:download_file('<?=$file?>');"><img src="<?=URL?>/images/download.gif" alt="<?=$CONTENT["DOWNLOAD"];?>" title="<?=$CONTENT["DOWNLOAD"];?>" /></a></td>
+          <?php
+          }//if
+          ?>
           <?php
 		  }//if
 		  ?>
@@ -500,5 +564,6 @@ function download_file(sFile){
   <input type="hidden" name="H_ACTION" id="H_ACTION" value="" />
   <input type="hidden" name="H_EXTRA" id="H_EXTRA" value="" />
 </form>
+</div>
 </body>
 </html>
