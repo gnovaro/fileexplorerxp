@@ -46,7 +46,7 @@ else
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
     <title><?=$CONTENT["TITLE"];?></title>
     <meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
-<link rel="stylesheet" type="text/css" href="fileexplorer.css">
+	<link rel="stylesheet" type="text/css" href="fileexplorer.css" />
 </head>
 <body>
 <form id="frmLogin" name="frmLogin" action="validate.php" method="post" style="margin-top:100px">
