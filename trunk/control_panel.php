@@ -1,7 +1,7 @@
 <?php
 /**
-* @author: Gustavo Novaro <gnovaro@gmail.com>
-* @version: 1.04
+* @author Gustavo Novaro <gnovaro@gmail.com>
+* @version 1.04
 * URL: http://gustavonovaro.blogspot.com
 * file: control_panel.php
 * Purpose:
@@ -50,8 +50,8 @@ $iObject = 3;
 <!-- Menu BAR -->
 <tr>
 	<td width="199" height="500" bgcolor="#7aa1e6" style="vertical-align:top;">
-   	  <div style="width:160px; margin:10px;">
-        <table border="0" cellpadding="0" cellspacing="0" width="160px">
+   	  <div style="width:170px; margin:10px;">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
           <tr>
           	<td rowspan="2"><img src="<?=URL;?>/images/cpanel_header.jpg" alt="" /></td>
             <td width="133"><img src="<?=URL;?>/images/spacer.gif" alt="" height="8" /></td>
@@ -63,7 +63,7 @@ $iObject = 3;
           </tr>
 	 	</table>
             <div id="task">
-            <table border="0" cellpadding="0" cellspacing="0" width="160px">     		  
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">     		  
               <tr bgcolor="#D6DFF7">
                 <td colspan="2">&nbsp;<img src="<?=URL;?>/images/file.gif" alt="" />&nbsp;<a href="javascript:new_file();" class="menuLeftBar">Ver informaci&oacute;n del sistema<? //=$CONTENT["NEW_FILE"];?></a></td>
               </tr>          
@@ -102,7 +102,6 @@ $iObject = 3;
         }//for
 			?>
         </select>
-        <input type="button" name="btSend" id="btSendR" onclick="" value="<?=$CONTENT["SUBMIT"];?>" />
     </div>
     <div id="panel_user" style="display:none">
     	<table>
@@ -117,11 +116,6 @@ $iObject = 3;
             <tr>
             	<td></td>                
                 <td><input type="password" name="txtPass2" value="" /></td>
-            </tr>
-            <tr>
-            	<td colspan="2" align="right">
-                	<input type="button" name="btSend2" id="btSend2R" onclick="" value="<?=$CONTENT["SUBMIT"];?>" />
-                </td>
             </tr>
         </table>
     </div>
@@ -140,13 +134,9 @@ $iObject = 3;
                 <textarea name="" id=""></textarea>
                 </td>
             </tr>
-            <tr>
-            	<td colspan="2" align="right">
-                	<input type="button" name="btSend3" id="btSend3R" onclick="" value="<?=$CONTENT["SUBMIT"];?>" />
-                </td>
-            </tr>
         </table>
     </div>
+    <input type="submit" name="btSend" id="btSendR" onclick="" value="<?=$CONTENT["SUBMIT"];?>" />
     </form>
 </td>   
     <!-- BARRA ESTADO -->
