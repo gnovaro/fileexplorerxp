@@ -2,7 +2,7 @@
 /**
 * Setup Process
 * @author Gustavo Novaro <gnovaro@gmail.com>
-* @version 1.27
+* @version 1.59
 */
 require("./error_handler.php");	
 require("./function.php");
@@ -12,7 +12,7 @@ if ($_POST["txtUserAdmin"]){
 	$sPass = sha1($_POST["txtPassAdmin"]);
 	$sUrl = $_POST["txtUrl"];
 	$sTimeZone = (isset($_POST["php_zone"]))? $_POST["php_zone"] : "";
-	$sVersion = '1.28';
+	$sVersion = '1.59';
 	
 	$oFile = fopen("config.php","w+");
 	$sLineBreak = " \n";
@@ -21,7 +21,7 @@ if ($_POST["txtUserAdmin"]){
 	$sContent .='/**'.$sLineBreak;
 	$sContent .='* Configuration File'.$sLineBreak;
 	$sContent .='* @author Gustavo Novaro <gnovaro@gmail.com>'.$sLineBreak;
-	$sContent .='* @version '.$sVerion.$sLineBreak;
+	$sContent .='* @version '.$sVersion.$sLineBreak;
 	$sContent .='* http://fileexplorerxp.googlecode.com'.$sLineBreak;
 	$sContent .='*/'.$sLineBreak;
 	$sContent .='$sConfig["VERSION"]   = "'.$sVersion.'";'.$sLineBreak;

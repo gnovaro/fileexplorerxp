@@ -1,7 +1,7 @@
 <?php
 /**
 * @author Gustavo Novaro <gnovaro@gmail.com>
-* @version 1.25
+* @version 1.59
 * Purpouse: Setup a config file first time execution
 */
 $sLang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2);
@@ -48,7 +48,7 @@ else
     </tr>
     <tr>
     	<td>URL:</td>
-        <td><input type="text" name="txtUrl" id="txtUrlR" value="http://<?=$_SERVER['HTTP_HOST'];?>" maxlength="255" /></td>
+        <td><input type="text" name="txtUrl" id="txtUrlR" value="http://<?=$_SERVER['HTTP_HOST'];?>/<?=basename(dirname(__FILE__));?>" maxlength="255" /></td>
     </tr>
     <?php
     if (phpversion()>= "5.1.0"){
