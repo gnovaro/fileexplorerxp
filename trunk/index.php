@@ -1,10 +1,10 @@
 <?php
 /**
-* @author: Gustavo Novaro <gnovaro@gmail.com>
-* @version: 1.36
+* @author	Gustavo Novaro <gnovaro@gmail.com>
+* @version	1.61
 * URL: http://gustavonovaro.blogspot.com
 * File: index.php
-* Purpose: Download file 
+* Purpose: Login
 */
 if (!file_exists("./config.php"))
 	{header("location: setup.php");}
@@ -76,7 +76,7 @@ else
         <tr>
         	<td colspan="2" align="center"><img src="images/padlock.gif" alt="" />&nbsp;<strong>IP:</strong>&nbsp;
 			<?php 
-			$sIp = $_SERVER['REMOTE_ADDR'];
+			$sIp = getIP();
 			$sDate = date("Y-m-d h:m:s");
 			write_log($sDate." - ".$sIp);
 			echo $sIp; 
