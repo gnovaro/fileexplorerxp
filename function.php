@@ -1,7 +1,7 @@
 <?php
 /**
-* @author: Gustavo Novaro <gnovaro@gmail.com>
-* @version: 1.30
+* @author	Gustavo Novaro <gnovaro@gmail.com>
+* @version	1.61
 */
 function redirect($sURL){
 	if ($sURL !="")
@@ -44,3 +44,24 @@ if (phpnum()==5){
 		date_default_timezone_set("UTC");
 	}
 }//if
+
+function getIP(){	
+	if ($_SERVER) {
+		if (isset($_SERVER["HTTP_X_FORWARDED_FOR"])) {
+			$realip = $_SERVER["HTTP_X_FORWARDED_FOR"];
+		} elseif (isset($_SERVER["HTTP_CLIENT_IP"])) {
+			$realip = $_SERVER["HTTP_CLIENT_IP"];
+		} else {
+			$realip = $_SERVER["REMOTE_ADDR"];
+		}//if
+	} else {
+		if ( getenv( 'HTTP_X_FORWARDED_FOR' ) ) {
+			$realip = getenv( 'HTTP_X_FORWARDED_FOR' );
+		} elseif ( getenv( 'HTTP_CLIENT_IP' ) ) {
+		$realip = getenv( 'HTTP_CLIENT_IP' );
+		} else {
+			$realip = getenv( 'REMOTE_ADDR' );
+		}//if
+	}//if
+ 	return $realip;
+}//getIP
