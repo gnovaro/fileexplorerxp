@@ -1,7 +1,7 @@
 <?php
 /**
-* @author: Gustavo Novaro <gnovaro@gmail.com>
-* @version: 1.37
+* @author		Gustavo Novaro <gnovaro@gmail.com>
+* @version	1.60
 * URL: http://gustavonovaro.blogspot.com
 * File: upload.php
 * Purpose:
@@ -44,7 +44,7 @@ if(!isset($_SESSION["login"]))
 <table cellspacing="0" width="100%">
 <!-- Menu BAR -->
 <tr bgcolor="#EFEFE9">
-    <td colspan="2">&nbsp;<a href="<?=URL;?>tree.php" class="no_underline"><img src="images/back.gif" alt="<?=$CONTENT["BACK"];?>" />&nbsp;<span class=""><?=$CONTENT["BACK"];?></span></a></td>
+    <td colspan="2">&nbsp;<a href="<?=URL;?>/tree.php" class="no_underline"><img src="images/back.gif" alt="<?=$CONTENT["BACK"];?>" />&nbsp;<span class=""><?=$CONTENT["BACK"];?></span></a></td>
 </tr>
 <!-- Menu BAR -->   
 <tr>
@@ -64,7 +64,7 @@ if(!isset($_SESSION["login"]))
         </td>
 	</tr>        
     <tr>
-		<td style="text-align:right"><input type="button" name="btCancel" value="<?=$CONTENT["BT_CANCEL"];?>" onclick="redirect('tree.php');" />&nbsp;<input type="submit" value="<?=$CONTENT["BT_UPLOAD"];?>"/></td>
+		<td style="text-align:right"><input type="button" name="btCancel" value="<?=$CONTENT["BT_CANCEL"];?>" onclick="redirect('<?=URL;?>/tree.php');" />&nbsp;<input type="submit" value="<?=$CONTENT["BT_UPLOAD"];?>"/></td>
     </tr>
     </table>
     </td>
