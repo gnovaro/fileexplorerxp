@@ -222,19 +222,6 @@ function close_pop(id)
 	document.getElementById(id).style.display='none';
 }
 </script>
-<style type="text/css">
-.box{
-	margin-left:40%; 
-	margin-top:25%;  
-	z-index:1000; 
-	position:absolute; 
-	width:250px; 
-	background:#D6DFF7; 
-	padding:10px; 
-	height:100px;
-	-moz-border-radius:5px;	
-}
-</style>
 </head>
 <body>
 		<?php
@@ -380,6 +367,7 @@ function close_pop(id)
 	  <div style="top: 66px; left: 191px;">
 	  <table border="0" cellpadding="0" cellspacing="0" width="100%">
         <tr bgcolor="#EFEFE9">
+          <td width="10px">&nbsp;</td>
           <td width="270px">&nbsp;<?=$CONTENT["NAME"];?> </td>
           <td width="80px"><span class="barra">|</span><?=$CONTENT["SIZE"];?></td>
           <td><span class="barra">|</span><?=$CONTENT["LAST_MODIFY"];?></td>
@@ -403,13 +391,22 @@ function close_pop(id)
 		  foreach($files as $file) {		  	
         ?>
         <tr>
+          <td>
+          <?php
+		  if($file!='.' && $file!='..'){
+		  ?>
+          <input type="checkbox" name="[]" id="" />
+          <?php
+		  }
+		  ?>
+          </td>
           <td bgcolor="#F7F7F7">&nbsp;
 		  <?php
-		  	if(is_dir($file)&& $file!='.'){
+		  if(is_dir($file)&& $file!='.'){
 		  ?>
 				<img src='<?=URL?>/images/folder.jpg' alt="" />&nbsp;<a href="tree.php?dir=<?=$file;?>" class="menuLeftBar"><?=$file;?></a>
 		  <?php
-			}else{
+		  }else{
 				//is file
 				$path_parts = pathinfo($file);
 				if (isset($path_parts['extension'])){
