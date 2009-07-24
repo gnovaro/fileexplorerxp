@@ -1,7 +1,7 @@
 <?php
 /**
-* @author: G. Novaro <gnovaro@gmail.com>
-* @version: 1.04
+* @author	Gustavo Novaro <gnovaro@gmail.com>
+* @version 1.04
 */
 	$CONTENT['TITLE'] = '::: File Explorer XP :::';
 	$CONTENT['USER'] = 'Usufruttuario';
