@@ -124,7 +124,7 @@ if (phpnum()==5)
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title><?=$CONTENT["TITLE"];?></title>
     <link rel="stylesheet" type="text/css" href="<?=URL?>/fileexplorer.css" />
     <meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
@@ -228,14 +228,14 @@ function close_pop(id)
 		if($sMessage!=''){
 		?>
         <div id="divMessage" class="box">
-        	<div style="float:right"><a href="javascript:close_pop('divMessage');"><img src="<?=URL;?>/images/close.png" alt="close" /></a></div>
+        	<div style="float:right"><a href="#" onclick="close_pop('divMessage');"><img src="<?=URL;?>/images/close.png" alt="close" /></a></div>
 	        <img src="<?=URL;?>/images/info.png" alt="Info" />&nbsp;<strong><?=$sMessage;?></strong>
         </div>
         <?php
 		}//if
 		?>
         <div id="divHelp" class="box" style="display:none;">
-	        	<div style="float:right"><a href="javascript:close_pop('divHelp');"><img src="<?=URL;?>/images/close.png" alt="close" /></a></div>                
+	        	<div style="float:right"><a href="#" onclik="close_pop('divHelp');"><img src="<?=URL;?>/images/close.png" alt="close" /></a></div>                
 				<a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a><br />
                 PHP Web File Manager<br />
                 Author: &nbsp;<a href="mailto:gnovaro@gmail.com">Gustavo Novaro</a><br />                         	
@@ -244,16 +244,16 @@ function close_pop(id)
 <form name="frmMain" id="frmMain" method="post" action="<?=$_SERVER['PHP_SELF'];?>">
   <table width="100%" border="0" cellpadding="0" cellspacing="0">
     <tr bgcolor="#EFEFE9">
-      <td colspan="2"><div align="right"><a href="javascript:close_admin();"><img src="<?=URL;?>/images/close.png" alt="close" title="<?=$CONTENT["EXIT"];?>" /></a>&nbsp;</div></td>
+      <td colspan="2"><div align="right"><a href="#" onclick="close_admin();"><img src="<?=URL;?>/images/close.png" alt="close" title="<?=$CONTENT["EXIT"];?>" /></a>&nbsp;</div></td>
     </tr>
     <tr bgcolor="#EFEFE9">
       <td colspan="2">
       	<table>
         	<tr>
             	<td>&nbsp;<?=$CONTENT["PATH"];?>&nbsp;<span><input type="text" name="dir" id="txtPath" style="width:650px;" value="<?=realpath($sPath);?>"/></span></td>
-                <td><a href="javascript:go_path();"><img src="<?=URL;?>/images/arrow_go.jpg" alt="<?=$CONTENT["GO"];?>" style="border:none;" /></a></td>
+                <td><a href="#" onclick="go_path();"><img src="<?=URL;?>/images/arrow_go.jpg" alt="<?=$CONTENT["GO"];?>" style="border:none;" /></a></td>
 				<td><?=$CONTENT["GO"];?></td>
-                <td>&nbsp;&nbsp;&nbsp;<a href="javascript:show_pop('divHelp');"><img src="<?=URL;?>/images/help.gif" alt="<?=$CONTENT["HELP"];?>" /></a></td>
+                <td>&nbsp;&nbsp;&nbsp;<a href="#" onclick="show_pop('divHelp');"><img src="<?=URL;?>/images/help.gif" alt="<?=$CONTENT["HELP"];?>" /></a></td>
 			</tr>
 		</table>
       </td>
