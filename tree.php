@@ -1,33 +1,33 @@
 <?php
 /**
 * @author Gustavo Novaro <gnovaro@gmail.com>
-* @version 1.53
-* URL: http://gustavonovaro.blogspot.com
+* @version 1.66
+* URL: http://gustavonovaro.com.ar
 * File: tree.php
 * Purpose: View and listing files and directory
 */
-require('./config.php');
-require('./error_handler.php');	
-require('./function.php');	
-
-$sLang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2);
-//echo $sLang;
-$sPath = './languages/'.$sLang.".php";
-if (file_exists($sPath)){
-	require($sPath);
-}else{
-	//defualt lang english
-	require('./languages/en.php'); 
-}//if
-
-//Security check
-session_start();
-if(!isset($_SESSION['login']))
-	redirect('index.php');
-//security
+    require('./config.php');
+    require('./error_handler.php');	
+    require('./function.php');	
+    
+    $sLang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2);
+    //echo $sLang;
+    $sPath = './languages/'.$sLang.".php";
+    if (file_exists($sPath)){
+    	require($sPath);
+    }else{
+    	//defualt lang english
+    	require('./languages/en.php'); 
+    }//if
+    
+    //Security check
+    session_start();
+    if(!isset($_SESSION['login']))
+    	redirect('index.php');
+    //security
 	
-if (phpnum()==5)
-	date_default_timezone_set($sConfig['TIME_ZONE']);		
+    if (phpnum()==5)
+	   date_default_timezone_set($sConfig['TIME_ZONE']);		
 
 	$sMessage = '';		 
 	$cantFiles = 0;
@@ -38,7 +38,8 @@ if (phpnum()==5)
 		$sPath = $sRootPath;
 	//	echo "session path ".$_SESSION["path"];
 	}
-	else{
+	else
+    {
 		$sPath = $_SESSION["path"];
 //		echo "Path: ".$sPath; //debug
 		if ( isset($_REQUEST["dir"]) ){ 
@@ -67,6 +68,30 @@ if (phpnum()==5)
 		// cerrar el archivo
 		gzclose($zp);
 	}//compress_gz
+    
+	function format_size($size){
+		switch (true){
+		case ($size > 1099511627776):
+			$size /= 1099511627776;
+			$suffix = 'TB';
+		break;
+		case ($size > 1073741824):
+			$size /= 1073741824;
+			$suffix = 'GB';
+		break;
+		case ($size > 1048576):
+			$size /= 1048576;
+			$suffix = 'MB';   
+		break;
+		case ($size > 1024):
+			$size /= 1024;
+			$suffix = 'KB';
+			break;
+		default:
+			$suffix = 'B';
+		}
+		return round($size, 2)." ".$suffix;
+	}    
 
 	if (isset($_POST["H_ACTION"])){
 		$sAction = $_POST["H_ACTION"];
@@ -125,38 +150,40 @@ if (phpnum()==5)
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title><?=$CONTENT["TITLE"];?></title>
-    <link rel="stylesheet" type="text/css" href="<?=URL?>/fileexplorer.css" />
+    <title><?php echo $CONTENT["TITLE"];?></title>
+    <link rel="stylesheet" type="text/css" href="<?php echo URL?>/fileexplorer.css" />
     <meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
-<script type="text/javascript">
-function showhide_with_image(targetDiv,actionImage){
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+    <script src="http://ajax.microsoft.com/ajax/jquery.validate/1.6/jquery.validate.min.js"></script> 
+    <script type="text/javascript">
+    function showhide_with_image(targetDiv,actionImage){
 	    image = document.getElementById(actionImage)
 		var oVDiv = document.getElementById(targetDiv);
 		prop = oVDiv.style.display;
 		if(prop == "none"){
 			oVDiv.style.display = "block";
-			image.src = "<?=URL?>/images/up.jpg";
+			image.src = "<?php echo URL?>/images/up.jpg";
 		}
 		else{
 			oVDiv.style.display = "none";
-			image.src = "<?=URL?>/images/down.jpg";
+			image.src = "<?php echo URL?>/images/down.jpg";
 		}
-}//showhide_with_image
+    }//showhide_with_image
 	
-function rename(sName){
-	var resp;
-	resp = prompt("<?=$CONTENT["RENAME_FILE"];?> " + sName + "?",sName);
-	if (resp != null){
-		document.getElementById("H_ACTION").value = "RENAME";
-		document.getElementById("H_NAME").value = sName;
-		document.getElementById("H_EXTRA").value = resp;
-		document.getElementById("frmMain").submit();
-	}//if
-}//rename
+    function rename(sName){
+    	var resp;
+    	resp = prompt("<?php echo $CONTENT["RENAME_FILE"];?> " + sName + "?",sName);
+    	if (resp != null){
+    		document.getElementById("H_ACTION").value = "RENAME";
+    		document.getElementById("H_NAME").value = sName;
+    		document.getElementById("H_EXTRA").value = resp;
+    		document.getElementById("frmMain").submit();
+    	}//if
+    }//rename
 
 function delete_file(sName){
 	var resp;
-	resp = confirm("<?=$CONTENT["DELETE_FILE"];?> '" + sName + "' ?");
+	resp = confirm("<?php echo $CONTENT["DELETE_FILE"];?> '" + sName + "' ?");
 	if (resp != null){
 		document.getElementById("H_ACTION").value = "DELETE";
 		document.getElementById("H_NAME").value = sName;
@@ -165,7 +192,7 @@ function delete_file(sName){
 }//delete_file
 
 function new_folder(){
-	folder = prompt("<?=$CONTENT["NEW_FOLDER"];?> ");
+	folder = prompt("<?php echo $CONTENT["NEW_FOLDER"];?>");
 	if (folder !="" && folder != null){
 		//Validar charAt " " != espacio
 		document.getElementById("H_ACTION").value = "NEW_FOLDER";
@@ -175,7 +202,7 @@ function new_folder(){
 }//new_folder
 
 function new_file(){
-	sFile = prompt("<?=$CONTENT["NEW_FILE"];?> ");
+	sFile = prompt("<?php echo $CONTENT["NEW_FILE"];?>");
 	if (sFile !="" && sFile != null){
 		//Validar charAt " " != espacio
 		document.getElementById("H_ACTION").value = "NEW_FILE";
@@ -185,7 +212,7 @@ function new_file(){
 }//new_file
 
 function close_admin(){
-	sclose = confirm("<?=$CONTENT["EXIT"];?>");
+	sclose = confirm("<?php echo $CONTENT["EXIT"];?>");
 	if (sclose){
 		window.location = "index.php";
 	}
@@ -215,11 +242,11 @@ function compress(sFile)
 }
 function show_pop(id)
 {
-	document.getElementById(id).style.display='block';
+    $("#"+id).show();	
 }
 function close_pop(id)
 {
-	document.getElementById(id).style.display='none';
+    $("#"+id).hide();
 }
 </script>
 </head>
@@ -228,32 +255,32 @@ function close_pop(id)
 		if($sMessage!=''){
 		?>
         <div id="divMessage" class="box">
-        	<div style="float:right"><a href="#" onclick="close_pop('divMessage');"><img src="<?=URL;?>/images/close.png" alt="close" /></a></div>
-	        <img src="<?=URL;?>/images/info.png" alt="Info" />&nbsp;<strong><?=$sMessage;?></strong>
+        	<div style="float:right"><a href="#" onclick="close_pop('divMessage');"><img src="<?php echo URL;?>/images/close.png" alt="close" /></a></div>
+	        <img src="<?php echo URL;?>/images/info.png" alt="Info" />&nbsp;<strong><?php echo $sMessage;?></strong>
         </div>
         <?php
 		}//if
 		?>
         <div id="divHelp" class="box" style="display:none;">
-	        	<div style="float:right"><a href="#" onclik="close_pop('divHelp');"><img src="<?=URL;?>/images/close.png" alt="close" /></a></div>                
+	        	<div style="float:right"><a href="#" onclick="$('#divHelp').hide();"><img src="<?php echo URL;?>/images/close.png" alt="close" /></a></div>                
 				<a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a><br />
                 PHP Web File Manager<br />
                 Author: &nbsp;<a href="mailto:gnovaro@gmail.com">Gustavo Novaro</a><br />                         	
-                Version:&nbsp;<?=$sConfig["VERSION"];?><br />
+                Version:&nbsp;<?php echo $sConfig["VERSION"];?><br />
         </div>
-<form name="frmMain" id="frmMain" method="post" action="<?=$_SERVER['PHP_SELF'];?>">
+<form name="frmMain" id="frmMain" method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
   <table width="100%" border="0" cellpadding="0" cellspacing="0">
     <tr bgcolor="#EFEFE9">
-      <td colspan="2"><div align="right"><a href="#" onclick="close_admin();"><img src="<?=URL;?>/images/close.png" alt="close" title="<?=$CONTENT["EXIT"];?>" /></a>&nbsp;</div></td>
+      <td colspan="2"><div align="right"><a href="#" onclick="close_admin();"><img src="<?php echo URL;?>/images/close.png" alt="close" title="<?php echo $CONTENT["EXIT"];?>" /></a>&nbsp;</div></td>
     </tr>
     <tr bgcolor="#EFEFE9">
       <td colspan="2">
       	<table>
         	<tr>
-            	<td>&nbsp;<?=$CONTENT["PATH"];?>&nbsp;<span><input type="text" name="dir" id="txtPath" style="width:650px;" value="<?=realpath($sPath);?>"/></span></td>
-                <td><a href="#" onclick="go_path();"><img src="<?=URL;?>/images/arrow_go.jpg" alt="<?=$CONTENT["GO"];?>" style="border:none;" /></a></td>
-				<td><?=$CONTENT["GO"];?></td>
-                <td>&nbsp;&nbsp;&nbsp;<a href="#" onclick="show_pop('divHelp');"><img src="<?=URL;?>/images/help.gif" alt="<?=$CONTENT["HELP"];?>" /></a></td>
+            	<td>&nbsp;<?php echo $CONTENT["PATH"];?>&nbsp;<span><input type="text" name="dir" id="txtPath" style="width:650px;" value="<?php echo realpath($sPath);?>"/></span></td>
+                <td><a href="#" onclick="go_path();"><img src="<?php echo URL;?>/images/arrow_go.jpg" alt="<?php echo $CONTENT["GO"];?>" style="border:none;" /></a></td>
+				<td><?php echo $CONTENT["GO"];?></td>
+                <td>&nbsp;&nbsp;&nbsp;<a href="#" onclick="show_pop('divHelp');"><img src="<?php echo URL;?>/images/help.gif" alt="<?php echo $CONTENT["HELP"];?>" /></a></td>
 			</tr>
 		</table>
       </td>
@@ -265,9 +292,9 @@ function close_pop(id)
 	<div style="width:160px; margin:10px;">
 	  <table border="0" cellpadding="0" cellspacing="0" width="160px">
           <tr bgcolor="#FFFFFF">
-          	<td><img src="<?=URL;?>/images/box_left.jpg" alt="" /></td>
-            <td width="133" class="textoAzul">&nbsp;<?=$CONTENT["FILE_TASK"];?> </td>
-            <td width="27"><a href="javascript:showhide_with_image('task','img_arrow_task');"><img src="<?=URL;?>/images/up.jpg" id="img_arrow_task" style="border:none" /></a></td>
+          	<td><img src="<?php echo URL;?>/images/box_left.jpg" alt="" /></td>
+            <td width="133" class="textoAzul">&nbsp;<?php echo $CONTENT["FILE_TASK"];?> </td>
+            <td width="27"><a href="javascript:showhide_with_image('task','img_arrow_task');"><img src="<?php echo URL;?>/images/up.jpg" id="img_arrow_task" style="border:none" /></a></td>
           </tr>
 	 </table>
     <div id="task">
@@ -276,16 +303,16 @@ function close_pop(id)
 	        <td colspan="2">&nbsp;</td>
         </tr>
         <tr>
-            <td colspan="2">&nbsp;<img src="<?=URL;?>/images/file.gif" alt="" />&nbsp;<a href="javascript:new_file();" class="menuLeftBar"><?=$CONTENT["NEW_FILE"];?></a></td>
+            <td colspan="2">&nbsp;<img src="<?php echo URL;?>/images/file.gif" alt="" />&nbsp;<a href="javascript:new_file();" class="menuLeftBar"><?php echo $CONTENT["NEW_FILE"];?></a></td>
           </tr>          
           <tr>
-            <td colspan="2">&nbsp;<img src="<?=URL;?>/images/new_folder.jpg" alt="" />&nbsp;<a href="javascript:new_folder();" class="menuLeftBar"><?=$CONTENT["NEW_FOLDER"];?></a></td>
+            <td colspan="2">&nbsp;<img src="<?php echo URL;?>/images/new_folder.jpg" alt="" />&nbsp;<a href="javascript:new_folder();" class="menuLeftBar"><?php echo $CONTENT["NEW_FOLDER"];?></a></td>
           </tr>
           <tr>
-            <td colspan="2">&nbsp;<img src="<?=URL;?>/images/upload.jpg" alt="" />&nbsp;<a href="<?=URL;?>/upload.php" class="menuLeftBar"><?=$CONTENT["UPLOAD_FILE"];?></a></td>
+            <td colspan="2">&nbsp;<img src="<?php echo URL;?>/images/upload.jpg" alt="" />&nbsp;<a href="<?php echo URL;?>/upload.php" class="menuLeftBar"><?php echo $CONTENT["UPLOAD_FILE"];?></a></td>
           </tr>
           <tr>
-            <td colspan="2">&nbsp;<img src="<?=URL;?>/images/control_panel.jpg" alt="" />&nbsp;<a href="<?=URL;?>/control_panel.php" class="menuLeftBar"><?=$CONTENT["CONTROL_PANEL"];?></a></td>
+            <td colspan="2">&nbsp;<img src="<?php echo URL;?>/images/control_panel.jpg" alt="" />&nbsp;<a href="<?php echo URL;?>/control_panel.php" class="menuLeftBar"><?php echo $CONTENT["CONTROL_PANEL"];?></a></td>
           </tr>
           <tr>
 	        <td colspan="2">&nbsp;</td>
@@ -299,9 +326,9 @@ function close_pop(id)
 	  <div style="width:160px; margin:10px;">
 	    <table border="0" cellpadding="0" cellspacing="0" width="160px">
           <tr bgcolor="#FFFFFF">
-          	<td><img src="<?=URL;?>/images/box_left.jpg" alt="" /></td>
-            <td width="133" class="textoAzul">&nbsp;<?=$CONTENT["DETAILS"];?></td>
-            <td width="27"><a href="javascript:showhide_with_image('details','img_arrow_detail');"><img src="<?=URL;?>/images/up.jpg" id="img_arrow_detail" style="border:none" alt="" /></a></td>
+          	<td><img src="<?php echo URL;?>/images/box_left.jpg" alt="" /></td>
+            <td width="133" class="textoAzul">&nbsp;<?php echo $CONTENT["DETAILS"];?></td>
+            <td width="27"><a href="javascript:showhide_with_image('details','img_arrow_detail');"><img src="<?php echo URL;?>/images/up.jpg" id="img_arrow_detail" style="border:none" alt="" /></a></td>
           </tr>
         </table>
         <div id="details">
@@ -312,48 +339,26 @@ function close_pop(id)
           <tr>
             <td colspan="2" style="border-bottom: 1px #FFFFFF; border-right: 1px #FFFFFF;">
 			<?php
-			function format_size($size){
-				switch (true){
-				case ($size > 1099511627776):
-					$size /= 1099511627776;
-					$suffix = 'TB';
-				break;
-				case ($size > 1073741824):
-					$size /= 1073741824;
-					$suffix = 'GB';
-				break;
-				case ($size > 1048576):
-					$size /= 1048576;
-					$suffix = 'MB';   
-				break;
-				case ($size > 1024):
-					$size /= 1024;
-					$suffix = 'KB';
-					break;
-				default:
-					$suffix = 'B';
-				}
-				return round($size, 2)." ".$suffix;
-			}
 			// $df contiene el numero total de bytes disponible en "/"
 			$df = disk_free_space(".");
 			$df = format_size($df);
   		  	?>
-              &nbsp;<?=$CONTENT["SPACE_FREE"];?>:<br />
-              &nbsp;<?=$df;?>
+              &nbsp;<?php echo $CONTENT["SPACE_FREE"];?>:<br />
+              &nbsp;<?php echo $df;?>
               <br />
               <br />
-              </td>
+            </td>
           </tr>
           <tr>
-            <td colspan="2" style="border-bottom: 1px #FFFFFF; border-right: 1px #FFFFFF;"><?
+            <td colspan="2" style="border-bottom: 1px #FFFFFF; border-right: 1px #FFFFFF;">
+            <?php
 			// $df contiene el numero total de bytes disponible en "/"
 			$dt = disk_total_space(".");
 			$dt = format_size($dt);
-  		  ?>
-              &nbsp;<?=$CONTENT["SPACE_TOTAL"];?>:<br />
-              &nbsp;<?=$dt;?>
-              </td>
+  		    ?>
+            &nbsp;<?php echo $CONTENT["SPACE_TOTAL"];?>:<br />
+            &nbsp;<?php echo $dt;?>
+            </td>
           </tr>		  
           <tr>
           	<td colspan="2">&nbsp;</td>
@@ -368,12 +373,12 @@ function close_pop(id)
 	  <table border="0" cellpadding="0" cellspacing="0" width="100%">
         <tr bgcolor="#EFEFE9">
           <td width="10px">&nbsp;</td>
-          <td width="270px">&nbsp;<?=$CONTENT["NAME"];?> </td>
-          <td width="80px"><span class="barra">|</span><?=$CONTENT["SIZE"];?></td>
-          <td><span class="barra">|</span><?=$CONTENT["LAST_MODIFY"];?></td>
-		  <td><span class="barra">|</span><?=$CONTENT["OWNER"];?></td>
-		  <td><span class="barra">|</span><?=$CONTENT["GROUP"];?></td>
-		  <td><span class="barra">|</span><?=$CONTENT["PERMISSIONS"];?></td>
+          <td width="270px">&nbsp;<?php echo $CONTENT["NAME"];?> </td>
+          <td width="80px"><span class="barra">|</span><?php echo $CONTENT["SIZE"];?></td>
+          <td><span class="barra">|</span><?php echo $CONTENT["LAST_MODIFY"];?></td>
+		  <td><span class="barra">|</span><?php echo $CONTENT["OWNER"];?></td>
+		  <td><span class="barra">|</span><?php echo $CONTENT["GROUP"];?></td>
+		  <td><span class="barra">|</span><?php echo $CONTENT["PERMISSIONS"];?></td>
 		  <td colspan="5">&nbsp;</td>
         </tr>
 		<?php 
@@ -404,7 +409,7 @@ function close_pop(id)
 		  <?php
 		  if(is_dir($file)&& $file!='.'){
 		  ?>
-				<img src='<?=URL?>/images/folder.jpg' alt="" />&nbsp;<a href="tree.php?dir=<?=$file;?>" class="menuLeftBar"><?=$file;?></a>
+				<img src='<?php echo URL?>/images/folder.jpg' alt="" />&nbsp;<a href="tree.php?dir=<?php echo $file;?>" class="menuLeftBar"><?php echo $file;?></a>
 		  <?php
 		  }else{
 				//is file
@@ -418,7 +423,7 @@ function close_pop(id)
 			
 				if($file!='.'){
 			?>
-				<img src="<?=$sPathIcon;?>" alt="" />&nbsp;<?=$file;?>
+				<img src="<?php echo $sPathIcon;?>" alt="" />&nbsp;<?php echo$file;?>
 			<?php
 				}//if
 			}//if
@@ -443,18 +448,25 @@ function close_pop(id)
           <?php
           if($file!="." && $file != ".."){
 		  ?>
-		  <td>&nbsp;<?=date ("d F Y H:i:s", filemtime($file));?></td>
-          <td>&nbsp;<?php
-//	          $uid = fileowner($file); //return uid owner file 
-	//		  $sUser = posix_getpwuid($uid); //return array asoc uid with name...  
-		  ?>  
-          <? //=$sUser["name"];?>        
+		  <td>&nbsp;<?php echo date ("d F Y H:i:s", filemtime($file));?></td>
+          <td>&nbsp;
+          <?php
+            if(strtoupper(substr(PHP_OS, 0, 3)) !== 'WIN' )
+            {
+                $uid = fileowner($file); //return uid owner file 
+                $sUser = posix_getpwuid($uid); //return array asoc uid with name...  
+                echo $sUser['name'];
+            }
+          ?>        
           </td>
           <td>&nbsp;<?php
-		  	  //$gid = filegroup($file); //return file group id
-			  //$sGroup = posix_getgrgid($gid);	  		      
-		  ?> 
-          <? //=$sGroup["name"];?>         
+            if(strtoupper(substr(PHP_OS, 0, 3)) !== 'WIN' )
+            {
+                $gid = filegroup($file); //return file group id
+                $sGroup = posix_getgrgid($gid);	  		      
+                echo $sGroup['name'];
+            }
+          ?>         
           </td>
           <td>&nbsp;
           <?php
@@ -514,25 +526,25 @@ function close_pop(id)
           echo show_perm_complete($files[$i]);
 		  clearstatcache();*/
 		  if (fileperms($file))
-		  echo substr(sprintf('%o', fileperms($file)), -4)
+		      echo substr(sprintf('%o', fileperms($file)), -4);
 		  ?>
           </td>
           <?php
           if(is_file($file)){
 		  ?>
-          <td><a href="javascript:edit('<?=$file?>');"><img src="<?=URL?>/images/b_edit.png" alt="<?=$CONTENT["EDIT"];?>" title="<?=$CONTENT["EDIT"];?>" /></a></td>
+          <td><a href="javascript:edit('<?php echo $file?>');"><img src="<?php echo URL?>/images/b_edit.png" alt="<?php echo $CONTENT["EDIT"];?>" title="<?php echo $CONTENT["EDIT"];?>" /></a></td>
           <?php
 		  }//if
 		  else
 		  	echo "<td>&nbsp;</td>";
 		  ?>
-		  <td><a href="javascript:rename('<?=$file;?>');"><img src="<?=URL?>/images/rename.jpg" title="<?=$CONTENT["RENAME"];?>" alt="<?=$CONTENT["RENAME"];?>" /></a></td>
-          <td><a href="javascript:delete_file('<?=$file;?>');"><img src="<?=URL?>/images/delete.gif" title="<?=$CONTENT["DELETE"];?>" alt="<?=$CONTENT["DELETE"];?>" /></a></td>		  
+		  <td><a href="javascript:rename('<?php echo $file;?>');"><img src="<?php echo URL?>/images/rename.jpg" title="<?php echo $CONTENT["RENAME"];?>" alt="<?php echo $CONTENT["RENAME"];?>" /></a></td>
+          <td><a href="javascript:delete_file('<?php echo $file;?>');"><img src="<?php echo URL?>/images/delete.gif" title="<?php echo $CONTENT["DELETE"];?>" alt="<?php echo $CONTENT["DELETE"];?>" /></a></td>		  
 		  <?php
               if(is_file($file)){
           ?>
-          <td><a href="javascript:compress('<?=$file;?>');"><img src="<?=URL?>/images/zip.gif" alt="<?=$CONTENT["COMPRESS"];?>" title="<?=$CONTENT["COMPRESS"];?>" /></a></td>
-          <td><a href="javascript:download_file('<?=$file?>');"><img src="<?=URL?>/images/download.gif" alt="<?=$CONTENT["DOWNLOAD"];?>" title="<?=$CONTENT["DOWNLOAD"];?>" /></a></td>
+          <td><a href="javascript:compress('<?php echo $file;?>');"><img src="<?php echo URL?>/images/zip.gif" alt="<?php echo $CONTENT["COMPRESS"];?>" title="<?php echo $CONTENT["COMPRESS"];?>" /></a></td>
+          <td><a href="javascript:download_file('<?php echo $file?>');"><img src="<?php echo URL?>/images/download.gif" alt="<?php echo $CONTENT["DOWNLOAD"];?>" title="<?php echo $CONTENT["DOWNLOAD"];?>" /></a></td>
           <?php
           }//if
           ?>
@@ -551,9 +563,9 @@ function close_pop(id)
     <!-- BARRA ESTADO -->
     <tr bgcolor="#EFEFE9">
       <!-- -->
-      <td style="height:24px;"><img src="<?=URL;?>/images/spacer.gif" alt="" width="3" />&nbsp;<?=$i-2;?>&nbsp;<?=$CONTENT["OBJECTS"];?>&nbsp;</td>
+      <td style="height:24px;"><img src="<?php echo URL;?>/images/spacer.gif" alt="" width="3" />&nbsp;<?php echo $i-2;?>&nbsp;<?php echo $CONTENT["OBJECTS"];?>&nbsp;</td>
       <td align="right">
-      <a href="http://gustavonovaro.blogspot.com" target="_blank">Blog de Tavo</a>&nbsp; - <a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a> | Version: <?=$sConfig["VERSION"];?> &nbsp;
+      <a href="http://gustavonovaro.com.ar" target="_blank">Blog de Tavo</a>&nbsp; - <a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a> | Version: <?php echo $sConfig["VERSION"];?> &nbsp;
       </td>
     </tr>
   </table>

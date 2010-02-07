@@ -36,10 +36,10 @@ if(isset($_POST['H_FILE_NAME']))
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-    <title><?=$CONTENT['TITLE'];?></title>
-    <link rel="stylesheet" type="text/css" href="<?=URL?>/style.css" />
-    <script src="<?=URL?>/codepress/codepress.js" type="text/javascript"></script>
-    <script src="<?=URL?>/js/function.js" type="text/javascript"></script>
+    <title><?php echo $CONTENT['TITLE'];?></title>
+    <link rel="stylesheet" type="text/css" href="<?php echo URL?>/style.css" />
+    <script src="<?php echo URL?>/codepress/codepress.js" type="text/javascript"></script>
+    <script src="<?php echo URL?>/js/function.js" type="text/javascript"></script>
     <meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
 </head>
 
@@ -110,7 +110,7 @@ if(isset($_POST['H_FILE_NAME']))
                 $sContent = file_get_contents($sPath);
             }//is_file
         ?>
-        <textarea name="content" id="myCpWindow" class="codepress <?=$language;?> linenumbers-on" cols="80" rows="40"><?=$sContent;?></textarea>
+        <textarea name="content" id="myCpWindow" class="codepress <?php echo $language;?> linenumbers-on" cols="80" rows="40"><?php echo $sContent;?></textarea>
         </td>
 	</tr>
     <tr>        
@@ -122,7 +122,7 @@ if(isset($_POST['H_FILE_NAME']))
         </td>
 	</tr>        
     </table>
-    <input type="hidden" name="H_FILE_NAME" id="H_FILE_NAME" value="<?=$sFile?>" />
+    <input type="hidden" name="H_FILE_NAME" id="H_FILE_NAME" value="<?php echo $sFile?>" />
 
 	</div>
     </form>

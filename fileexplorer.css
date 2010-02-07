@@ -24,4 +24,6 @@ a{color:#0000FF;}
 	height:100px;
 	-moz-border-radius:5px;	
 	-webkit-border-radius:5px; /*Safary-Chrome*/
+    -ms-border-radius:5px; /*IE*/
+    border-radius:5px; /*CSS 3.0 experimental only Firefox no IE*/
 }
