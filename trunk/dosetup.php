@@ -2,27 +2,29 @@
 /**
 * Setup Process
 * @author Gustavo Novaro <gnovaro@gmail.com>
-* @version 1.59
+* @version $Id$
 */
 require("./error_handler.php");	
 require("./function.php");
 session_start();
-if ($_POST["txtUserAdmin"]){
-	$sUser = $_POST["txtUserAdmin"];
-	$sPass = sha1($_POST["txtPassAdmin"]);
-	$sUrl = $_POST["txtUrl"];
-	$sTimeZone = (isset($_POST["php_zone"]))? $_POST["php_zone"] : "";
-	$sVersion = '1.59';
+if (isset($_POST['user'])){
+	$sUser = trim($_POST['user']);
+	$sPass = sha1(trim($_POST['password']));
+	$sUrl = $_POST['url'];
+	$sTimeZone = (isset($_POST['php_zone']))? $_POST['php_zone'] : '';
+	$sVersion = '1.62';
 	
 	$oFile = fopen("config.php","w+");
-	$sLineBreak = " \n";
+	$sLineBreak = "\n";
 	
 	$sContent = '<?php '.$sLineBreak;
 	$sContent .='/**'.$sLineBreak;
 	$sContent .='* Configuration File'.$sLineBreak;
 	$sContent .='* @author Gustavo Novaro <gnovaro@gmail.com>'.$sLineBreak;
 	$sContent .='* @version '.$sVersion.$sLineBreak;
-	$sContent .='* http://fileexplorerxp.googlecode.com'.$sLineBreak;
+	$sContent .='* Project Home Page: http://fileexplorerxp.googlecode.com'.$sLineBreak;
+    $sContent .='* Blog: http://gustavonovaro.com.ar'.$sLineBreak;
+    $sContent .='* Twitter: http://www.twitter.com/gnovaro'.$sLineBreak;
 	$sContent .='*/'.$sLineBreak;
 	$sContent .='$sConfig["VERSION"]   = "'.$sVersion.'";'.$sLineBreak;
 	$sContent .='$sConfig["USER"]      = "'.$sUser.'"; '.$sLineBreak;

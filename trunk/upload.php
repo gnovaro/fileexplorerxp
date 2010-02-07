@@ -33,9 +33,9 @@ if(!isset($_SESSION["login"]))
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-    <title><?=$CONTENT["TITLE"];?></title>
-    <link rel="stylesheet" type="text/css" href="<?=URL?>/fileexplorer.css" />
-    <script type="text/javascript" src="<?=URL?>/js/function.js"></script>
+    <title><?php echo $CONTENT["TITLE"];?></title>
+    <link rel="stylesheet" type="text/css" href="<?php echo URL?>/fileexplorer.css" />
+    <script type="text/javascript" src="<?php echo URL?>/js/function.js"></script>
     <meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
 </head>
 
@@ -44,27 +44,34 @@ if(!isset($_SESSION["login"]))
 <table cellspacing="0" width="100%">
 <!-- Menu BAR -->
 <tr bgcolor="#EFEFE9">
-    <td colspan="2">&nbsp;<a href="<?=URL;?>/tree.php" class="no_underline"><img src="images/back.gif" alt="<?=$CONTENT["BACK"];?>" />&nbsp;<span class=""><?=$CONTENT["BACK"];?></span></a></td>
+    <td colspan="2">&nbsp;<a href="<?php echo URL;?>/tree.php" class="no_underline"><img src="images/back.gif" alt="<?php echo $CONTENT["BACK"];?>" />&nbsp;<span class=""><?php echo $CONTENT["BACK"];?></span></a></td>
 </tr>
 <!-- Menu BAR -->   
 <tr>
     <td width="180px;" height="500" bgcolor="#6B85DC" style="vertical-align:top;" rowspan="2">&nbsp;</td>
     <td style="vertical-align:top;">
     <br />
+    
     <table>
     <tr>
-    	<td><?=$CONTENT["CHOOSE_FILE"];?></td>
+    	<td><?php echo $CONTENT["CHOOSE_FILE"];?></td>
 	</tr>
     <tr>
 	    <td>
-        <a href="javascript:add_file();"><?=$CONTENT['FILE_ADD'];?>&nbsp;<img src="<?=URL?>/images/add.gif" alt="<?=$CONTENT['FILE_ADD'];?>" /></a>
+        <a href="javascript:add_file();">
+            <?php echo $CONTENT['FILE_ADD'];?>&nbsp;
+            <img src="<?php echo URL?>/images/add.gif" alt="<?php echo $CONTENT['FILE_ADD'];?>" />
+        </a>
         <div id="div_upload_photos">
         	<input type="file" name="file[]" id="file" /><br />
         </div>
         </td>
 	</tr>        
     <tr>
-		<td style="text-align:right"><input type="button" name="btCancel" value="<?=$CONTENT["BT_CANCEL"];?>" onclick="redirect('<?=URL;?>/tree.php');" />&nbsp;<input type="submit" value="<?=$CONTENT["BT_UPLOAD"];?>"/></td>
+		<td style="text-align:right">
+        <input type="button" name="btCancel" value="<?php echo $CONTENT["BT_CANCEL"];?>" onclick="redirect('<?php echo URL;?>/tree.php');" />
+        &nbsp;
+        <input type="submit" value="<?php echo $CONTENT["BT_UPLOAD"];?>"/></td>
     </tr>
     </table>
     </td>
