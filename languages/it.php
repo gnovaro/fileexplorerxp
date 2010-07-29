@@ -24,10 +24,10 @@
 	$CONTENT['CONTROL_PANEL'] = 'Panella di Controllo'; 
 	$CONTENT['BT_CANCEL'] = 'Anulla'; 
 	$CONTENT['BT_UPLOAD'] = 'Alzare';
-	$CONTENT['RENAME_FILE'] = '¿Rinomare l&apos; archivio?:'; 
-	$CONTENT['DELETE_FILE'] = '¿Desea cancellare l&apos; archivio?:'; 
+	$CONTENT['RENAME_FILE'] = 'Â¿Rinomare l&apos; archivio?:'; 
+	$CONTENT['DELETE_FILE'] = 'Â¿Desea cancellare l&apos; archivio?:'; 
 	$CONTENT['DETAILS'] = 'Dettagli:';
-	$CONTENT['EXIT'] = '¿Esta seguro que de sea cerrar el Administrador de Archivios?';
+	$CONTENT['EXIT'] = 'Â¿Esta seguro que de sea cerrar el Administrador de Archivios?';
 	$CONTENT['PATH'] = 'Direzione';
 	$CONTENT['FILE_SUCESS'] = 'Archivio creado en forma satisfactoria';	
 	$CONTENT['FILE_FAIL'] = 'ERRORE: Ya existe un archivio con ese nombre';
