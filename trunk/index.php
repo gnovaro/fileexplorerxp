@@ -6,9 +6,10 @@
 * File: index.php
 * Purpose: Login
 */
-    if (!file_exists("./config.php"))
+	
+  if (!file_exists("./config.php"))
     	{header("location: setup.php");}
-    else	
+  else	
     	{require("./config.php");}
     	
     require("./error_handler.php");	

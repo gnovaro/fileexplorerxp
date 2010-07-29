@@ -33,6 +33,8 @@
 	$CONTENT['FILE_SUCESS'] = 'File created sucess';	
 	$CONTENT['FILE_FAIL'] = 'ERROR: File already exist, whit same name';
 	$CONTENT['FILE_ADD'] = 'Add File';
+	$CONTENT['CREATE_DIR_SUCESS'] = 'Make folder success';
+	$CONTENT['CREATE_DIR_FAIL']   = 'Can\'t create folder, permission denied';		
 	$CONTENT['DELETE_DIR_SUCESS'] = 'Directory deleted sucess';
 	$CONTENT['DELETE_DIR_FAIL'] = 'ERROR: Can\'t remove folder, verify is empty';
 	$CONTENT['DELETE_FILE_SUCESS'] = 'File deleted sucess';

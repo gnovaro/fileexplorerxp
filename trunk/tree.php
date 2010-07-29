@@ -6,8 +6,9 @@
 * File: tree.php
 * Purpose: View and listing files and directory
 */
+    error_reporting(E_ALL);
     require('./config.php');
-    require('./error_handler.php');	
+    //require('./error_handler.php');	
     require('./function.php');	
     
     $sLang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2);
@@ -18,7 +19,7 @@
     }else{
     	//defualt lang english
     	require('./languages/en.php'); 
-    }//if
+    }//if    
     
     //Security check
     session_start();
@@ -99,7 +100,12 @@
 		switch($sAction){
 			case 'NEW_FOLDER': 
 				$sDirName = $_POST["H_NAME"];
-				mkdir($sDirName, 0700);			
+				if(mkdir($sDirName, 0700))
+				{
+					$sMessage = $CONTENT["CREATE_DIR_SUCESS"];
+				} else {
+					$sMessage = $CONTENT["CREATE_DIR_FAIL"];
+				}			
 				break;
 			case 'NEW_FILE':
 				$sName = $_POST["H_NAME"];
