@@ -1,61 +1,63 @@
 <?php
 /**
-* English Language File
-* @author: Gustavo Novaro <gnovaro@gmail.com>
-* @version: 1.33
-*/
-	$CONTENT['TITLE'] = '::: File Explorer XP :::';
-	$CONTENT['USER']  = 'User';
-	$CONTENT['PASSWORD'] = 'Password';
-	$CONTENT['DETAILS'] = 'Details';
-	$CONTENT['OBJECTS'] = 'Objects';
-	$CONTENT['SPACE_FREE'] = 'Free Space';
-	$CONTENT['SPACE_TOTAL'] = 'Total Space';
-	$CONTENT['NAME'] = 'Name';
-	$CONTENT['SIZE'] = 'Size';
-	$CONTENT['LAST_MODIFY'] = 'Last Modify';
-	$CONTENT['OWNER'] = 'Owner'; 
-	$CONTENT['GROUP'] = 'Group';
-	$CONTENT['PERMISSIONS'] = 'Permissions';
-	$CONTENT['GO'] = 'Go';
-	$CONTENT['FILE_TASK'] = 'File Task'; 
-	$CONTENT['NEW_FILE'] = 'New File'; 
-	$CONTENT['NEW_FOLDER'] = 'New Folder';  
-	$CONTENT['UPLOAD_FILE'] = 'Upload file'; 
-	$CONTENT['CONTROL_PANEL'] = 'Control Panel'; 
-	$CONTENT['BT_CANCEL'] = 'Cancel'; 
-	$CONTENT['BT_UPLOAD'] = 'Upload';
-	$CONTENT['RENAME_FILE'] = 'Rename file:'; 
-	$CONTENT['DELETE_FILE'] = 'Delete file:'; 
-	$CONTENT['DETAILS'] = 'Details:';
-	$CONTENT['EXIT'] = 'Are you sure, close File Manager?';
-	$CONTENT['PATH'] = 'Path:';
-	$CONTENT['FILE_SUCESS'] = 'File created sucess';	
-	$CONTENT['FILE_FAIL'] = 'ERROR: File already exist, whit same name';
-	$CONTENT['FILE_ADD'] = 'Add File';
-	$CONTENT['CREATE_DIR_SUCESS'] = 'Make folder success';
-	$CONTENT['CREATE_DIR_FAIL']   = 'Can\'t create folder, permission denied';		
-	$CONTENT['DELETE_DIR_SUCESS'] = 'Directory deleted sucess';
-	$CONTENT['DELETE_DIR_FAIL'] = 'ERROR: Can\'t remove folder, verify is empty';
-	$CONTENT['DELETE_FILE_SUCESS'] = 'File deleted sucess';
-	$CONTENT['DELETE_FILE_FAIL'] = 'ERROR: Can\'t delete file, comprube que no esta en uso';
-	$CONTENT['RENAME_FILE_SUCESS'] = 'File renamed sucess';
-	$CONTENT['RENAME_FILE_FAIL'] = 'ERROR: Can\'t rename file, comprube que no esta en uso';
-	$CONTENT['EXIT'] = 'Exit';
-	$CONTENT['EDIT'] = 'Edit';
-	$CONTENT['DOWNLOAD'] = 'Download';
-	$CONTENT['DELETE'] = 'Delete';
-	$CONTENT['RENAME'] = 'Rename';
-	$CONTENT['COMPRESS'] = 'Compress';
-	$CONTENT['CHOOSE_FILE'] = 'Choose file:';
-	$CONTENT['UPLOAD_SUCESS'] = 'Upload file sucess';
- 	$CONTENT['UPLOAD_FAIL'] = 'ERROR: Can\'t upload file, try again';
-	$CONTENT['HELP'] = 'Help';
-	$CONTENT['SUBJECT'] = 'Subject';
-	$CONTENT['SUBMIT'] = 'Submit';
-	$CONTENT['BACK'] = 'Back';
-	$CONTENT['Next'] = 'Next';
-	$CONTENT['LANGUAGE'] = 'Language';
-	$CONTENT['REPORT_BUG'] = 'Report <br />Bug';
-	$CONTENT['USER_ACCOUNTS'] = 'User <br /> Accounts';
-	$CONTENT['SETUP'] = 'Setup';
+ * English Language File
+ * @author  Gustavo Novaro <gnovaro@gmail.com>
+ * @version 1.33
+ */
+ $CONTENT = array(
+	'TITLE' => '::: File Explorer XP :::',
+	'USER'  => 'User',
+	'PASSWORD' => 'Password',
+	'DETAILS' => 'Details',
+	'OBJECTS' => 'Objects',
+	'SPACE_FREE' => 'Free Space',
+	'SPACE_TOTAL' => 'Total Space',
+	'NAME' => 'Name',
+	'SIZE' => 'Size',
+	'LAST_MODIFY' => 'Last Modify',
+	'OWNER' => 'Owner', 
+	'GROUP' => 'Group',
+	'PERMISSIONS' => 'Permissions',
+	'GO' => 'Go',
+	'FILE_TASK' => 'File Task', 
+	'NEW_FILE' => 'New File', 
+	'NEW_FOLDER' => 'New Folder',  
+	'UPLOAD_FILE' => 'Upload file', 
+	'CONTROL_PANEL' => 'Control Panel', 
+	'BT_CANCEL' => 'Cancel', 
+	'BT_UPLOAD' => 'Upload',
+	'RENAME_FILE' => 'Rename file:', 
+	'DELETE_FILE' => 'Delete file:', 
+	'DETAILS' => 'Details:',
+	'EXIT' => 'Are you sure, close File Manager?',
+	'PATH' => 'Path:',
+	'FILE_SUCESS' => 'File created sucess',	
+	'FILE_FAIL' => 'ERROR: File already exist, whit same name',
+	'FILE_ADD' => 'Add File',
+	'CREATE_DIR_SUCESS' => 'Make folder success',
+	'CREATE_DIR_FAIL'   => 'Can\'t create folder, permission denied',		
+	'DELETE_DIR_SUCESS' => 'Directory deleted sucess',
+	'DELETE_DIR_FAIL' => 'ERROR: Can\'t remove folder, verify is empty',
+	'DELETE_FILE_SUCESS' => 'File deleted sucess',
+	'DELETE_FILE_FAIL' => 'ERROR: Can\'t delete file, comprube que no esta en uso',
+	'RENAME_FILE_SUCESS' => 'File renamed sucess',
+	'RENAME_FILE_FAIL' => 'ERROR: Can\'t rename file, comprube que no esta en uso',
+	'EXIT' => 'Exit',
+	'EDIT' => 'Edit',
+	'DOWNLOAD' => 'Download',
+	'DELETE' => 'Delete',
+	'RENAME' => 'Rename',
+	'COMPRESS' => 'Compress',
+	'CHOOSE_FILE' => 'Choose file:',
+	'UPLOAD_SUCESS' => 'Upload file sucess',
+ 	'UPLOAD_FAIL' => 'ERROR: Can\'t upload file, try again',
+	'HELP' => 'Help',
+	'SUBJECT' => 'Subject',
+	'SUBMIT' => 'Submit',
+	'BACK' => 'Back',
+	'Next' => 'Next',
+	'LANGUAGE' => 'Language',
+	'REPORT_BUG' => 'Report <br />Bug',
+	'USER_ACCOUNTS' => 'User <br /> Accounts',
+	'SETUP' => 'Setup'
+);
