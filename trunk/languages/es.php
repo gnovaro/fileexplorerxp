@@ -24,10 +24,10 @@
 	$CONTENT['CONTROL_PANEL'] = 'Panel de Control'; 
 	$CONTENT['BT_CANCEL'] = 'Cancelar'; 
 	$CONTENT['BT_UPLOAD'] = 'Subir';
-	$CONTENT['RENAME_FILE'] = '¿Renombrar el archivo:'; 
-	$CONTENT['DELETE_FILE'] = '¿Desea eliminar el archivo:'; 
+	$CONTENT['RENAME_FILE'] = 'Â¿Renombrar el archivo:'; 
+	$CONTENT['DELETE_FILE'] = 'Â¿Desea eliminar el archivo:'; 
 	$CONTENT['DETAILS'] = 'Detalles:';
-	$CONTENT['EXIT'] = '¿Esta seguro que de sea cerrar el Administrador de Archivos?';
+	$CONTENT['EXIT'] = 'Â¿Esta seguro que de sea cerrar el Administrador de Archivos?';
 	$CONTENT['PATH'] = 'Direcci&oacute;n:';
 	$CONTENT['FILE_SUCESS'] = 'Archivo creado en forma satisfactoria';	
 	$CONTENT['FILE_FAIL'] = 'ERROR: Ya existe un archivo con ese nombre';
