@@ -1,7 +1,7 @@
 <?php
 /**
 * @author	Gustavo Novaro <gnovaro@gmail.com>
-* @version	1.66
+* @version	1.67
 * URL: http://gustavonovaro.com.ar
 * File: index.php
 * Purpose: Login
@@ -13,6 +13,7 @@
     	
     require("./error_handler.php");	
     require("./function.php");
+    
     session_start();
     $sLang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2);
     //echo $sLang;
@@ -20,18 +21,19 @@
     if (file_exists($sPath))
     {
     	require($sPath);
-    }
-    else
-    {
-    	//defualt lang spanish
+    } else {
+    	//default lang spanish
     	require("./languages/es.php"); 
     }//if
 
-	if (isset($_SESSION['__MSG__']))
-		$sMsg = $_SESSION['__MSG__'];		
-	else
+	if (isset($_SESSION['__MSG__'])) 
+	{
+		$sMsg = $_SESSION['__MSG__'];
+		unset($_SESSION['__MSG__']);		
+	} else {
 		$sMsg = '';
-
+	}//if
+	
 	//destroy session - Logout
 	if (isset($_SESSION['login'])) 
 	{
@@ -46,7 +48,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title><?php echo $CONTENT['TITLE'];?></title>
     <meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
-	<link rel="stylesheet" type="text/css" href="fileexplorer.css" />
+	<link type="text/css" rel="stylesheet" href="fileexplorer.css" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
     <script src="http://ajax.microsoft.com/ajax/jquery.validate/1.6/jquery.validate.min.js"></script> 
 </head>
