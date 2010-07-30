@@ -1,13 +1,13 @@
 <?php
 /**
 * @author Gustavo Novaro <gnovaro@gmail.com>
-* @version 1.04
-* URL: http://gustavonovaro.blogspot.com
-* file: control_panel.php
+* @version 1.74
+* URL: http://gustavonovaro.com.ar
+* File: control_panel.php
 * Purpose:
 */
     require("./config.php");
-    require("./error_handler.php");	
+    require("./error_handler.php");
     require("./function.php");
     $sLanguages = get_lang();
     $sLang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2);
@@ -16,21 +16,18 @@
     if (file_exists($sPath))
     {
     	require($sPath);
-    }
-    else
-    {
+    } else {
     	//defualt lang spanish
     	require("./languages/es.php"); 
     }//if
     
     //Security check
     session_start();
-    if(!isset($_SESSION["login"]))
-    	redirect("index.php");
+    if(!isset($_SESSION['login']))
+    	redirect('index.php');
     //security
-    
     //Quantity Objects Status bar
-    $iObject = 3;
+    $i = $iObject = 5;
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -42,6 +39,13 @@
 	<script type="text/javascript" src="<?php echo URL;?>/js/function.js"></script>
 </head>
 <body>
+<div id="header-bar">
+		<div id="header-bar-title">&nbsp;<?php echo $CONTENT["TITLE"];?></div>
+		<div id="header-bar-button">
+		<a href="#" onclick="close_admin();">
+		<img src="<?php echo URL;?>/images/close.png" alt="close" title="<?php echo $CONTENT["EXIT"];?>" /></a>&nbsp;
+		</div>
+	</div><!--header-bar-->
 <table cellspacing="0" width="100%">
 <!-- Menu BAR -->
 <tr bgcolor="#EFEFE9">
@@ -137,16 +141,14 @@
         </table>
     </div>
     <input type="submit" name="btSend" id="btSendR" onclick="" value="<?php echo $CONTENT["SUBMIT"];?>" />
-    </form>
+  <!--status-bar-->
+  <div id="status-bar">
+	<div id="objects">&nbsp;<?php echo $i-2;?>&nbsp;<?php echo $CONTENT["OBJECTS"];?>&nbsp;</div>
+	<div id="about"><a href="http://gustavonovaro.com.ar" target="_blank">Blog de Tavo</a>&nbsp; - <a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a> | Version: <?php echo $config['VERSION'];?> &nbsp;</div>
+  </div>
+  <!--status-bar-->    
+</form>
 </td>   
-    <!-- BARRA ESTADO -->
-    <tr bgcolor="#EFEFE9">
-      <!-- -->
-      <td><img src="<?php echo URL;?>/images/spacer.gif" alt="" height="20" width="3" />&nbsp;<?php echo $iObject;?>&nbsp;<?php echo $CONTENT["OBJECTS"];?>&nbsp;</td>
-      <td align="right">
-      <a href="http://gustavonovaro.com.ar" target="_blank">Blog de Tavo</a>&nbsp; - <a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a> | Version: <?php echo $sConfig["VERSION"];?> &nbsp;
-      </td>
-    </tr>
 </table>
 </body>
 </html>

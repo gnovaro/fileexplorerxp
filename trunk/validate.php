@@ -1,17 +1,17 @@
 <?php
 /**
-* @author Gustavo Novaro <gnovaro@gmail.com>
-* @version 1.45
-* URL: http://gustavonovaro.blogspot.com
-* Purpouse: Generic validation hardcode process
-*/
-
+ * Generic validation hardcode process
+ * @author Gustavo Novaro <gnovaro@gmail.com>
+ * @version 1.74
+ * URL: http://gustavonovaro.blogspot.com
+ *
+ */
 	require('./config.php');
 	require('./function.php');
 	session_start();
 	$user = addslashes(trim($_POST['user']));  
 	$pass = sha1(addslashes(trim($_POST['password'])));
-	if ( $user == $sConfig['USER'] &&  $pass == $sConfig['PASS'])
+	if ( $user == $config['USER'] &&  $pass == $config['PASS'])
 	{
 		$_SESSION['login'] = true;
 		redirect('tree.php');	

@@ -7,12 +7,13 @@
 * Purpose: Login
 */
 	
+  error_reporting(E_ALL);
   if (!file_exists("./config.php"))
     	{header("location: setup.php");}
   else	
     	{require("./config.php");}
     	
-    require("./error_handler.php");	
+    //require("./error_handler.php");	
     require("./function.php");
     
     session_start();
@@ -49,7 +50,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title><?php echo $CONTENT['TITLE'];?></title>
     <meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
-	<link type="text/css" rel="stylesheet" href="fileexplorer.css" />
+    <link type="text/css" rel="stylesheet" href="fileexplorer.css" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
     <script src="http://ajax.microsoft.com/ajax/jquery.validate/1.6/jquery.validate.min.js"></script> 
 </head>
@@ -96,7 +97,7 @@
 </form>
 <div style="margin-top:170px;">
 	<div align="right">
-    <a href="http://gustavonovaro.com.ar" target="_blank">Blog de Tavo</a>&nbsp; - <a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a> | Version: <?php echo $sConfig["VERSION"];?> &nbsp;
+    <a href="http://gustavonovaro.com.ar" target="_blank">Blog de Tavo</a>&nbsp; - <a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a> | Version: <?php echo $config["VERSION"];?> &nbsp;
     </div>
 </div>
 </body>

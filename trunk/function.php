@@ -38,11 +38,11 @@ function phpnum() {
 function is_php5() { if (phpnum() == 5) return true; }
 function is_php4() { if (phpnum() == 4) return true; }
 if (phpnum()==5){
-	if(isset($sConfig["TIME_ZONE"])){
-		date_default_timezone_set($sConfig["TIME_ZONE"]);
-	}else{
+	if(isset($config["TIME_ZONE"])){
+		date_default_timezone_set($config["TIME_ZONE"]);
+	} else {
 		date_default_timezone_set("UTC");
-	}
+	}//if
 }//if
 
 function getIP(){	
