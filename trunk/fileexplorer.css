@@ -1,12 +1,11 @@
 @charset "utf-8";
 /**
 * @author Gustavo Novaro <gnovaro@gmail.com>
-* @version 1.60
+* @version 1.69
 */
 body{margin: 0px; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:0.75em;}
 img{border:none;}
 .textWhite{color:#FFFFFF;}
-.textoAzul{color:#0000FF;font-weight:bold;}
 .barra{color:#999999; font-size:16px;}
 .menuLeftBar{text-decoration:none;}
 .menuLeftBar:hover{text-decoration:underline;}
@@ -27,3 +26,13 @@ a{color:#0000FF;}
     -ms-border-radius:5px; /*IE*/
     border-radius:5px; /*CSS 3.0 experimental only Firefox no IE*/
 }
+#header-bar, #address-bar, #status-bar{background:#EFEFE9;height:30px}
+#header-bar-title{float:left; width:70%;}
+#header-bar-button{float:right; width:29%; text-align:right}
+#status-bar #objects{float:left; width:30%;}
+#status-bar #about{float:right; width:70%; text-align:right}
+.box-title{background:#FFF; height:25px}
+.arrow{float:right;}
+#details, #file-task{float:left; background:#D6DFF7; width:160px; margin:10px}
+#file-task ul{list-style:none; padding:0px}
+.textoAzul{color:#0000FF;font-weight:bold; float:left;}

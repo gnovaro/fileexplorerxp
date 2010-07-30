@@ -163,15 +163,12 @@
     <script src="http://ajax.microsoft.com/ajax/jquery.validate/1.6/jquery.validate.min.js"></script> 
     <script type="text/javascript">
     function showhide_with_image(targetDiv,actionImage){
-	    image = document.getElementById(actionImage)
-		var oVDiv = document.getElementById(targetDiv);
-		prop = oVDiv.style.display;
-		if(prop == "none"){
-			oVDiv.style.display = "block";
+	    var image = document.getElementById(actionImage);
+		if($("#"+targetDiv).css("display") == "none"){
+			$("#"+targetDiv).slideDown("slow");
 			image.src = "<?php echo URL?>/images/up.jpg";
-		}
-		else{
-			oVDiv.style.display = "none";
+		} else {
+			$("#"+targetDiv).slideUp("slow");
 			image.src = "<?php echo URL?>/images/down.jpg";
 		}
     }//showhide_with_image
@@ -260,7 +257,7 @@ function close_pop(id)
 		<?php
 		if($sMessage!=''){
 		?>
-        <div id="divMessage" class="box">
+        <div id="divMessage" class="box">			
         	<div style="float:right"><a href="#" onclick="close_pop('divMessage');"><img src="<?php echo URL;?>/images/close.png" alt="close" /></a></div>
 	        <img src="<?php echo URL;?>/images/info.png" alt="Info" />&nbsp;<strong><?php echo $sMessage;?></strong>
         </div>
@@ -275,75 +272,48 @@ function close_pop(id)
                 Version:&nbsp;<?php echo $sConfig["VERSION"];?><br />
         </div>
 <form name="frmMain" id="frmMain" method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+	<div id="header-bar">
+		<div id="header-bar-title">&nbsp;<?php echo $CONTENT["TITLE"];?></div>
+		<div id="header-bar-button"><a href="#" onclick="close_admin();"><img src="<?php echo URL;?>/images/close.png" alt="close" title="<?php echo $CONTENT["EXIT"];?>" /></a>&nbsp;</div>
+	</div><!--header-bar-->
+	<div id="address-bar">
+		<span>&nbsp;<?php echo $CONTENT["PATH"];?>&nbsp;<input type="text" name="dir" id="txtPath" style="width:650px;" value="<?php echo realpath($sPath);?>"/></span>		
+		<a href="#" onclick="go_path();"><img src="<?php echo URL;?>/images/arrow_go.jpg" alt="<?php echo $CONTENT["GO"];?>" style="border:none;" /></a>
+		<?php echo $CONTENT["GO"];?>
+		&nbsp;&nbsp;&nbsp;<a href="#" onclick="show_pop('divHelp');"><img src="<?php echo URL;?>/images/help.gif" alt="<?php echo $CONTENT["HELP"];?>" /></a>
+	</div>
   <table width="100%" border="0" cellpadding="0" cellspacing="0">
-    <tr bgcolor="#EFEFE9">
-      <td colspan="2"><div align="right"><a href="#" onclick="close_admin();"><img src="<?php echo URL;?>/images/close.png" alt="close" title="<?php echo $CONTENT["EXIT"];?>" /></a>&nbsp;</div></td>
-    </tr>
-    <tr bgcolor="#EFEFE9">
-      <td colspan="2">
-      	<table>
-        	<tr>
-            	<td>&nbsp;<?php echo $CONTENT["PATH"];?>&nbsp;<span><input type="text" name="dir" id="txtPath" style="width:650px;" value="<?php echo realpath($sPath);?>"/></span></td>
-                <td><a href="#" onclick="go_path();"><img src="<?php echo URL;?>/images/arrow_go.jpg" alt="<?php echo $CONTENT["GO"];?>" style="border:none;" /></a></td>
-				<td><?php echo $CONTENT["GO"];?></td>
-                <td>&nbsp;&nbsp;&nbsp;<a href="#" onclick="show_pop('divHelp');"><img src="<?php echo URL;?>/images/help.gif" alt="<?php echo $CONTENT["HELP"];?>" /></a></td>
-			</tr>
-		</table>
-      </td>
-    </tr>
     <tr>
     <td width="180" bgcolor="#6B85DC" style="vertical-align:top;">
-	<!-- Panel Tareas -->
     <br />
-	<div style="width:160px; margin:10px;">
-	  <table border="0" cellpadding="0" cellspacing="0" width="160px">
-          <tr bgcolor="#FFFFFF">
-          	<td><img src="<?php echo URL;?>/images/box_left.jpg" alt="" /></td>
-            <td width="133" class="textoAzul">&nbsp;<?php echo $CONTENT["FILE_TASK"];?> </td>
-            <td width="27"><a href="javascript:showhide_with_image('task','img_arrow_task');"><img src="<?php echo URL;?>/images/up.jpg" id="img_arrow_task" style="border:none" /></a></td>
-          </tr>
-	 </table>
-    <div id="task">
-        <table border="0" cellpadding="0" cellspacing="0" width="160px" bgcolor="#D6DFF7">     		  
-        <tr>
-	        <td colspan="2">&nbsp;</td>
-        </tr>
-        <tr>
-            <td colspan="2">&nbsp;<img src="<?php echo URL;?>/images/file.gif" alt="" />&nbsp;<a href="javascript:new_file();" class="menuLeftBar"><?php echo $CONTENT["NEW_FILE"];?></a></td>
-          </tr>          
-          <tr>
-            <td colspan="2">&nbsp;<img src="<?php echo URL;?>/images/new_folder.jpg" alt="" />&nbsp;<a href="javascript:new_folder();" class="menuLeftBar"><?php echo $CONTENT["NEW_FOLDER"];?></a></td>
-          </tr>
-          <tr>
-            <td colspan="2">&nbsp;<img src="<?php echo URL;?>/images/upload.jpg" alt="" />&nbsp;<a href="<?php echo URL;?>/upload.php" class="menuLeftBar"><?php echo $CONTENT["UPLOAD_FILE"];?></a></td>
-          </tr>
-          <tr>
-            <td colspan="2">&nbsp;<img src="<?php echo URL;?>/images/control_panel.jpg" alt="" />&nbsp;<a href="<?php echo URL;?>/control_panel.php" class="menuLeftBar"><?php echo $CONTENT["CONTROL_PANEL"];?></a></td>
-          </tr>
-          <tr>
-	        <td colspan="2">&nbsp;</td>
-          </tr>
-        </table>
+    <!--file-task-->
+	<div id="file-task">
+		<div class="box-title">
+			<div class="textoAzul">&nbsp;<?php echo $CONTENT["FILE_TASK"];?></div>
+			<div class="arrow"><a href="javascript:showhide_with_image('task','img_arrow_task');"><img src="<?php echo URL;?>/images/up.jpg" id="img_arrow_task" style="border:none" /></a></div>
+		</div>
+		<div id="task">
+				<ul>
+					<li><img src="<?php echo URL;?>/images/file.gif" alt="" />&nbsp;<a href="javascript:new_file();" class="menuLeftBar"><?php echo $CONTENT["NEW_FILE"];?></a></li>
+					<li><img src="<?php echo URL;?>/images/new_folder.jpg" alt="" />&nbsp;<a href="javascript:new_folder();" class="menuLeftBar"><?php echo $CONTENT["NEW_FOLDER"];?></a></li>
+					<li>&nbsp;<img src="<?php echo URL;?>/images/upload.jpg" alt="" />&nbsp;<a href="<?php echo URL;?>/upload.php" class="menuLeftBar"><?php echo $CONTENT["UPLOAD_FILE"];?></a></li>
+					<li>&nbsp;<img src="<?php echo URL;?>/images/control_panel.jpg" alt="" />&nbsp;<a href="<?php echo URL;?>/control_panel.php" class="menuLeftBar"><?php echo $CONTENT["CONTROL_PANEL"];?></a></li>
+				</ul>            
+		</div>
     </div>
-    </div>
-	  <!-- Panel Tareas -->
+	<!--file-task-->
 	  
 	  <!-- Panel Detalle -->
-	  <div style="width:160px; margin:10px;">
-	    <table border="0" cellpadding="0" cellspacing="0" width="160px">
-          <tr bgcolor="#FFFFFF">
-          	<td><img src="<?php echo URL;?>/images/box_left.jpg" alt="" /></td>
-            <td width="133" class="textoAzul">&nbsp;<?php echo $CONTENT["DETAILS"];?></td>
-            <td width="27"><a href="javascript:showhide_with_image('details','img_arrow_detail');"><img src="<?php echo URL;?>/images/up.jpg" id="img_arrow_detail" style="border:none" alt="" /></a></td>
-          </tr>
-        </table>
-        <div id="details">
-        <table border="0" cellpadding="0" cellspacing="0" width="160px" bgcolor="#D6DFF7">
-          <tr>
-	        <td colspan="2">&nbsp;</td>
-          </tr>
-          <tr>
-            <td colspan="2" style="border-bottom: 1px #FFFFFF; border-right: 1px #FFFFFF;">
+	  <div id="details">
+		<!--box-title-->
+		<div class="box-title">          	
+            <div class="textoAzul">&nbsp;<?php echo $CONTENT["DETAILS"];?></div>
+            <div class="arrow">
+            <a href="javascript:showhide_with_image('details-box','img_arrow_detail');"><img src="<?php echo URL;?>/images/up.jpg" id="img_arrow_detail" style="border:none" alt="" /></a>
+            </div>
+        </div>
+        <!--box-title-->
+        <div id="details-box">
 			<?php
 			// $df contiene el numero total de bytes disponible en "/"
 			$df = disk_free_space(".");
@@ -353,10 +323,6 @@ function close_pop(id)
               &nbsp;<?php echo $df;?>
               <br />
               <br />
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2" style="border-bottom: 1px #FFFFFF; border-right: 1px #FFFFFF;">
             <?php
 			// $df contiene el numero total de bytes disponible en "/"
 			$dt = disk_total_space(".");
@@ -364,13 +330,7 @@ function close_pop(id)
   		    ?>
             &nbsp;<?php echo $CONTENT["SPACE_TOTAL"];?>:<br />
             &nbsp;<?php echo $dt;?>
-            </td>
-          </tr>		  
-          <tr>
-          	<td colspan="2">&nbsp;</td>
-          </tr>
-        </table>
-        </div>
+        </div><!--details-->
 	  </div>
 	  <!-- -->	  </td>
       <td width="778" style="vertical-align:top;">
@@ -566,15 +526,13 @@ function close_pop(id)
 	   <!-- -->	  
       </td>
     </tr>
-    <!-- BARRA ESTADO -->
-    <tr bgcolor="#EFEFE9">
-      <!-- -->
-      <td style="height:24px;"><img src="<?php echo URL;?>/images/spacer.gif" alt="" width="3" />&nbsp;<?php echo $i-2;?>&nbsp;<?php echo $CONTENT["OBJECTS"];?>&nbsp;</td>
-      <td align="right">
-      <a href="http://gustavonovaro.com.ar" target="_blank">Blog de Tavo</a>&nbsp; - <a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a> | Version: <?php echo $sConfig["VERSION"];?> &nbsp;
-      </td>
-    </tr>
   </table>
+  <!--status-bar-->
+  <div id="status-bar">
+	<div id="objects">&nbsp;<?php echo $i-2;?>&nbsp;<?php echo $CONTENT["OBJECTS"];?>&nbsp;</div>
+	<div id="about"><a href="http://gustavonovaro.com.ar" target="_blank">Blog de Tavo</a>&nbsp; - <a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a> | Version: <?php echo $sConfig["VERSION"];?> &nbsp;</div>
+  </div>
+  <!--status-bar-->
   <input type="hidden" name="H_NAME" id="H_NAME" value="" />
   <input type="hidden" name="H_ACTION" id="H_ACTION" value="" />
   <input type="hidden" name="H_EXTRA" id="H_EXTRA" value="" />
