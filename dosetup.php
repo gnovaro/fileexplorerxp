@@ -1,5 +1,6 @@
 <?php
 /**
+* File Explorer XP
 * Setup Process
 * @author Gustavo Novaro <gnovaro@gmail.com>
 * @version $Id$
@@ -12,26 +13,31 @@ if (isset($_POST['user'])){
 	$sPass = sha1(trim($_POST['password']));
 	$sUrl = $_POST['url'];
 	$sTimeZone = (isset($_POST['php_zone']))? $_POST['php_zone'] : '';
-	$sVersion = '1.62';
+
+	$sVersion = '1.73';
 	
-	$oFile = fopen("config.php","w+");
+	$oFile = fopen('config.php',"w+");
 	$sLineBreak = "\n";
 	
-	$sContent = '<?php '.$sLineBreak;
-	$sContent .='/**'.$sLineBreak;
-	$sContent .='* Configuration File'.$sLineBreak;
-	$sContent .='* @author Gustavo Novaro <gnovaro@gmail.com>'.$sLineBreak;
-	$sContent .='* @version '.$sVersion.$sLineBreak;
-	$sContent .='* Project Home Page: http://fileexplorerxp.googlecode.com'.$sLineBreak;
-    $sContent .='* Blog: http://gustavonovaro.com.ar'.$sLineBreak;
-    $sContent .='* Twitter: http://www.twitter.com/gnovaro'.$sLineBreak;
-	$sContent .='*/'.$sLineBreak;
-	$sContent .='$sConfig["VERSION"]   = "'.$sVersion.'";'.$sLineBreak;
-	$sContent .='$sConfig["USER"]      = "'.$sUser.'"; '.$sLineBreak;
-	$sContent .='$sConfig["PASS"]      = "'.$sPass.'"; '.$sLineBreak;
-	$sContent .='$sConfig["TIME_ZONE"] = "'.$sTimeZone.'"; '.$sLineBreak;
-	$sContent .='define("URL","'.$sUrl.'"); '.$sLineBreak;
-	
+	$sContent = "<?php
+		     /**
+		     * File Explorer XP 
+		     * Configuration File
+		     * @author Gustavo Novaro <gnovaro@gmail.com>
+	             * @version $sVersion
+		     * Project Home Page: http://fileexplorerxp.googlecode.com
+    		     * Blog: http://gustavonovaro.com.ar
+    		     * Twitter: http://www.twitter.com/gnovaro
+		     */
+			\$config = array(
+				'VERSION'   => '$sVersion',
+				'USER'      => '$sUser',
+				'PASS'      => '$sPass',
+				'TIME_ZONE' => '$sTimeZone'
+			);
+			define('URL','$sUrl');
+	";
+
 	fwrite($oFile,$sContent);
 	fclose($oFile);
 	chmod('config.php',444); //Change file permisions to read only

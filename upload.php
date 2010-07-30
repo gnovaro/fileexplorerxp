@@ -58,16 +58,15 @@ if(!isset($_SESSION["login"]))
 	</tr>
     <tr>
 	    <td>
-        <a href="javascript:add_file();">
-            <?php echo $CONTENT['FILE_ADD'];?>&nbsp;
-            <img src="<?php echo URL?>/images/add.gif" alt="<?php echo $CONTENT['FILE_ADD'];?>" />
-        </a>
+	    <a href="javascript:add_file();"><?php echo $CONTENT['FILE_ADD'];?>&nbsp;
+	    	<img src="<?php echo URL?>/images/add.gif" alt="<?php echo $CONTENT['FILE_ADD'];?>" />
+	    </a>
         <div id="div_upload_photos">
         	<input type="file" name="file[]" id="file" /><br />
         </div>
         </td>
 	</tr>        
-    <tr>
+    	<tr>
 		<td style="text-align:right">
         <input type="button" name="btCancel" value="<?php echo $CONTENT["BT_CANCEL"];?>" onclick="redirect('<?php echo URL;?>/tree.php');" />
         &nbsp;
@@ -76,14 +75,6 @@ if(!isset($_SESSION["login"]))
     </table>
     </td>
 </tr>
-<!--
-<tr>
-    <td><input type="file" name="fileUpload[1]" id="fileUp1R"/></td>
-</tr>
-<tr>
-    <td><input type="file" name="fileUpload[2]" id="fileUp2R"/></td>
-</tr>
--->    
 </table>
 </form>
 </body>

@@ -1,7 +1,7 @@
 <?php
 /**
 * @author Gustavo Novaro <gnovaro@gmail.com>
-* @version 1.66
+* @version 1.74
 * URL: http://gustavonovaro.com.ar
 * File: tree.php
 * Purpose: View and listing files and directory
@@ -157,7 +157,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title><?php echo $CONTENT["TITLE"];?></title>
-    <link rel="stylesheet" type="text/css" href="<?php echo URL?>/fileexplorer.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo URL;?>/fileexplorer.css" />
     <meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
     <script src="http://ajax.microsoft.com/ajax/jquery.validate/1.6/jquery.validate.min.js"></script> 
@@ -265,19 +265,24 @@ function close_pop(id)
 		}//if
 		?>
         <div id="divHelp" class="box" style="display:none;">
-	        	<div style="float:right"><a href="#" onclick="$('#divHelp').hide();"><img src="<?php echo URL;?>/images/close.png" alt="close" /></a></div>                
-				<a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a><br />
+	    <div style="float:right"><a href="#" onclick="$('#divHelp').hide();"><img src="<?php echo URL;?>/images/close.png" alt="close" /></a></div>                
+		<a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a><br />
                 PHP Web File Manager<br />
                 Author: &nbsp;<a href="mailto:gnovaro@gmail.com">Gustavo Novaro</a><br />                         	
-                Version:&nbsp;<?php echo $sConfig["VERSION"];?><br />
+                Version:&nbsp;<?php echo $config['VERSION'];?><br />
         </div>
 <form name="frmMain" id="frmMain" method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
 	<div id="header-bar">
 		<div id="header-bar-title">&nbsp;<?php echo $CONTENT["TITLE"];?></div>
-		<div id="header-bar-button"><a href="#" onclick="close_admin();"><img src="<?php echo URL;?>/images/close.png" alt="close" title="<?php echo $CONTENT["EXIT"];?>" /></a>&nbsp;</div>
+		<div id="header-bar-button">
+		<a href="#" onclick="close_admin();">
+		<img src="<?php echo URL;?>/images/close.png" alt="close" title="<?php echo $CONTENT["EXIT"];?>" /></a>&nbsp;
+		</div>
 	</div><!--header-bar-->
 	<div id="address-bar">
-		<span>&nbsp;<?php echo $CONTENT["PATH"];?>&nbsp;<input type="text" name="dir" id="txtPath" style="width:650px;" value="<?php echo realpath($sPath);?>"/></span>		
+	<span>&nbsp;<?php echo $CONTENT["PATH"];?>&nbsp;
+		<input type="text" name="dir" id="txtPath" style="width:650px;" value="<?php echo realpath($sPath);?>"/>
+	</span>		
 		<a href="#" onclick="go_path();"><img src="<?php echo URL;?>/images/arrow_go.jpg" alt="<?php echo $CONTENT["GO"];?>" style="border:none;" /></a>
 		<?php echo $CONTENT["GO"];?>
 		&nbsp;&nbsp;&nbsp;<a href="#" onclick="show_pop('divHelp');"><img src="<?php echo URL;?>/images/help.gif" alt="<?php echo $CONTENT["HELP"];?>" /></a>
@@ -530,7 +535,7 @@ function close_pop(id)
   <!--status-bar-->
   <div id="status-bar">
 	<div id="objects">&nbsp;<?php echo $i-2;?>&nbsp;<?php echo $CONTENT["OBJECTS"];?>&nbsp;</div>
-	<div id="about"><a href="http://gustavonovaro.com.ar" target="_blank">Blog de Tavo</a>&nbsp; - <a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a> | Version: <?php echo $sConfig["VERSION"];?> &nbsp;</div>
+	<div id="about"><a href="http://gustavonovaro.com.ar" target="_blank">Blog de Tavo</a>&nbsp; - <a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a> | Version: <?php echo $config['VERSION'];?> &nbsp;</div>
   </div>
   <!--status-bar-->
   <input type="hidden" name="H_NAME" id="H_NAME" value="" />
