@@ -28,7 +28,7 @@
     //security
 	
     if (phpnum()==5)
-	   date_default_timezone_set($sConfig['TIME_ZONE']);		
+	   date_default_timezone_set($config['TIME_ZONE']);		
 
 	$sMessage = '';		 
 	$cantFiles = 0;
