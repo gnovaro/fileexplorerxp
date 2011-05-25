@@ -1,11 +1,10 @@
 <?php
 /**
 * @author	Gustavo Novaro <gnovaro@gmail.com>
-* @version	1.61
+* @version	1.77
 */
-function redirect($sURL){
-	if ($sURL !="")
-		header("Location:".$sURL);
+function redirect($sURL = ''){
+	if (!empty($sURL))header("Location:$sURL");
 }//redirect
 
 function get_lang(){
@@ -18,13 +17,13 @@ function get_lang(){
 	 while (false !== ($oFile = readdir($oFp))) {
 		if ($oFile != "." && $oFile != "..") {
 			$oFileParts = pathinfo($oFile);
-			if (isset($oFileParts["extension"])){
-				if ($oFileParts["extension"] == "php"){
-	            	$sLang[$oFileParts["filename"]] = $oFile;
+			if (isset($oFileParts['extension'])){
+				if ($oFileParts['extension'] == 'php'){
+					$sLang[$oFileParts['filename']] = $oFile;
 				}//if
 			}//if
-        }//if
-    }//while
+		}//if
+	}//while
 	return $sLang;
 }//get_lang
 function get_os(){
@@ -45,7 +44,7 @@ if (phpnum()==5){
 	}//if
 }//if
 
-function getIP(){	
+function getIP(){
 	if ($_SERVER) {
 		if (isset($_SERVER["HTTP_X_FORWARDED_FOR"])) {
 			$realip = $_SERVER["HTTP_X_FORWARDED_FOR"];
