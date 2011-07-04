@@ -5,7 +5,7 @@
 * @version: 1.28
 */
 require("./config.php");
-require("./error_handler.php");	
+require("./error_handler.php");
 require("./function.php");
 $sLang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2);
 //echo $sLang;
@@ -34,17 +34,17 @@ for($q=0; $q <=count($_FILES);$q++){
 		unlink($sourceFileName);
 		$sMsg = "No se pueden subir ese archivo es un ejecutable";
 		$sDestination = "my_account.php";
-		redirect("thanks.php?msg=".$sMsg."&pg=".$sDestination);		
+		redirect("thanks.php?msg=".$sMsg."&pg=".$sDestination);
 	}//if
 	*/
-	$sPath = $_SESSION["path"]."/".$sourceFileName;
+	$sPath = $_SESSION['path']."/".$sourceFileName;
 	if(is_uploaded_file($_FILES['file']['tmp_name'][$q]))
 	if (move_uploaded_file($_FILES['file']['tmp_name'][$q], $sPath))
 	{	
-		$sMsg = $CONTENT["UPLOAD_SUCESS"];	
+		$sMsg = $CONTENT['UPLOAD_SUCESS'];
 	}
 	else
-		$sMsg = $CONTENT["UPLOAD_FAIL"];	
+		$sMsg = $CONTENT['UPLOAD_FAIL'];
 }//for		
 	$_SESSION['__MSG__'] = $sMsg;
 	redirect('tree.php');

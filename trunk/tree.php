@@ -6,41 +6,41 @@
 * File: tree.php
 * Purpose: View and listing files and directory
 */
-    error_reporting(E_ALL);
-    require('./config.php');
-    //require('./error_handler.php');	
-    require('./function.php');	
-    
-    $sLang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2);
-    //echo $sLang;
-    $sPath = './languages/'.$sLang.".php";
-    if (file_exists($sPath)){
-    	require($sPath);
-    }else{
-    	//defualt lang english
-    	require('./languages/en.php'); 
-    }//if    
-    
-    //Security check
-    session_start();
-    if(!isset($_SESSION['login']))
-    	redirect('index.php');
-    //security
+	error_reporting(E_ALL);
+	require('./config.php');
+	//require('./error_handler.php');
+	require('./function.php');
 	
-    if (phpnum()==5)
-	   date_default_timezone_set($config['TIME_ZONE']);		
+	$sLang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2);
+	//echo $sLang;
+	$sPath = './languages/'.$sLang.'.php';
+	if (file_exists($sPath)){
+		require($sPath);
+	}else{
+		//defualt lang english
+		require('./languages/en.php'); 
+	}//if	
+	
+	//Security check
+	session_start();
+	if(!isset($_SESSION['login']))
+		redirect('index.php');
+	//security
+	
+	if (phpnum()==5)
+	   date_default_timezone_set($config['TIME_ZONE']);
 
-	$sMessage = '';		 
+	$sMessage = '';
 	$cantFiles = 0;
 	$sPath = '';
 	if (!isset($_SESSION["path"]) ){
 		$sRootPath = getcwd(); 	//Obtiene el directorio actual de trabajo.
-		$_SESSION["path"] = $sRootPath;		
+		$_SESSION["path"] = $sRootPath;
 		$sPath = $sRootPath;
 	//	echo "session path ".$_SESSION["path"];
 	}
 	else
-    {
+	{
 		$sPath = $_SESSION["path"];
 //		echo "Path: ".$sPath; //debug
 		if ( isset($_REQUEST["dir"]) ){ 
@@ -69,7 +69,7 @@
 		// cerrar el archivo
 		gzclose($zp);
 	}//compress_gz
-    
+	
 	function format_size($size){
 		switch (true){
 		case ($size > 1099511627776):
@@ -92,7 +92,7 @@
 			$suffix = 'B';
 		}
 		return round($size, 2)." ".$suffix;
-	}    
+	}	
 
 	if (isset($_POST["H_ACTION"])){
 		$sAction = $_POST["H_ACTION"];
@@ -152,18 +152,18 @@
 			
 	}//if action
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title><?php echo $CONTENT["TITLE"];?></title>
-    <link rel="stylesheet" type="text/css" href="<?php echo URL;?>/fileexplorer.css" />
-    <meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
-    <script src="http://ajax.microsoft.com/ajax/jquery.validate/1.6/jquery.validate.min.js"></script> 
-    <script type="text/javascript">
-    function showhide_with_image(targetDiv,actionImage){
-	    var image = document.getElementById(actionImage);
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title><?php echo $CONTENT["TITLE"];?></title>
+	<link rel="stylesheet" type="text/css" href="<?php echo URL;?>/fileexplorer.css" />
+	<meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	<script src="http://ajax.microsoft.com/ajax/jquery.validate/1.6/jquery.validate.min.js"></script> 
+	<script type="text/javascript">
+	function showhide_with_image(targetDiv,actionImage){
+		var image = document.getElementById(actionImage);
 		if($("#"+targetDiv).css("display") == "none"){
 			$("#"+targetDiv).slideDown("slow");
 			image.src = "<?php echo URL?>/images/up.jpg";
@@ -171,18 +171,18 @@
 			$("#"+targetDiv).slideUp("slow");
 			image.src = "<?php echo URL?>/images/down.jpg";
 		}
-    }//showhide_with_image
+	}//showhide_with_image
 	
-    function rename(sName){
-    	var resp;
-    	resp = prompt("<?php echo $CONTENT["RENAME_FILE"];?> " + sName + "?",sName);
-    	if (resp != null){
-    		document.getElementById("H_ACTION").value = "RENAME";
-    		document.getElementById("H_NAME").value = sName;
-    		document.getElementById("H_EXTRA").value = resp;
-    		document.getElementById("frmMain").submit();
-    	}//if
-    }//rename
+	function rename(sName){
+		var resp;
+		resp = prompt("<?php echo $CONTENT["RENAME_FILE"];?> " + sName + "?",sName);
+		if (resp != null){
+			document.getElementById("H_ACTION").value = "RENAME";
+			document.getElementById("H_NAME").value = sName;
+			document.getElementById("H_EXTRA").value = resp;
+			document.getElementById("frmMain").submit();
+		}//if
+	}//rename
 
 function delete_file(sName){
 	var resp;
@@ -245,144 +245,143 @@ function compress(sFile)
 }
 function show_pop(id)
 {
-    $("#"+id).show();	
+	$("#"+id).show();
 }
 function close_pop(id)
 {
-    $("#"+id).hide();
+	$("#"+id).hide();
 }
 </script>
 </head>
 <body>
 		<?php
-		if($sMessage!=''){
+		if(!empty($sMessage)):
 		?>
-        <div id="divMessage" class="box">			
-        	<div style="float:right"><a href="#" onclick="close_pop('divMessage');"><img src="<?php echo URL;?>/images/close.png" alt="close" /></a></div>
-	        <img src="<?php echo URL;?>/images/info.png" alt="Info" />&nbsp;<strong><?php echo $sMessage;?></strong>
-        </div>
-        <?php
-		}//if
+		<div id="divMessage" class="box radius">
+			<div style="float:right"><a href="#" onclick="close_pop('divMessage');"><img src="<?php echo URL;?>/images/close.png" alt="close" /></a></div>
+			<img src="<?php echo URL;?>/images/info.png" alt="Info" />&nbsp;<strong><?php echo $sMessage;?></strong>
+		</div>
+		<?php
+		endif;
 		?>
-        <div id="divHelp" class="box" style="display:none;">
-	    <div style="float:right"><a href="#" onclick="$('#divHelp').hide();"><img src="<?php echo URL;?>/images/close.png" alt="close" /></a></div>                
-		<a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a><br />
-                PHP Web File Manager<br />
-                Author: &nbsp;<a href="mailto:gnovaro@gmail.com">Gustavo Novaro</a><br />                         	
-                Version:&nbsp;<?php echo $config['VERSION'];?><br />
-        </div>
+		<div id="divHelp" class="box" style="display:none;">
+			<div style="float:right"><a href="#" onclick="$('#divHelp').hide();"><img src="<?php echo URL;?>/images/close.png" alt="close" /></a></div>
+			<a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a><br />
+				PHP Web File Manager<br />
+				Author: &nbsp;<a href="mailto:gnovaro@gmail.com">Gustavo Novaro</a><br />
+				Version:&nbsp;<?php echo $config['VERSION'];?><br />
+		</div><!--divHelp-->
+		
 <form name="frmMain" id="frmMain" method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
 	<div id="header-bar">
-		<div id="header-bar-title">&nbsp;<?php echo $CONTENT["TITLE"];?></div>
+		<div id="header-bar-title">&nbsp;<?php echo $CONTENT['TITLE'];?></div>
 		<div id="header-bar-button">
 		<a href="#" onclick="close_admin();">
-		<img src="<?php echo URL;?>/images/close.png" alt="close" title="<?php echo $CONTENT["EXIT"];?>" /></a>&nbsp;
+		<img src="<?php echo URL;?>/images/close.png" alt="close" title="<?php echo $CONTENT['EXIT'];?>" /></a>&nbsp;
 		</div>
 	</div><!--header-bar-->
+
 	<div id="address-bar">
-	<span>&nbsp;<?php echo $CONTENT["PATH"];?>&nbsp;
-		<input type="text" name="dir" id="txtPath" style="width:650px;" value="<?php echo realpath($sPath);?>"/>
-	</span>		
+		<span>
+			&nbsp;<?php echo $CONTENT["PATH"];?>&nbsp;
+			<input type="text" name="dir" id="txtPath" style="width:650px;" value="<?php echo realpath($sPath);?>"/>
+		</span>
 		<a href="#" onclick="go_path();"><img src="<?php echo URL;?>/images/arrow_go.jpg" alt="<?php echo $CONTENT["GO"];?>" style="border:none;" /></a>
 		<?php echo $CONTENT["GO"];?>
 		&nbsp;&nbsp;&nbsp;<a href="#" onclick="show_pop('divHelp');"><img src="<?php echo URL;?>/images/help.gif" alt="<?php echo $CONTENT["HELP"];?>" /></a>
-	</div>
-  <table width="100%" border="0" cellpadding="0" cellspacing="0">
-    <tr>
-    <td width="180" bgcolor="#6B85DC" style="vertical-align:top;">
-    <br />
-    <!--file-task-->
+	</div><!--address-bar-->
+
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+	<td width="180" bgcolor="#6B85DC" style="vertical-align:top;">
+	<br />
+	<!--file-task-->
 	<div id="file-task">
 		<div class="box-title">
-			<div class="textoAzul">&nbsp;<?php echo $CONTENT["FILE_TASK"];?></div>
+			<div class="textoAzul">&nbsp;<?php echo $CONTENT['FILE_TASK'];?></div>
 			<div class="arrow"><a href="javascript:showhide_with_image('task','img_arrow_task');"><img src="<?php echo URL;?>/images/up.jpg" id="img_arrow_task" style="border:none" /></a></div>
 		</div>
 		<div id="task">
-				<ul>
-					<li><img src="<?php echo URL;?>/images/file.gif" alt="" />&nbsp;<a href="javascript:new_file();" class="menuLeftBar"><?php echo $CONTENT["NEW_FILE"];?></a></li>
-					<li><img src="<?php echo URL;?>/images/new_folder.jpg" alt="" />&nbsp;<a href="javascript:new_folder();" class="menuLeftBar"><?php echo $CONTENT["NEW_FOLDER"];?></a></li>
-					<li>&nbsp;<img src="<?php echo URL;?>/images/upload.jpg" alt="" />&nbsp;<a href="<?php echo URL;?>/upload.php" class="menuLeftBar"><?php echo $CONTENT["UPLOAD_FILE"];?></a></li>
-					<li>&nbsp;<img src="<?php echo URL;?>/images/control_panel.jpg" alt="" />&nbsp;<a href="<?php echo URL;?>/control_panel.php" class="menuLeftBar"><?php echo $CONTENT["CONTROL_PANEL"];?></a></li>
-				</ul>            
-		</div>
-    </div>
-	<!--file-task-->
+			<ul>
+				<li><img src="<?php echo URL;?>/images/file.gif" alt="" />&nbsp;<a href="javascript:new_file();" class="menuLeftBar"><?php echo $CONTENT["NEW_FILE"];?></a></li>
+				<li><img src="<?php echo URL;?>/images/new_folder.jpg" alt="" />&nbsp;<a href="javascript:new_folder();" class="menuLeftBar"><?php echo $CONTENT["NEW_FOLDER"];?></a></li>
+				<li>&nbsp;<img src="<?php echo URL;?>/images/upload.jpg" alt="" />&nbsp;<a href="<?php echo URL;?>/upload.php" class="menuLeftBar"><?php echo $CONTENT["UPLOAD_FILE"];?></a></li>
+				<li>&nbsp;<img src="<?php echo URL;?>/images/control_panel.jpg" alt="" />&nbsp;<a href="<?php echo URL;?>/control_panel.php" class="menuLeftBar"><?php echo $CONTENT["CONTROL_PANEL"];?></a></li>
+			</ul>
+		</div><!--task-->
+	</div><!--file-task-->
 	  
-	  <!-- Panel Detalle -->
-	  <div id="details">
+	<!-- Detail Panel-->
+	<div id="details">
 		<!--box-title-->
-		<div class="box-title">          	
-            <div class="textoAzul">&nbsp;<?php echo $CONTENT["DETAILS"];?></div>
-            <div class="arrow">
-            <a href="javascript:showhide_with_image('details-box','img_arrow_detail');"><img src="<?php echo URL;?>/images/up.jpg" id="img_arrow_detail" style="border:none" alt="" /></a>
-            </div>
-        </div>
-        <!--box-title-->
-        <div id="details-box">
+		<div class="box-title">
+			<div class="textoAzul">&nbsp;<?php echo $CONTENT['DETAILS'];?></div>
+			<div class="arrow">
+			<a href="javascript:showhide_with_image('details-box','img_arrow_detail');"><img src="<?php echo URL;?>/images/up.jpg" id="img_arrow_detail" style="border:none" alt="" /></a>
+			</div>
+		</div>
+		<!--box-title-->
+		<div id="details-box">
 			<?php
 			// $df contiene el numero total de bytes disponible en "/"
 			$df = disk_free_space(".");
 			$df = format_size($df);
   		  	?>
-              &nbsp;<?php echo $CONTENT["SPACE_FREE"];?>:<br />
-              &nbsp;<?php echo $df;?>
-              <br />
-              <br />
-            <?php
+			  &nbsp;<?php echo $CONTENT['SPACE_FREE'];?>:<br />
+			  &nbsp;<?php echo $df;?>
+			  <br />
+			  <br />
+			<?php
 			// $df contiene el numero total de bytes disponible en "/"
 			$dt = disk_total_space(".");
 			$dt = format_size($dt);
-  		    ?>
-            &nbsp;<?php echo $CONTENT["SPACE_TOTAL"];?>:<br />
-            &nbsp;<?php echo $dt;?>
-        </div><!--details-->
+  			?>
+			&nbsp;<?php echo $CONTENT['SPACE_TOTAL'];?>:<br />
+			&nbsp;<?php echo $dt;?>
+		</div><!--details-->
 	  </div>
 	  <!-- -->	  </td>
-      <td width="778" style="vertical-align:top;">
+	  <td width="778" style="vertical-align:top;">
 	  <!-- Listado Archivos -->
 	  <div style="top: 66px; left: 191px;">
 	  <table border="0" cellpadding="0" cellspacing="0" width="100%">
-        <tr bgcolor="#EFEFE9">
-          <td width="10px">&nbsp;</td>
-          <td width="270px">&nbsp;<?php echo $CONTENT["NAME"];?> </td>
-          <td width="80px"><span class="barra">|</span><?php echo $CONTENT["SIZE"];?></td>
-          <td><span class="barra">|</span><?php echo $CONTENT["LAST_MODIFY"];?></td>
-		  <td><span class="barra">|</span><?php echo $CONTENT["OWNER"];?></td>
-		  <td><span class="barra">|</span><?php echo $CONTENT["GROUP"];?></td>
-		  <td><span class="barra">|</span><?php echo $CONTENT["PERMISSIONS"];?></td>
+		<tr bgcolor="#EFEFE9">
+		  <td width="10px">&nbsp;</td>
+		  <td width="270px">&nbsp;<?php echo $CONTENT['NAME'];?> </td>
+		  <td width="80px"><span class="barra">|</span><?php echo $CONTENT['SIZE'];?></td>
+		  <td><span class="barra">|</span><?php echo $CONTENT['LAST_MODIFY'];?></td>
+		  <td><span class="barra">|</span><?php echo $CONTENT['OWNER'];?></td>
+		  <td><span class="barra">|</span><?php echo $CONTENT['GROUP'];?></td>
+		  <td><span class="barra">|</span><?php echo $CONTENT['PERMISSIONS'];?></td>
 		  <td colspan="5">&nbsp;</td>
-        </tr>
+		</tr>
 		<?php 
-          //Poner en un include
-          
-          //Lista los archivos y directorios ubicados en la ruta especificada en un array
-          $dh  = @opendir($sPath)or die("No se puede abrir el  $sPath");
-          $i = 0;
-          while (false !== ($file_name = readdir($dh))) {
+		  //Poner en un include
+		  
+		  //Lista los archivos y directorios ubicados en la ruta especificada en un array
+		  $dh  = @opendir($sPath)or die("No se puede abrir el  $sPath");
+		  $i = 0;
+		  while (false !== ($file_name = readdir($dh))) {
 		  		$types[] = filetype($file_name);
-            	$files[] = $file_name;
+				$files[] = $file_name;
 				$i++;
 		  }//while
 		  array_multisort($types,SORT_ASC,$files,SORT_ASC); //sort by type, name
-		  foreach($files as $file) {		  	
-        ?>
-        <tr>
-          <td>
-          <?php
-		  if($file!='.' && $file!='..'){
-		  ?>
-          <input type="checkbox" name="[]" id="" />
-          <?php
-		  }
-		  ?>
-          </td>
-          <td bgcolor="#F7F7F7">&nbsp;
-		  <?php
-		  if(is_dir($file)&& $file!='.'){
-		  ?>
-				<img src='<?php echo URL?>/images/folder.jpg' alt="" />&nbsp;<a href="tree.php?dir=<?php echo $file;?>" class="menuLeftBar"><?php echo $file;?></a>
-		  <?php
-		  }else{
+		  foreach($files as $file) {
+		?>
+		<tr>
+		<td>
+		<?php if($file!='.' && $file!='..'):?>
+			<input type="checkbox" name="[]" id="" />
+		<?php endif;?>
+		</td>
+		<td bgcolor="#F7F7F7">&nbsp;
+		<?php
+		if(is_dir($file)&& $file!='.'):
+		?>
+			<img src='<?php echo URL?>/images/folder.jpg' alt="" />&nbsp;<a href="tree.php?dir=<?php echo $file;?>" class="menuLeftBar"><?php echo $file;?></a>
+		<?php
+		else:
 				//is file
 				$path_parts = pathinfo($file);
 				if (isset($path_parts['extension'])){
@@ -397,50 +396,50 @@ function close_pop(id)
 				<img src="<?php echo $sPathIcon;?>" alt="" />&nbsp;<?php echo$file;?>
 			<?php
 				}//if
-			}//if
-		  ?>		  
-          </td>
-          <td>&nbsp;
-		  <?php
-		  	//File Size
+		endif;
+		?>
+		</td>
+		<td>&nbsp;
+		<?php
+		//File Size
 			if ($file!= "." && $file != ".."){
 				$tam = filesize($file);
 				if( $tam > 1024 ){
 					$tam = round($tam / 1024);
-					echo $tam." Kb"; 
+					echo $tam.' Kb'; 
 				}
 				else
 				{
-					echo $tam." bytes"; 
+					echo $tam.' bytes'; 
 				}//if
 			}//if
-		  ?>		  
-          </td>
-          <?php
-          if($file!="." && $file != ".."){
+		  ?>
+		  </td>
+		  <?php
+		  if($file!="." && $file != ".."){
 		  ?>
 		  <td>&nbsp;<?php echo date ("d F Y H:i:s", filemtime($file));?></td>
-          <td>&nbsp;
-          <?php
-            if(strtoupper(substr(PHP_OS, 0, 3)) !== 'WIN' )
-            {
-                $uid = fileowner($file); //return uid owner file 
-                $sUser = posix_getpwuid($uid); //return array asoc uid with name...  
-                echo $sUser['name'];
-            }
-          ?>        
-          </td>
-          <td>&nbsp;<?php
-            if(strtoupper(substr(PHP_OS, 0, 3)) !== 'WIN' )
-            {
-                $gid = filegroup($file); //return file group id
-                $sGroup = posix_getgrgid($gid);	  		      
-                echo $sGroup['name'];
-            }
-          ?>         
-          </td>
-          <td>&nbsp;
-          <?php
+		  <td>&nbsp;
+		  <?php
+			if(strtoupper(substr(PHP_OS, 0, 3)) !== 'WIN' )
+			{
+				$uid = fileowner($file); //return uid owner file 
+				$sUser = posix_getpwuid($uid); //return array asoc uid with name...  
+				echo $sUser['name'];
+			}
+		  ?>
+		  </td>
+		  <td>&nbsp;<?php
+			if(strtoupper(substr(PHP_OS, 0, 3)) !== 'WIN' )
+			{
+				$gid = filegroup($file); //return file group id
+				$sGroup = posix_getgrgid($gid);
+				echo $sGroup['name'];
+			}
+		  ?>
+		  </td>
+		  <td>&nbsp;
+		  <?php
 		 /* function show_perm_complete($sFile){
 		  //$perms = fileperms($sFile); //get octal value of permison
 		  return fileperms($sFile) & 511; 
@@ -494,47 +493,47 @@ function close_pop(id)
 			
 				return $info;*/
 		  /*}//show_perm_complete
-          echo show_perm_complete($files[$i]);
+		  echo show_perm_complete($files[$i]);
 		  clearstatcache();*/
 		  if (fileperms($file))
-		      echo substr(sprintf('%o', fileperms($file)), -4);
+			  echo substr(sprintf('%o', fileperms($file)), -4);
 		  ?>
-          </td>
-          <?php
-          if(is_file($file)){
+		  </td>
+		  <?php
+		  if(is_file($file)){
 		  ?>
-          <td><a href="javascript:edit('<?php echo $file?>');"><img src="<?php echo URL?>/images/b_edit.png" alt="<?php echo $CONTENT["EDIT"];?>" title="<?php echo $CONTENT["EDIT"];?>" /></a></td>
-          <?php
+		  <td><a href="javascript:edit('<?php echo $file?>');"><img src="<?php echo URL?>/images/b_edit.png" alt="<?php echo $CONTENT["EDIT"];?>" title="<?php echo $CONTENT["EDIT"];?>" /></a></td>
+		  <?php
 		  }//if
 		  else
 		  	echo "<td>&nbsp;</td>";
 		  ?>
 		  <td><a href="javascript:rename('<?php echo $file;?>');"><img src="<?php echo URL?>/images/rename.jpg" title="<?php echo $CONTENT["RENAME"];?>" alt="<?php echo $CONTENT["RENAME"];?>" /></a></td>
-          <td><a href="javascript:delete_file('<?php echo $file;?>');"><img src="<?php echo URL?>/images/delete.gif" title="<?php echo $CONTENT["DELETE"];?>" alt="<?php echo $CONTENT["DELETE"];?>" /></a></td>		  
+		  <td><a href="javascript:delete_file('<?php echo $file;?>');"><img src="<?php echo URL?>/images/delete.gif" title="<?php echo $CONTENT["DELETE"];?>" alt="<?php echo $CONTENT["DELETE"];?>" /></a></td>		  
 		  <?php
-              if(is_file($file)){
-          ?>
-          <td><a href="javascript:compress('<?php echo $file;?>');"><img src="<?php echo URL?>/images/zip.gif" alt="<?php echo $CONTENT["COMPRESS"];?>" title="<?php echo $CONTENT["COMPRESS"];?>" /></a></td>
-          <td><a href="javascript:download_file('<?php echo $file?>');"><img src="<?php echo URL?>/images/download.gif" alt="<?php echo $CONTENT["DOWNLOAD"];?>" title="<?php echo $CONTENT["DOWNLOAD"];?>" /></a></td>
-          <?php
-          }//if
-          ?>
-          <?php
+			  if(is_file($file)){
+		  ?>
+		  <td><a href="javascript:compress('<?php echo $file;?>');"><img src="<?php echo URL?>/images/zip.gif" alt="<?php echo $CONTENT["COMPRESS"];?>" title="<?php echo $CONTENT["COMPRESS"];?>" /></a></td>
+		  <td><a href="javascript:download_file('<?php echo $file?>');"><img src="<?php echo URL?>/images/download.gif" alt="<?php echo $CONTENT["DOWNLOAD"];?>" title="<?php echo $CONTENT["DOWNLOAD"];?>" /></a></td>
+		  <?php
 		  }//if
 		  ?>
-        </tr>
-     <?php		
+		  <?php
+		  }//if
+		  ?>
+		</tr>
+	 <?php
 		  }//foreach
 	 ?>
-      </table>
+	  </table>
 	 </div> 
-	   <!-- -->	  
-      </td>
-    </tr>
+	   <!-- -->
+	  </td>
+	</tr>
   </table>
   <!--status-bar-->
   <div id="status-bar">
-	<div id="objects">&nbsp;<?php echo $i-2;?>&nbsp;<?php echo $CONTENT["OBJECTS"];?>&nbsp;</div>
+	<div id="objects">&nbsp;<?php echo $i-2;?>&nbsp;<?php echo $CONTENT['OBJECTS'];?>&nbsp;</div>
 	<div id="about"><a href="http://gustavonovaro.com.ar" target="_blank">Blog de Tavo</a>&nbsp; - <a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a> | Version: <?php echo $config['VERSION'];?> &nbsp;</div>
   </div>
   <!--status-bar-->

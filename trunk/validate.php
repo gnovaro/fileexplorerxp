@@ -4,7 +4,6 @@
  * @author Gustavo Novaro <gnovaro@gmail.com>
  * @version 1.77
  * URL: http://gustavonovaro.com.ar
- *
  */
 	require('./config.php');
 	require('./function.php');

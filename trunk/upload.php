@@ -42,7 +42,7 @@ if(!isset($_SESSION['login'])) redirect('index.php');
 <table cellspacing="0" width="100%">
 <!-- Menu BAR -->
 <tr bgcolor="#EFEFE9">
-	<td colspan="2">&nbsp;<a href="<?php echo URL;?>/tree.php" class="no_underline"><img src="images/back.gif" alt="<?php echo $CONTENT["BACK"];?>" />&nbsp;<span class=""><?php echo $CONTENT['BACK'];?></span></a></td>
+	<td colspan="2">&nbsp;<a href="<?php echo URL;?>/tree.php" class="no_underline"><img src="images/back.gif" alt="<?php echo $CONTENT['BACK'];?>" />&nbsp;<span class=""><?php echo $CONTENT['BACK'];?></span></a></td>
 </tr>
 <!-- Menu BAR -->   
 <tr>
