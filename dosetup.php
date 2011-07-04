@@ -20,20 +20,20 @@ if (isset($_POST['user'])){
 	$sLineBreak = "\n";
 	
 	$sContent = "<?php
-		     /**
-		     * File Explorer XP 
-		     * Configuration File
-		     * @author Gustavo Novaro <gnovaro@gmail.com>
-	             * @version $sVersion
-		     * Project Home Page: http://fileexplorerxp.googlecode.com
-    		     * Blog: http://gustavonovaro.com.ar
-    		     * Twitter: http://www.twitter.com/gnovaro
-		     */
+			 /**
+			  * File Explorer XP 
+			  * Configuration File
+			  * @author Gustavo Novaro <gnovaro@gmail.com>
+			  * @version $sVersion
+			  * Project Home Page: http://fileexplorerxp.googlecode.com
+			  * Blog: http://gustavonovaro.com.ar
+			  * Twitter: http://www.twitter.com/gnovaro
+			  */
 			\$config = array(
-				'VERSION'   => '$sVersion',
-				'USER'      => '$sUser',
-				'PASS'      => '$sPass',
-				'TIME_ZONE' => '$sTimeZone'
+				'VERSION'	=> '$sVersion',
+				'USER'		=> '$sUser',
+				'PASS'		=> '$sPass',
+				'TIME_ZONE'	=> '$sTimeZone'
 			);
 			define('URL','$sUrl');
 	";
