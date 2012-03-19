@@ -157,7 +157,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title><?php echo $CONTENT["TITLE"];?></title>
-	<link rel="stylesheet" type="text/css" href="<?php echo URL;?>/fileexplorer.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo URL;?>/assets/css/fileexplorer.css" />
 	<meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 	<script src="http://ajax.microsoft.com/ajax/jquery.validate/1.6/jquery.validate.min.js"></script> 
@@ -166,10 +166,10 @@
 		var image = document.getElementById(actionImage);
 		if($("#"+targetDiv).css("display") == "none"){
 			$("#"+targetDiv).slideDown("slow");
-			image.src = "<?php echo URL?>/images/up.jpg";
+			image.src = "<?php echo URL?>/assets/images/up.jpg";
 		} else {
 			$("#"+targetDiv).slideUp("slow");
-			image.src = "<?php echo URL?>/images/down.jpg";
+			image.src = "<?php echo URL?>/assets/images/down.jpg";
 		}
 	}//showhide_with_image
 	
@@ -258,14 +258,14 @@ function close_pop(id)
 		if(!empty($sMessage)):
 		?>
 		<div id="divMessage" class="box radius">
-			<div style="float:right"><a href="#" onclick="close_pop('divMessage');"><img src="<?php echo URL;?>/images/close.png" alt="close" /></a></div>
-			<img src="<?php echo URL;?>/images/info.png" alt="Info" />&nbsp;<strong><?php echo $sMessage;?></strong>
+			<div style="float:right"><a href="#" onclick="close_pop('divMessage');"><img src="<?php echo URL;?>/assets/images/close.png" alt="close" /></a></div>
+			<img src="<?php echo URL;?>/assets/images/info.png" alt="Info" />&nbsp;<strong><?php echo $sMessage;?></strong>
 		</div>
 		<?php
 		endif;
 		?>
 		<div id="divHelp" class="box" style="display:none;">
-			<div style="float:right"><a href="#" onclick="$('#divHelp').hide();"><img src="<?php echo URL;?>/images/close.png" alt="close" /></a></div>
+			<div style="float:right"><a href="#" onclick="$('#divHelp').hide();"><img src="<?php echo URL;?>/assets/images/close.png" alt="close" /></a></div>
 			<a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a><br />
 				PHP Web File Manager<br />
 				Author: &nbsp;<a href="mailto:gnovaro@gmail.com">Gustavo Novaro</a><br />
@@ -277,7 +277,7 @@ function close_pop(id)
 		<div id="header-bar-title">&nbsp;<?php echo $CONTENT['TITLE'];?></div>
 		<div id="header-bar-button">
 		<a href="#" onclick="close_admin();">
-		<img src="<?php echo URL;?>/images/close.png" alt="close" title="<?php echo $CONTENT['EXIT'];?>" /></a>&nbsp;
+		<img src="<?php echo URL;?>/assets/images/close.png" alt="close" title="<?php echo $CONTENT['EXIT'];?>" /></a>&nbsp;
 		</div>
 	</div><!--header-bar-->
 
@@ -286,9 +286,9 @@ function close_pop(id)
 			&nbsp;<?php echo $CONTENT["PATH"];?>&nbsp;
 			<input type="text" name="dir" id="txtPath" style="width:650px;" value="<?php echo realpath($sPath);?>"/>
 		</span>
-		<a href="#" onclick="go_path();"><img src="<?php echo URL;?>/images/arrow_go.jpg" alt="<?php echo $CONTENT["GO"];?>" style="border:none;" /></a>
+		<a href="#" onclick="go_path();"><img src="<?php echo URL;?>/assets/images/arrow_go.jpg" alt="<?php echo $CONTENT["GO"];?>" style="border:none;" /></a>
 		<?php echo $CONTENT["GO"];?>
-		&nbsp;&nbsp;&nbsp;<a href="#" onclick="show_pop('divHelp');"><img src="<?php echo URL;?>/images/help.gif" alt="<?php echo $CONTENT["HELP"];?>" /></a>
+		&nbsp;&nbsp;&nbsp;<a href="#" onclick="show_pop('divHelp');"><img src="<?php echo URL;?>/assets/images/help.gif" alt="<?php echo $CONTENT["HELP"];?>" /></a>
 	</div><!--address-bar-->
 
 	<table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -299,14 +299,14 @@ function close_pop(id)
 	<div id="file-task">
 		<div class="box-title">
 			<div class="textoAzul">&nbsp;<?php echo $CONTENT['FILE_TASK'];?></div>
-			<div class="arrow"><a href="javascript:showhide_with_image('task','img_arrow_task');"><img src="<?php echo URL;?>/images/up.jpg" id="img_arrow_task" style="border:none" /></a></div>
+			<div class="arrow"><a href="javascript:showhide_with_image('task','img_arrow_task');"><img src="<?php echo URL;?>/assets/images/up.jpg" id="img_arrow_task" style="border:none" /></a></div>
 		</div>
 		<div id="task">
 			<ul>
-				<li><img src="<?php echo URL;?>/images/file.gif" alt="" />&nbsp;<a href="javascript:new_file();" class="menuLeftBar"><?php echo $CONTENT["NEW_FILE"];?></a></li>
-				<li><img src="<?php echo URL;?>/images/new_folder.jpg" alt="" />&nbsp;<a href="javascript:new_folder();" class="menuLeftBar"><?php echo $CONTENT["NEW_FOLDER"];?></a></li>
-				<li>&nbsp;<img src="<?php echo URL;?>/images/upload.jpg" alt="" />&nbsp;<a href="<?php echo URL;?>/upload.php" class="menuLeftBar"><?php echo $CONTENT["UPLOAD_FILE"];?></a></li>
-				<li>&nbsp;<img src="<?php echo URL;?>/images/control_panel.jpg" alt="" />&nbsp;<a href="<?php echo URL;?>/control_panel.php" class="menuLeftBar"><?php echo $CONTENT["CONTROL_PANEL"];?></a></li>
+				<li><img src="<?php echo URL;?>/assets/images/file.gif" alt="" />&nbsp;<a href="javascript:new_file();" class="menuLeftBar"><?php echo $CONTENT["NEW_FILE"];?></a></li>
+				<li><img src="<?php echo URL;?>/assets/images/new_folder.jpg" alt="" />&nbsp;<a href="javascript:new_folder();" class="menuLeftBar"><?php echo $CONTENT["NEW_FOLDER"];?></a></li>
+				<li>&nbsp;<img src="<?php echo URL;?>/assets/images/upload.jpg" alt="" />&nbsp;<a href="<?php echo URL;?>/upload.php" class="menuLeftBar"><?php echo $CONTENT["UPLOAD_FILE"];?></a></li>
+				<li>&nbsp;<img src="<?php echo URL;?>/assets/images/control_panel.jpg" alt="" />&nbsp;<a href="<?php echo URL;?>/control_panel.php" class="menuLeftBar"><?php echo $CONTENT["CONTROL_PANEL"];?></a></li>
 			</ul>
 		</div><!--task-->
 	</div><!--file-task-->
@@ -317,7 +317,7 @@ function close_pop(id)
 		<div class="box-title">
 			<div class="textoAzul">&nbsp;<?php echo $CONTENT['DETAILS'];?></div>
 			<div class="arrow">
-			<a href="javascript:showhide_with_image('details-box','img_arrow_detail');"><img src="<?php echo URL;?>/images/up.jpg" id="img_arrow_detail" style="border:none" alt="" /></a>
+			<a href="javascript:showhide_with_image('details-box','img_arrow_detail');"><img src="<?php echo URL;?>/assets/images/up.jpg" id="img_arrow_detail" style="border:none" alt="" /></a>
 			</div>
 		</div>
 		<!--box-title-->
@@ -379,7 +379,7 @@ function close_pop(id)
 		<?php
 		if(is_dir($file)&& $file!='.'):
 		?>
-			<img src='<?php echo URL?>/images/folder.jpg' alt="" />&nbsp;<a href="tree.php?dir=<?php echo $file;?>" class="menuLeftBar"><?php echo $file;?></a>
+			<img src='<?php echo URL?>/assets/images/folder.jpg' alt="" />&nbsp;<a href="tree.php?dir=<?php echo $file;?>" class="menuLeftBar"><?php echo $file;?></a>
 		<?php
 		else:
 				//is file
@@ -502,19 +502,19 @@ function close_pop(id)
 		  <?php
 		  if(is_file($file)){
 		  ?>
-		  <td><a href="javascript:edit('<?php echo $file?>');"><img src="<?php echo URL?>/images/b_edit.png" alt="<?php echo $CONTENT["EDIT"];?>" title="<?php echo $CONTENT["EDIT"];?>" /></a></td>
+		  <td><a href="javascript:edit('<?php echo $file?>');"><img src="<?php echo URL?>/assets/images/b_edit.png" alt="<?php echo $CONTENT["EDIT"];?>" title="<?php echo $CONTENT["EDIT"];?>" /></a></td>
 		  <?php
 		  }//if
 		  else
 		  	echo "<td>&nbsp;</td>";
 		  ?>
-		  <td><a href="javascript:rename('<?php echo $file;?>');"><img src="<?php echo URL?>/images/rename.jpg" title="<?php echo $CONTENT["RENAME"];?>" alt="<?php echo $CONTENT["RENAME"];?>" /></a></td>
-		  <td><a href="javascript:delete_file('<?php echo $file;?>');"><img src="<?php echo URL?>/images/delete.gif" title="<?php echo $CONTENT["DELETE"];?>" alt="<?php echo $CONTENT["DELETE"];?>" /></a></td>		  
+		  <td><a href="javascript:rename('<?php echo $file;?>');"><img src="<?php echo URL?>/assets/images/rename.jpg" title="<?php echo $CONTENT["RENAME"];?>" alt="<?php echo $CONTENT["RENAME"];?>" /></a></td>
+		  <td><a href="javascript:delete_file('<?php echo $file;?>');"><img src="<?php echo URL?>/assets/images/delete.gif" title="<?php echo $CONTENT["DELETE"];?>" alt="<?php echo $CONTENT["DELETE"];?>" /></a></td>		  
 		  <?php
 			  if(is_file($file)){
 		  ?>
-		  <td><a href="javascript:compress('<?php echo $file;?>');"><img src="<?php echo URL?>/images/zip.gif" alt="<?php echo $CONTENT["COMPRESS"];?>" title="<?php echo $CONTENT["COMPRESS"];?>" /></a></td>
-		  <td><a href="javascript:download_file('<?php echo $file?>');"><img src="<?php echo URL?>/images/download.gif" alt="<?php echo $CONTENT["DOWNLOAD"];?>" title="<?php echo $CONTENT["DOWNLOAD"];?>" /></a></td>
+		  <td><a href="javascript:compress('<?php echo $file;?>');"><img src="<?php echo URL?>/assets/images/zip.gif" alt="<?php echo $CONTENT["COMPRESS"];?>" title="<?php echo $CONTENT["COMPRESS"];?>" /></a></td>
+		  <td><a href="javascript:download_file('<?php echo $file?>');"><img src="<?php echo URL?>/assets/images/download.gif" alt="<?php echo $CONTENT["DOWNLOAD"];?>" title="<?php echo $CONTENT["DOWNLOAD"];?>" /></a></td>
 		  <?php
 		  }//if
 		  ?>

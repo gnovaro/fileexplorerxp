@@ -24,7 +24,7 @@ else
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>:: File Explorer XP - SETUP ::</title>
 	<meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
-	<link rel="stylesheet" type="text/css" href="fileexplorer.css" />
+	<link rel="stylesheet" type="text/css" href="assets/css/fileexplorer.css" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 	<script src="http://ajax.microsoft.com/ajax/jquery.validate/1.6/jquery.validate.min.js"></script> 
 </head>
