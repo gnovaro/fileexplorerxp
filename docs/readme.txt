@@ -1,11 +1,8 @@
 File Explorer XP - Version 0.92
 ****************
 By Gustavo Novaro
-E-mail: gnovaro@gmail.com
-URL Project: http://code.google.com/p/fileexplorerxp
-URL: www.novarsystems.com.ar
-BLOG: gustavonovaro.blogspot.com
- 
+URL Project: https://github.com/gnovaro/fileexplorerxp
+
 This software has been created and released under the GNU GPL and is free to use and redistribute.
 
 SETUP INSTRUCTIONS
@@ -22,4 +19,4 @@ SETUP INSTRUCTIONS
 Requisites
 ==========
 * Apache or other web server
-* Php 4.3 or later
+* Php 5 or later
