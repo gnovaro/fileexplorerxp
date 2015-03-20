@@ -1,5 +1,5 @@
 /**
-* @author Gustavo Novaro <gnovaro@gmail.com>
+* @author Gustavo Novaro
 * @version 1.1
 */
 function redirect(sUrl){
