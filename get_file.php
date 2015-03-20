@@ -1,8 +1,8 @@
 <?php
 /**
-* @author Gustavo Novaro <gnovaro@gmail.com>
+* @author Gustavo Novaro
 * @version 1.28
-* URL: http://gustavonovaro.blogspot.com
+* https://github.com/gnovaro/fileexplorerxp
 * File: get_file.php
 * Purpose: Download file 
 */
