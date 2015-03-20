@@ -1,14 +1,14 @@
 <?php  
 /** 
 * Configuration File
-* @author  Gustavo Novaro <gnovaro@gmail.com> 
-* @version 1.73
-* Project Home Page: http://fileexplorerxp.googlecode.com
-* Blog: http://gustavonovaro.com.ar
+* @author  Gustavo Novaro
+* @version 1.74
+* Project Home Page: https://github.com/gnovaro/fileexplorerxp
+
 * Twitter: http://www.twitter.com/gnovaro
 */ 
 $config = array(
-    'VERSION' 	=> '1.73',
+    'VERSION' 	=> '1.74',
     'USER' 		=> 'admin',  
     'PASS' 		=> 'd033e22ae348aeb5660fc2140aec35850c4da997',  
     'TIME_ZONE' 	=> 'UTC'  
