@@ -1,8 +1,8 @@
 <?php
 /**
-* @author Gustavo Novaro <gnovaro@gmail.com>
+* @author Gustavo Novaro
 * @version 1.74
-* URL: http://gustavonovaro.com.ar
+* https://github.com/gnovaro/fileexplorerxp
 * File: tree.php
 * Purpose: View and listing files and directory
 */
@@ -159,8 +159,8 @@
 	<title><?php echo $CONTENT["TITLE"];?></title>
 	<link rel="stylesheet" type="text/css" href="<?php echo URL;?>/assets/css/fileexplorer.css" />
 	<meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-	<script src="http://ajax.microsoft.com/ajax/jquery.validate/1.6/jquery.validate.min.js"></script> 
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	<script src="//ajax.microsoft.com/ajax/jquery.validate/1.6/jquery.validate.min.js"></script> 
 	<script type="text/javascript">
 	function showhide_with_image(targetDiv,actionImage){
 		var image = document.getElementById(actionImage);
@@ -268,7 +268,7 @@ function close_pop(id)
 			<div style="float:right"><a href="#" onclick="$('#divHelp').hide();"><img src="<?php echo URL;?>/assets/images/close.png" alt="close" /></a></div>
 			<a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a><br />
 				PHP Web File Manager<br />
-				Author: &nbsp;<a href="mailto:gnovaro@gmail.com">Gustavo Novaro</a><br />
+				Author: &nbsp;Gustavo Novaro<br />
 				Version:&nbsp;<?php echo $config['VERSION'];?><br />
 		</div><!--divHelp-->
 		
@@ -302,7 +302,7 @@ function close_pop(id)
 			<div class="arrow"><a href="javascript:showhide_with_image('task','img_arrow_task');"><img src="<?php echo URL;?>/assets/images/up.jpg" id="img_arrow_task" style="border:none" /></a></div>
 		</div>
 		<div id="task">
-			<ul>
+			<ul>c
 				<li><img src="<?php echo URL;?>/assets/images/file.gif" alt="" />&nbsp;<a href="javascript:new_file();" class="menuLeftBar"><?php echo $CONTENT["NEW_FILE"];?></a></li>
 				<li><img src="<?php echo URL;?>/assets/images/new_folder.jpg" alt="" />&nbsp;<a href="javascript:new_folder();" class="menuLeftBar"><?php echo $CONTENT["NEW_FOLDER"];?></a></li>
 				<li>&nbsp;<img src="<?php echo URL;?>/assets/images/upload.jpg" alt="" />&nbsp;<a href="<?php echo URL;?>/upload.php" class="menuLeftBar"><?php echo $CONTENT["UPLOAD_FILE"];?></a></li>
@@ -534,7 +534,7 @@ function close_pop(id)
   <!--status-bar-->
   <div id="status-bar">
 	<div id="objects">&nbsp;<?php echo $i-2;?>&nbsp;<?php echo $CONTENT['OBJECTS'];?>&nbsp;</div>
-	<div id="about"><a href="http://gustavonovaro.com.ar" target="_blank">Blog de Tavo</a>&nbsp; - <a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a> | Version: <?php echo $config['VERSION'];?> &nbsp;</div>
+	<div id="about"><a href="https://github.com/gnovaro/fileexplorerxp" target="_blank">File Explorer XP</a> | Version: <?php echo $config['VERSION'];?> &nbsp;</div>
   </div>
   <!--status-bar-->
   <input type="hidden" name="H_NAME" id="H_NAME" value="" />
