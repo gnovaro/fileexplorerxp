@@ -1,7 +1,7 @@
 <?php
 /**
 * File Upload process
-* @author: Gustavo Novaro <gnovaro@gmail.com>
+* @author: Gustavo Novaro
 * @version: 1.28
 */
 require("./config.php");
