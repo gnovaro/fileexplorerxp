@@ -1,8 +1,8 @@
 <?php
 /**
-* @author	Gustavo Novaro <gnovaro@gmail.com>
+* @author 	Gustavo Novaro
 * @version	1.76
-* URL: http://gustavonovaro.blogspot.com
+* https://github.com/gnovaro/fileexplorerxp
 * File: upload.php
 * Purpose:
 */
@@ -32,8 +32,8 @@ if(!isset($_SESSION['login'])) redirect('index.php');
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title><?php echo $CONTENT["TITLE"];?></title>
-	<link rel="stylesheet" type="text/css" href="<?php echo URL?>/fileexplorer.css" />
-	<script type="text/javascript" src="<?php echo URL?>/js/function.js"></script>
+	<link rel="stylesheet" href="<?php echo URL?>/fileexplorer.css" />
+	<script src="<?php echo URL?>/js/function.js"></script>
 	<meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
 </head>
 
