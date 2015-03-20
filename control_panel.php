@@ -1,8 +1,8 @@
 <?php
 /**
- * @author Gustavo Novaro <gnovaro@gmail.com>
+ * @author Gustavo Novaro
  * @version 1.74
- * URL: http://gustavonovaro.com.ar
+ * https://github.com/gnovaro/fileexplorerxp
  * File: control_panel.php
  * Purpose:
  */
@@ -150,7 +150,7 @@
   <!--status-bar-->
   <div id="status-bar">
 	<div id="objects">&nbsp;<?php echo $i-2;?>&nbsp;<?php echo $CONTENT["OBJECTS"];?>&nbsp;</div>
-	<div id="about"><a href="http://gustavonovaro.com.ar" target="_blank">Blog de Tavo</a>&nbsp; - <a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a> | Version: <?php echo $config['VERSION'];?> &nbsp;</div>
+	<div id="about"><a href="https://github.com/gnovaro/fileexplorerxp" target="_blank">File Explorer XP</a> | Version: <?php echo $config['VERSION'];?> &nbsp;</div>
   </div>
   <!--status-bar-->	
 </form>
