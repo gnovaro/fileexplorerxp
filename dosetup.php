@@ -2,7 +2,7 @@
 /**
 * File Explorer XP
 * Setup Process
-* @author Gustavo Novaro <gnovaro@gmail.com>
+* @author Gustavo Novaro
 * @version $Id$
 */
 require("./error_handler.php");	
@@ -14,7 +14,7 @@ if (isset($_POST['user'])){
 	$sUrl = $_POST['url'];
 	$sTimeZone = (isset($_POST['php_zone']))? $_POST['php_zone'] : '';
 
-	$sVersion = '1.73';
+	$sVersion = '1.74';
 	
 	$oFile = fopen('config.php',"w+");
 	$sLineBreak = "\n";
@@ -23,10 +23,9 @@ if (isset($_POST['user'])){
 			 /**
 			  * File Explorer XP 
 			  * Configuration File
-			  * @author Gustavo Novaro <gnovaro@gmail.com>
+			  * @author Gustavo Novaro
 			  * @version $sVersion
-			  * Project Home Page: http://fileexplorerxp.googlecode.com
-			  * Blog: http://gustavonovaro.com.ar
+			  * Project Home Page: https://github.com/gnovaro/fileexplorerxp
 			  * Twitter: http://www.twitter.com/gnovaro
 			  */
 			\$config = array(
