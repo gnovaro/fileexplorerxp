@@ -1,7 +1,8 @@
 <?php
 /**
  * Setup page
- * @author Gustavo Novaro <gnovaro@gmail.com>
+ * @author Gustavo Novaro
+ * https://github.com/gnovaro/fileexplorerxp
  * @version $Id$
  * Purpouse: Setup a config file first time execution
  */
@@ -25,8 +26,8 @@ else
 	<title>:: File Explorer XP - SETUP ::</title>
 	<meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
 	<link rel="stylesheet" type="text/css" href="assets/css/fileexplorer.css" />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-	<script src="http://ajax.microsoft.com/ajax/jquery.validate/1.6/jquery.validate.min.js"></script> 
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	<script src="//ajax.microsoft.com/ajax/jquery.validate/1.6/jquery.validate.min.js"></script> 
 </head>
 
 <body>
