@@ -1,9 +1,9 @@
 <?php
 /**
  * Generic validation hardcode process
- * @author Gustavo Novaro <gnovaro@gmail.com>
+ * @author Gustavo Novaro
  * @version 1.77
- * URL: http://gustavonovaro.com.ar
+ * https://github.com/gnovaro/fileexplorerxp
  */
 	require('./config.php');
 	require('./function.php');
@@ -14,7 +14,7 @@
 	{
 		$_SESSION['login'] = true;
 		redirect('tree.php');
-	}else{
+	} else {
 		$_SESSION['__MSG__'] = 'Invalid user or password';
 		redirect('index.php');
 	}//if
