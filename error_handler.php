@@ -1,8 +1,8 @@
 <?php
 /**
-* @author G. Novaro <gnovaro@gmail.com>
+* @author Gustavo Novaro
 * @version 1.41
-* URL: http://gustavonovaro.blogspot.com
+* https://github.com/gnovaro/fileexplorerxp
 * File: error_handler.php
 * Purpose:
 */
