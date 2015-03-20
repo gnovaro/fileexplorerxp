@@ -1,8 +1,8 @@
 <?php
 /**
-* @author Gustavo Novaro <gnovaro@gmail.com>
+* @author Gustavo Novaro
 * @version 1.77
-* URL: http://gustavonovaro.com.ar
+* https://github.com/gnovaro/fileexplorerxp
 * File: edit.php
 * Purpose: Edit text files
 */
@@ -36,9 +36,9 @@ if(isset($_POST['H_FILE_NAME']))
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title><?php echo $CONTENT['TITLE'];?></title>
-	<link rel="stylesheet" type="text/css" href="<?php echo URL?>/fileexplorer.css" />
-	<script src="<?php echo URL?>/codepress/codepress.js" type="text/javascript"></script>
-	<script src="<?php echo URL?>/js/function.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="<?php echo URL?>/fileexplorer.css" />
+	<script src="<?php echo URL?>/codepress/codepress.js"></script>
+	<script src="<?php echo URL?>/js/function.js"></script>
 	<meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
 </head>
 
