@@ -1,12 +1,11 @@
 <?php
 /**
- * @author	Gustavo Novaro <gnovaro@gmail.com>
+ * @author	Gustavo Novaro
  * @version	1.67
- * URL: http://gustavonovaro.com.ar
+ * https://github.com/gnovaro/fileexplorerxp
  * File: index.php
  * Purpose: Login
  */
-
 	error_reporting(E_ALL);
 	if (!file_exists("./config.php"))
 		{header("location: setup.php");}
@@ -50,9 +49,9 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title><?php echo $CONTENT['TITLE'];?></title>
 	<meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
-	<link type="text/css" rel="stylesheet" href="fileexplorer.css" />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-	<script src="http://ajax.microsoft.com/ajax/jquery.validate/1.6/jquery.validate.min.js"></script> 
+	<link rel="stylesheet" href="fileexplorer.css" />
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	<script src="//ajax.microsoft.com/ajax/jquery.validate/1.6/jquery.validate.min.js"></script> 
 </head>
 <body>
 <form id="frmLogin" name="frmLogin" action="validate.php" method="post" style="margin-top:100px">
@@ -83,7 +82,7 @@
 			<td colspan="2" align="center"><img src="images/padlock.gif" alt="" />&nbsp;<strong>IP:</strong>&nbsp;
 			<?php 
 			$sIp = getIP();
-			$sDate = date("Y-m-d h:m:s");
+			$sDate = date("Y-m-d H:m:s");
 			write_log($sDate." - ".$sIp);
 			echo $sIp; 
 			?>
@@ -97,7 +96,7 @@
 </form>
 <div style="margin-top:170px;">
 	<div align="right">
-	<a href="http://gustavonovaro.com.ar" target="_blank">Blog de Tavo</a>&nbsp; - <a href="http://fileexplorerxp.googlecode.com/" target="_blank">File Explorer XP</a> | Version: <?php echo $config["VERSION"];?> &nbsp;
+	<a href="https://github.com/gnovaro/fileexplorerxp" target="_blank">File Explorer XP</a> | Version: <?php echo $config["VERSION"];?> &nbsp;
 	</div>
 </div>
 </body>
