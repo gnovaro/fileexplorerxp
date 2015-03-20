@@ -1,7 +1,7 @@
 <?php
 /**
  * English Language File
- * @author  Gustavo Novaro <gnovaro@gmail.com>
+ * @author  Gustavo Novaro
  * @version 1.33
  */
  $CONTENT = array(
