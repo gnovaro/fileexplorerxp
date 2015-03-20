@@ -1,10 +1,10 @@
 <?php
 /**
-* @author	Gustavo Novaro <gnovaro@gmail.com>
+* @author	Gustavo Novaro
 * @version	1.77
 */
 function redirect($sURL = ''){
-	if (!empty($sURL))header("Location:$sURL");
+	if (!empty($sURL)) header("Location:$sURL");
 }//redirect
 
 function get_lang(){
