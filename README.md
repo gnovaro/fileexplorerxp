@@ -1,5 +1,4 @@
 # fileexplorerxp
-Automatically exported from code.google.com/p/fileexplorerxp
 
 Web File Manager, written in php
 Don't require Data Base
