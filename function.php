@@ -10,10 +10,10 @@ function redirect($sURL = ''){
 function get_lang(){
 /**
 *
-* @returns: Array with lenguages files to load 
+* @returns: Array with lenguages files to load
 */
 	$sLang = false;
-	$oFp = opendir("languages");
+	$oFp = opendir("application/i18n");
 	 while (false !== ($oFile = readdir($oFp))) {
 		if ($oFile != "." && $oFile != "..") {
 			$oFileParts = pathinfo($oFile);
@@ -26,6 +26,7 @@ function get_lang(){
 	}//while
 	return $sLang;
 }//get_lang
+
 function get_os(){
 	return PHP_OS;
 }//get_os
@@ -64,3 +65,8 @@ function getIP(){
 	}//if
  	return $realip;
 }//getIP
+
+function write_log($file,$text) {
+	$log_file_path = __DIR__.'/application/logs/';
+	return file_put_contents($log_file_path.$file,$text);
+}

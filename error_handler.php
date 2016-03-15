@@ -13,7 +13,7 @@ set_error_handler('logErr');
 // funcion de gestion de errores
 function logErr($num_err, $cadena_err, $archivo_err, $linea_err)
 {
-	switch ($num_err) 
+	switch ($num_err)
 	{
 		case E_USER_ERROR:
 			echo "<b>Mi ERROR</b> [$num_err] $cadena_err<br />\n";
@@ -33,12 +33,6 @@ function logErr($num_err, $cadena_err, $archivo_err, $linea_err)
 			break;
   }//switch
 }//function
-
-function write_log($sText){
-	$oFp = fopen("logs".DIRECTORY_SEPARATOR."login.log","a+");
-	fwrite($oFp,$sText." \n");
-	fclose($oFp);
-}//write_log
 
 /*
 

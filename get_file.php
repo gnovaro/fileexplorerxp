@@ -4,7 +4,7 @@
 * @version 1.28
 * https://github.com/gnovaro/fileexplorerxp
 * File: get_file.php
-* Purpose: Download file 
+* Purpose: Download file
 */
 
 //Security check
@@ -14,16 +14,16 @@ if(!isset($_SESSION["login"]))
 //security
 
 	if (isset($_GET["file"])){
-		$sPath = $_SESSION["path"];		
+		$sPath = $_SESSION["path"];
 		$downloadfile = $sPath.DIRECTORY_SEPARATOR.$_GET["file"];
 		if(file_exists($downloadfile)){
-			
+
 			header("Cache-Control: public, must-revalidate");
 			header("Pragma: hack");
 		  if(function_exists('mime_content_type')){
         $mime_type = mime_content_type($downloadfile);
-        header("Content-Type: " . $mime_type);  
-      }		
+        header("Content-Type: " . $mime_type);
+      }
 			header("Content-Length: " .(string)(filesize($downloadfile)) );
 			header('Content-Disposition: attachment; filename="'.basename($downloadfile).'"');
 			header("Content-Transfer-Encoding: binary\n");

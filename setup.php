@@ -8,7 +8,7 @@
  */
 $sLang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2);
 //echo $sLang;
-$sPath = './languages/'.$sLang.'.php';
+$sPath = __DIR__.'/application/i18n/'.$sLang.'.php';
 if (file_exists($sPath))
 {
 	require($sPath);
@@ -16,42 +16,46 @@ if (file_exists($sPath))
 else
 {
 	//default lang english
-	require('./languages/en.php'); 
+	require('./languages/en.php');
 }//if
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>:: File Explorer XP - SETUP ::</title>
+	<meta charset="utf-8">
 	<meta name="robots" content="NOINDEX, NOFOLLOW, NOCACHE, NOARCHIVE" />
-	<link rel="stylesheet" type="text/css" href="assets/css/fileexplorer.css" />
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-	<script src="//ajax.microsoft.com/ajax/jquery.validate/1.6/jquery.validate.min.js"></script> 
+	<title>File Explorer XP - SETUP</title>
+	<link rel="stylesheet" href="assets/css/fileexplorer.css" />
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<script src="//ajax.microsoft.com/ajax/jquery.validate/1.6/jquery.validate.min.js"></script>
 </head>
-
 <body>
+<div class="container">
 	<h1>File Explorer XP <?php echo $CONTENT['SETUP'];?></h1>
 
 	<form id="frmSetup" action="dosetup.php" method="post">
 	<fieldset>
 		<legend>Configuration</legend>
-		<div>
+		<div class="form-group">
 			<label><strong>User:</strong></label>
-			<input type="text" name="user" id="user" maxlength="12" value="admin" class="required" required="required" />
+			<input type="text" name="user" id="user" maxlength="12" value="admin" class="required form-control" required="required">
 		</div>
-		<div>
+		<div class="form-group">
 			<label><strong>Password:</strong></label>
-			<input type="text" name="password" id="password" maxlength="12" value="admin" class="required" required="required" />
+			<input type="password" name="password" id="password" maxlength="12" value="admin" class="required form-control" required="required">
 		</div>
-		<div>
+		<div class="form-group">
 			<label><strong>URL:</strong></label>
-			<input type="url" name="url" id="url" value="http://<?php echo $_SERVER['HTTP_HOST'];?>/<?php echo basename(dirname(__FILE__));?>" maxlength="255" required="required" />
+			<input type="url" name="url" id="url" value="http://<?php echo $_SERVER['HTTP_HOST'];?>/<?php echo basename(dirname(__FILE__));?>" maxlength="255" required="required" class="form-control">
 		</div>
-		<?php if (phpversion() >= '5.1.0'):?>
-		<div>
+		<?php if (phpversion() >= '5.3.0'):?>
+		<div class="form-group">
 			<label><strong>Time Zone:</strong></label>
-  			<select name="php_zone" id="php_zoneR" required="required">
+  			<select name="php_zone" id="php_zoneR" required="required" class="form-control">
 				<option value="UTC">UTC</option>
 				<?php
 				$timezone_identifiers = DateTimeZone::listIdentifiers();
@@ -64,10 +68,11 @@ else
 			</select>
 		</div>
 		<?php endif;?>
-		<div>
-			<input type="submit" name="btsend" id="btsend" value="<?php echo $CONTENT['SUBMIT'];?>" />
+		<div class="form-group">
+			<button type="submit" name="btsend" id="btsend" class="btn btn-default"><?php echo $CONTENT['SUBMIT'];?></button>
 		</div>
 	</fieldset>
 	</form>
+</div><!--./container-->
 </body>
 </html>

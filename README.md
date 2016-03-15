@@ -25,3 +25,9 @@ Fácil instalación
 Compresión de archivos con GZ
 Logs de Seguridad
 Lang: es | en | it | pt | de
+
+Before setup set this permisions:
+--------------------------------
+sudo chown user:www-data fileexplorerxp/ -R
+sudo chmod +x fileexplorerxp/dosetup.php
+sudo chown 775 fileexplorerxp/application/logs
